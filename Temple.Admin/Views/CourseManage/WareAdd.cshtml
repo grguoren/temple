@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "直销同城网-管理系统-课程管理-" + ViewBag.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        课程管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            @Html.Raw(ViewBag.PageTitle)
+        </small>
+    </h1>
+</div>
+<div class="row" ms-controller="courseAddOrUpdate">
+    <input type="hidden" id="coursewareId_pageDom" value="@ViewBag.WareId" />
+    <input type="hidden" id="courseId_pageDom" value="@ViewBag.CourseId" />
+    <div class="col-xs-12">
+        <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"> 课件类别 </label>
+                    <div class="col-sm-9">
+                        <span><input type="radio" ms-duplex-number="CourseModel.cFileType" value="1" />音频</span>
+                        <span><input type="radio" ms-duplex-number="CourseModel.cFileType" value="0" />视频</span>
+                    </div>
+                </div>
+             <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> 课件封面</label>
+                <div class="col-sm-9">
+                    <input type="file" class="input-sm" id="file" name="file" />
+                    <div ms-widget="preview" id="preview_img_page"></div>
+                </div>
+            </div>
+            <div class="form-group" ms-visible="imgTip != ''">
+                <label class="col-sm-3 control-label no-padding-right"> 图片地址 </label>
+                <div class="col-sm-9">
+                    <span class="middle red">{{imgTip}}</span>
+                    <button type="button" class="btn btn-xs" ms-click="uploadAjaxInfomationImg" ms-visible="viewImgButton">确认上传</button>
+                </div>
+            </div>
+               <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> 上传课件 </label>
+
+                <div class="col-sm-9">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" ms-duplex="CourseModel.cFileUrl" class="col-xs-9 col-sm-4" style="width:200px;" />
+                            </td>
+                            <td>
+                                <input style="width:200px;" type="file" class="input-sm" id="file1" name="file1"  />
+                            </td>
+                            <td>
+                                <button type="button"  style="width:100px;" class="btn btn-xs" ms-click="uploadAjax" >确认上传</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"> 课节名称 </label>
+                    <div class="col-sm-9">
+                         <input type="text" ms-duplex="CourseModel.cTitle" class="col-xs-9 col-sm-4" />
+                        <span class="middle red" ms-visible="$.trim(CourseModel.cTitle) === ''">{{errorMsg.Name}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"> 课节介绍 </label>
+                    <div class="col-sm-9">
+                        <textarea ms-duplex="CourseModel.cRemark" style="width:500px;" class="col-sm-4" rows="10"></textarea>
+                    </div>
+                </div>
+           
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-4 col-md-6">
+                    <button class="btn btn-info" type="button" ms-click="addCourseFun">
+                        <i class="icon-ok bigger-110"></i>
+                        {{buttonType}}
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn" type="reset">
+                        <i class="icon-undo bigger-110"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

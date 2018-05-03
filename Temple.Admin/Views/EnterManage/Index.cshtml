@@ -1,0 +1,269 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-入驻管理-讲师列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header position-relative">
+    <h1>
+        入驻管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            讲师列表  <input type="hidden" value="@ViewBag.Bid" id="pagedom_BrandId" />
+        </small>
+    </h1>
+</div>
+<div class="row-fluid" ms-controller="MyUserList" style="font-size: 13px; min-width: 1390px;">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                 <div class="span12">
+                    <button type="button" class="btn btn-info btn-sm" ms-click="VerifyAllTeacherUser(1)"><i class="icon-eye-open"></i>批量审核</button>
+                    <button type="button" class="btn btn-warning btn-sm" ms-click="VerifyAllTeacherUser(0)"><i class="icon-eye-close"></i>取消审核</button> 
+                     <button type="button" class="btn btn-info btn-sm" ms-click="RecmdAllTeacherUser(1)"><i class="icon-eye-open"></i>批量授权</button>
+                    <button type="button" class="btn btn-warning btn-sm" ms-click="RecmdAllTeacherUser(0)"><i class="icon-eye-close"></i>取消授权</button> 
+@*                    <button type="button" class="btn btn-info btn-sm" data-target="#upQuestion_Modal" data-toggle="modal" ms-click="UpdateIstopFun_Modal(0)"><i class="icon-heart"></i>批量置顶</button>
+                    <button type="button" class="btn btn-warning btn-sm" ms-click="TopQuestionAllFun(0)"><i class="icon-heart-empty"></i>取消置顶 </button> *@
+                </div>
+                <div class="hr"></div>
+                <div class="span12">
+                    <span>状态</span>
+                    <span>
+                        <select class="input-sm" id="Search_StatusId">
+                            <option value="0" selected>全部</option>
+                            <option value="4">已开通网站</option>
+                            <option value="5">未开通网站</option>
+                            <option value="6">过期网站</option>
+                           @* <option value="-1">隐藏网站</option>*@
+                        </select>
+                    </span>
+@*                     <span>是否推荐:</span>
+                    <span>
+                        <select class="input-sm" ms-duplex="Search_IsTop" style="height:26px;line-height:26px;">
+                            <option value="-1">全部</option>
+                            <option value="0">未推荐</option>
+                            <option value="1">已推荐</option>
+                            <option value="3">已置顶</option>
+                            <option value="4">未置顶</option>
+                            <option value="2">已过期</option>
+                        </select>
+                    </span>*@
+                    <span>|</span>
+                      <input id="date1" name="date1" type="text" onclick="WdatePicker()" runat="server"  style="width:80px;" readonly="readonly" />—
+                      <input id="date2" name="date2" type="text" onclick="WdatePicker()" runat="server"  style="width:80px;" readonly="readonly" />
+
+                    <span>
+                        <select class="input-sm" id="Search_SearchTypeId" ms-duplex="Search_SearchTypeId">
+                            <option value="1">用户名称</option>
+                            <option value="2">姓名</option>
+                            <option value="3">联系电话</option>
+                            <option value="7">省份</option>
+                            <option value="8">城市</option>
+                            <option value="9">市区</option>
+                            <option value="18">邮箱</option>
+                        </select>
+                    </span>
+                    <span>
+                        <input type="text" class="input-xs" id="Search_Title" ms-duplex="Search_Title" style="width:80px" />
+                    </span>
+                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                        <i class="icon-search"></i>
+                        查询
+                    </button>
+                </div>
+            </div>
+
+
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th style="width:30px;"><input type="checkbox" ms-duplex-checked="changeAll" /></th>
+                         <th style="width:50px;">真实姓名</th>
+                        <th style="width:50px;">称呼</th>
+                        <th style="width:65px;">联系电话</th>
+                        <th style="width:95px;">头衔</th>
+                        <th style="width:40px;">头像</th>
+                         <th style="width:40px;">身份证件</th>
+                        <th style="width:70px;">身份证号码</th>
+                        <th style="width:40px;">授权书</th>
+                        <th style="width:60px;">注册日期</th>
+                         <th style="width:70px;">所在地</th>
+                        <th style="width:50px;">审核状态</th> 
+                        <th style="width:50px;">授权审核</th>
+                        <th style="width:55px;">管理</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="19" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="18" style="text-align:center;">对不起,没有数据!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td><input type="checkbox" ms-attr-value="el.Id" ms-duplex-number="changeList" />{{el.Id}}</td>
+                        <td> {{el.tName}}</td>
+                        <td> {{el.tNickname}}</td>
+                        <td style="word-break:break-all;">{{el.Telephone}}</td>
+                         <td style="word-break:break-all;">{{el.Position}}</td>
+                        <td><span ms-if="(el.HeadImages == '' || el.HeadImages == null )">未上传</span>
+                            <span ms-if="(el.HeadImages !='' && el.HeadImages != null)">
+                            <a ms-attr-href="ReturnImgPath(el.HeadImages)" target="_blank" title="查看图片" class='highslide' onclick="return hs.expand(this)">
+                                <img ms-attr-src="ReturnImgPath(el.HeadImages)" style="width:60px;height:60px;" />
+                            </a></span>
+                        </td>
+                        <td>
+                            <span ms-if="(el.IDCardImgUrl == '' || el.IDCardImgUrl == null )">未上传</span>
+                             <span ms-if="(el.IDCardImgUrl !='' && el.IDCardImgUrl != null)">
+                           <a ms-attr-href="ReturnImgPath(el.IDCardImgUrl)" target="_blank" title="查看图片" class='highslide' onclick="return hs.expand(this)">
+                                <img ms-attr-src="ReturnImgPath(el.IDCardImgUrl)" style="width:60px;height:60px;" />
+                            </a></span>
+                        </td>
+                        <td style="word-break:break-all;">{{el.IDCardNo}}
+                        </td>
+                        <td style="width:65px;word-break:break-all;">
+                            <span ms-if="(el.cAuthorizeUrl == '' || el.cAuthorizeUrl == null )">未上传</span>
+                             <span ms-if="(el.cAuthorizeUrl !='' && el.cAuthorizeUrl != null)">
+                            <a ms-attr-href="ReturnImgPath(el.cAuthorizeUrl)" target="_blank" title="查看图片" class='highslide' onclick="return hs.expand(this)">
+                                <img ms-attr-src="ReturnImgPath(el.cAuthorizeUrl)" style="width:60px;height:60px;" />
+                            </a></span>
+                        </td>
+                        <td>{{el.AddTime| date("yyyy/MM/dd")}}</td>
+                        <td>
+                            {{el.Address}}
+                        </td>
+                        <td><span ms-class-red="el.IsVerify==1">{{el.IsVerify==1?"已审核":(el.IsVerify==2?"已关闭":"未审核")}}</span></td>
+                        <td><span ms-class-red="el.isAuthorize==1">{{el.isAuthorize==1?"已授权":"未授权"}}</span></td>
+                        <td>
+                            @{
+                                if (ViewBag.ReplyName == "linbo" || ViewBag.ReplyName == "adminzh")
+                                {
+                             <a title="删除"  href="javascript:;" ms-click="DeleteMyTeacherUser(el.Id,el.tName)">删除</a>
+                            }
+                            }
+                   
+                            @*<button title="管理" type="button" class="btn btn-xs btn-success" ms-click="ToUserManage(el.Name,el.Pwd)">管理</button>*@
+                   @*         <a title="管理"  href="javascript:;" ms-click="ToUserManage(el.eEmailEncrypt,el.ePwd)">管理</a>*@
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+             <div class="well well-lg">
+                <div class="span12">
+                    @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                    {
+                    <span>
+                         <button type="button" class="btn btn-danger btn-sm" ms-click="DeleteMyUserAllFun"><i class="icon-trash"></i>批量删除</button>
+                    </span>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Modal -->
+    <div class="modal fade" id="upQuestion_Modal" tabindex="-1" role="dialog" style="margin-top:170px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:230px;">
+                <div class="modal-header no-padding">
+                    <div class="table-header" style="line-height:32px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        企业会员置顶
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label" for="form-field-username">置顶状态</label>
+                        <div class="controls">
+                            <select ms-duplex="UpdateTop_IsTop">
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="form-field-nickname">置顶开始时间</label>
+                        <div class="controls">
+                            <input type="text" ms-duplex="UpdateTop_Begin" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="form-field-pwd">置顶结束时间</label>
+                        <div class="controls">
+                            <input type="text" ms-duplex="UpdateTop_End" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary btn-sm" ms-click="ModalFun_UpdateQuestionIsTop">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Modal -->
+    <div class="modal fade" id="submitData_Modal" tabindex="-1" role="dialog" style="margin-left:610px;margin-top:210px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:210px;">
+                <div class="modal-header no-padding">
+                    <div class="table-header" style="line-height:32px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        微信扫一扫 
+                    </div>
+                </div>
+                <div class="modal-body" style="padding-left: 5px; padding-right: 5px;">
+                    <div class="control-group">
+                        <div class="controls">
+                             <img id="QrcodeImg" src="" alt="" height="200" width="200" />
+                        </div>
+                    </div>
+                    <div class="control-group" id="remarkId">
+                        <div class="controls">
+                             <img id="QrcodeImg2" src="" alt="" height="200" width="200" />
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Remark -->
+     <div class="modal fade" id="remarkData_Modal" tabindex="-1" role="dialog" style="margin-left:910px;margin-top:210px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:300px;">
+                <div class="modal-header no-padding">
+                    <div class="table-header" style="line-height:32px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        查看历史备注 
+                    </div>
+                </div>
+                <div class="modal-body" style="padding-left: 5px; padding-right: 5px;">
+                    <div class="control-group">
+                        <div class="controls" id="remarkhostList">
+                             
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Scripts/Lib/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    var tdSeq = 0;
+    var trSeq = 0;
+    $(document).ready(function () {
+        $(".table td").click(function () {
+            var tdSeq = $(this).parent().find("td").index($(this)[0]);
+            var trSeq = $(this).parent().parent().find("tr").index($(this).parent()[0]);
+
+            alert("第" + (trSeq + 1) + "行，第" + (tdSeq + 1) + "列");
+        });
+    })
+    function getQrC(obj) {
+        var row = obj;
+       var val = $("table").find("tr").eq(1).find("td").eq(1).text();
+       //var tdSeq = $(this).parent().find("td").index($(this)[0]);
+       //var trSeq = $(this).parent().parent().find("tr").index($(this).parent()[0]);
+        var path = '@Request.RawUrl.UserTwoUrl("", "MyUserManage/GetQRCode?data=" + Temple.Core.Helper.EncryptHelper.EncryptCode(string.Format("BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3A{0}%0ATEL%3BCELL%3A{1}%0AEMAIL%3A{2}%0AX-QQ%3A{3}%0AADR%3A{4}%0AURL%3Ahttp://www.{5}.zx58.cn%0AEND%3AVCARD", "", "", "", "", "" + "", "")))';
+        $("#QrcodeImg").attr("src", path);
+    }
+</script>

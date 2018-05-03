@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-统计管理-论坛统计";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header position-relative">
+    <h1>
+        统计管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            论坛统计
+        </small>
+    </h1>
+</div>
+
+<div class="row-fluid" ms-controller="bbsList">
+    <div class="span12">
+        <div class="row" style="height:420px;">
+            <div class="col-sm-5" style="height:400px;" id="echarts_main_day"></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5" style="height:400px;" id="echarts_main_mon"></div>
+        </div>
+        <div class="well well-lg">
+            <div class="span12">
+                <span>日期类型：</span>
+                <span><select ms-duplex="Model_DateType"><option value="1">按天</option><option value="2">按月</option></select></span>
+                <span>选择日期：</span>
+                <span><input type="text" class="input-xs" ms-duplex="Model_Date" ms-widget="datepicker, a, $aOpts" /></span>
+                <span>
+                    <button type="button" class="btn btn-danger btn-sm" ms-click="RefData" ms-attr-disabled="ButtonView"><i class="icon-refresh"></i>计算数据</button>
+                </span>
+                <span class="red">PS:按月计算时,选择某一个月里的任何一天即可</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="@Url.Content("~/Scripts/Lib/echarts/echarts.js")"></script>

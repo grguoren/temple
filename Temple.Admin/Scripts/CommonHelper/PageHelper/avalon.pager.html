@@ -1,0 +1,83 @@
+<!--<div class="oni-pager" onselectstart="return false;" unselectable="on" ms-visible="!!totalPages">
+    <span class="oni-pager-prev"
+          ms-class="oni-state-disabled:firstPage==1"
+          ms-if="isShowPrev()"
+          ms-title="getTitle('prev')" 
+          ms-click="jumpPage($event,'prev')" 
+          ms-text="prevText"
+          ></span>
+    <span class="oni-pager-item"
+          ms-visible="firstPage!==1" 
+          ms-title="getTitle('first', currentPage)" 
+          ms-click="jumpPage($event,'first')" 
+          ms-class-oni-state-active="currentPage == 1"
+          ms-hover="oni-state-hover">1</span>
+    <span class='oni-pager-omit'
+          ms-if="showFirstOmit" 
+          ms-text="ellipseText"
+          ></span>
+    <span  class="oni-pager-item" 
+           ms-repeat="pages" 
+           ms-title="getTitle(el, currentPage)"
+           ms-hover="oni-state-hover"
+           ms-click="jumpPage($event,el)"
+           ms-class-oni-state-active="el == currentPage" 
+           ms-text="el"
+           ></span>
+    <span class="oni-pager-omit"
+          ms-if="showLastOmit" 
+          ms-text="ellipseText"
+          ></span>
+    <span class="oni-pager-item "
+          ms-visible="lastPage!==totalPages" 
+          ms-title="getTitle('last', currentPage, totalPages)" 
+          ms-hover="oni-state-hover" 
+          ms-click="jumpPage($event,'last')"  
+          ms-text="totalPages"
+          ></span>
+    <span class="oni-pager-next"
+          ms-if="isShowNext()" 
+          ms-title="getTitle('next')"
+          ms-click="jumpPage($event,'next')" 
+          ms-class="oni-state-disabled:lastPage==totalPages"
+          ms-text="nextText"
+          ></span>
+    <div class="oni-pager-jump" ms-if="showJumper">
+        <span class="oni-pager-text">共{{totalPages}}页，到第</span>
+        <div class="oni-pager-textbox-wrapper">
+            <input class="oni-pager-textbox" ms-duplex="_currentPage" data-duplex-event="change" ms-keyup="changeCurrentPage">
+        </div>
+        <span class="oni-pager-text">页</span>
+        <button class="oni-pager-button" ms-click="changeCurrentPage" >确定</button>
+    </div>
+</div>-->
+
+
+<div class="modal-footer no-margin-top" ms-visible="!!totalPages">
+    <div class="pull-left text-uppercase">当前显示 {{perPages}} 条 共 {{totalItems}} 条数据 , 总计 {{totalPages}} 页</div>
+    <ul class="pagination pull-right no-margin">
+        <li class="previous" ms-visible="currentPage!=1" 
+            ms-attr-title="getTitle('first', currentPage)"
+            ms-click="jumpPage($event,'first')"><a href="#">首页</a></li>
+        <li ms-visible="currentPage!=1" 
+            ms-if="isShowPrev()"
+            ms-attr-title="getTitle('prev')"
+            ms-click="jumpPage($event,'prev')"><a href="#"><i class="icon-double-angle-left"></i></a></li>
+        <li ms-repeat="pages"
+            ms-attr-title="getTitle(el, currentPage)"
+            ms-click="jumpPage($event,el)"
+            ms-class-active="el == currentPage" 
+            style="cursor:pointer;"><a class="B_p_a_curr">{{el}}</a></li>
+        <li ms-if="isShowNext()"
+            ms-attr-title="getTitle('next')"
+            ms-click="jumpPage($event,'next')"
+            ms-visible="currentPage!=totalPages"><a href="#"><i class="icon-double-angle-right"></i></a></li>
+        <li class="next" ms-visible="currentPage!=totalPages"
+            ms-attr-title="getTitle('last', currentPage, totalPages)"
+            ms-click="jumpPage($event,'last')"><a href="#">尾页</a></li>
+        <li style="margin-left:5px;" ms-visible="showJumper">
+            <input type="text" style="width:50px;" ms-duplex="_currentPage" />
+            <button type="button" class="btn btn-primary btn-xs" ms-click="changeCurrentPage">跳转</button>
+        </li>
+    </ul>
+</div>

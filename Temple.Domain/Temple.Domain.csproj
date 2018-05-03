@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9948173F-0CFE-4D00-9E02-F98C833FC8EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Temple.Domain</RootNamespace>
+    <AssemblyName>Temple.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="AdminCommon\AuthorityInfo.cs" />
+    <Compile Include="AdminCommon\Authority_Menu.cs" />
+    <Compile Include="AdminCommon\Authority_Role.cs" />
+    <Compile Include="AdminCommon\Logger.cs" />
+    <Compile Include="AdminCommon\Role_User.cs" />
+    <Compile Include="Appellation.cs" />
+    <Compile Include="Calendar.cs" />
+    <Compile Include="enum\enum.cs" />
+    <Compile Include="Friend.cs" />
+    <Compile Include="FriendSer.cs" />
+    <Compile Include="GoodDeed.cs" />
+    <Compile Include="Hour.cs" />
+    <Compile Include="Maintain.cs" />
+    <Compile Include="Meeting.cs" />
+    <Compile Include="MeritService.cs" />
+    <Compile Include="MobilePic.cs" />
+    <Compile Include="MobilePray.cs" />
+    <Compile Include="MobileRec.cs" />
+    <Compile Include="Model\AboutTypeModel.cs" />
+    <Compile Include="Model\BaiduPromotionModel.cs" />
+    <Compile Include="Model\CacheCount.cs" />
+    <Compile Include="Model\CacheCountBrand.cs" />
+    <Compile Include="Model\CashModel.cs" />
+    <Compile Include="Model\ConsumeModel.cs" />
+    <Compile Include="Model\EnterpriseModel.cs" />
+    <Compile Include="Model\GradesModel.cs" />
+    <Compile Include="Model\InterViewModel.cs" />
+    <Compile Include="Model\MeetingModel.cs" />
+    <Compile Include="Model\NewsModel.cs" />
+    <Compile Include="Model\ProjectModel.cs" />
+    <Compile Include="Model\RechargeModel.cs" />
+    <Compile Include="Model\RecruitModel.cs" />
+    <Compile Include="Model\ResumeModel.cs" />
+    <Compile Include="Payment.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecFri.cs" />
+    <Compile Include="Recommended.cs" />
+    <Compile Include="Report.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RolePermission.cs" />
+    <Compile Include="Sanctuary.cs" />
+    <Compile Include="SerMetting.cs" />
+    <Compile Include="ServiceItem.cs" />
+    <Compile Include="SystemPro.cs" />
+    <Compile Include="Tree.cs" />
+    <Compile Include="TreeInstallment.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserRole.cs" />
+    <Compile Include="WorshipFigure.cs" />
+    <Compile Include="WuxiSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Temple.Core\Temple.Core.csproj">
+      <Project>{c36edf2b-6ac6-42cd-b7dc-2c33e36ca2e8}</Project>
+      <Name>Temple.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

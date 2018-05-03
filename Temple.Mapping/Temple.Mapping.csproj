@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D1AE647-D5FE-4E99-92EB-659F999C564F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Temple.Mapping</RootNamespace>
+    <AssemblyName>Temple.Mapping</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountMapping.cs" />
+    <Compile Include="AdminCommon\AuthorityInfoMapping.cs" />
+    <Compile Include="AdminCommon\Authority_MenuMapping.cs" />
+    <Compile Include="AdminCommon\Authority_RoleMapping.cs" />
+    <Compile Include="AdminCommon\LoggerMapping.cs" />
+    <Compile Include="AdminCommon\Role_UserMapping.cs" />
+    <Compile Include="AppellationMapping.cs" />
+    <Compile Include="CalendarMapping.cs" />
+    <Compile Include="FriendMapping.cs" />
+    <Compile Include="FriendSerMapping.cs" />
+    <Compile Include="GoodDeedMapping.cs" />
+    <Compile Include="HourMapping.cs" />
+    <Compile Include="MaintainMapping.cs" />
+    <Compile Include="MeetingMapping.cs" />
+    <Compile Include="MeritServiceMapping.cs" />
+    <Compile Include="MobilePicMapping.cs" />
+    <Compile Include="MobilePrayMapping.cs" />
+    <Compile Include="MobileRecMapping.cs" />
+    <Compile Include="PaymentMapping.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecFriMapping.cs" />
+    <Compile Include="RecommendedMapping.cs" />
+    <Compile Include="ReportMapping.cs" />
+    <Compile Include="RoleMapping.cs" />
+    <Compile Include="RolePermissionMapping.cs" />
+    <Compile Include="SanctuaryMapping.cs" />
+    <Compile Include="SerMettingMapping.cs" />
+    <Compile Include="ServiceItemMapping.cs" />
+    <Compile Include="SystemProMapping.cs" />
+    <Compile Include="TreeInstallmentMapping.cs" />
+    <Compile Include="TreeMapping.cs" />
+    <Compile Include="UserMapping.cs" />
+    <Compile Include="UserRoleMapping.cs" />
+    <Compile Include="WorshipFigureMapping.cs" />
+    <Compile Include="WuxiSystemMapping.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Temple.Core\Temple.Core.csproj">
+      <Project>{c36edf2b-6ac6-42cd-b7dc-2c33e36ca2e8}</Project>
+      <Name>Temple.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Temple.Domain\Temple.Domain.csproj">
+      <Project>{9948173f-0cfe-4d00-9e02-f98c833fc8ee}</Project>
+      <Name>Temple.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

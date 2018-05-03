@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-系统管理-角色管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header position-relative">
+    <h1>
+        系统管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            角色管理
+        </small>
+    </h1>
+</div>
+
+<div class="row-fluid" ms-controller="roleList">
+    <div class="well well-lg">
+        <span>
+            <button type="button" class="btn btn-xs btn-success" data-target="#updateRole_Modal" data-toggle="modal" ms-click="add()">
+                <i class="icon-plus-sign"></i>
+                新增角色
+            </button>
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="dd dd-draghandle">
+                <ol class="dd-list">
+                    <li class="dd-item dd2-item" ms-repeat="array">
+                        <div class="dd-handle dd2-handle" style="width:75px;">
+                            <div class="action-buttons">
+                                <a href="#" class="green" title="编辑权限" data-target="#setAuthority_Modal_RoleIndex" data-toggle="modal" ms-click="getAuthority(el)"><i class="icon-sitemap bigger-120"></i></a>
+                                <a href="#" class="blue" title="编辑" data-target="#updateRole_Modal" data-toggle="modal" ms-click="edit(el)"><i class="icon-pencil bigger-120"></i></a>
+                                <a href="#" class="red" title="删除" ms-click="removeMenu(el.ID)"><i class="icon-trash bigger-120"></i></a>
+                            </div>
+                        </div>
+                        <div class="dd2-content" style="padding-left:90px;" ms-attr-title="el.Describe"><span>{{el.Name}}</span><span class="pull-right">[{{formatStr(el.Describe)}}]</span></div>
+
+                        @*<ol class="dd-list">
+                                <li class="dd-item dd2-item" data-id="16">
+                                    <div class="dd-handle dd2-handle">
+                                        <i class="normal-icon icon-user red bigger-130"></i>
+
+                                        <i class="drag-icon icon-move bigger-125"></i>
+                                    </div>
+                                    <div class="dd2-content">Active Users</div>
+                                </li>
+                            </ol>*@
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="updateRole_Modal" tabindex="-1" role="dialog" style="margin-top:170px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:230px;">
+                <div class="modal-header no-padding">
+                    <div class="table-header" style="line-height:32px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        {{updatetype}}角色
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label" for="form-field-username">角色名称</label>
+                        <div class="controls">
+                            <input type="text" id="form-field-username" placeholder="角色名称" ms-duplex="Name" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="form-field-type">角色描述</label>
+                        <div class="controls">
+                            <input type="text" id="form-field-type" placeholder="角色描述" ms-duplex="Describe" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary btn-sm" ms-click="update()">{{updatetype}}</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- .end--Modal -->
+
+    <div class="modal fade" id="setAuthority_Modal_RoleIndex" tabindex="-1" role="dialog" style="margin-top:170px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:500px;">
+                <div class="modal-header no-padding">
+                    <div class="table-header" style="line-height:32px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        设置权限
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label bolder blue">请给角色[{{authorityDom.roleName}}]选择权限</label>
+
+                        <div class="checkbox" ms-repeat="authorityDom.authorityList">
+                            <label>
+                                <input name="form-field-checkbox" type="checkbox" class="ace" ms-duplex-string="authorityDom.selectList" ms-attr-value="el.ID" />
+                                <span class="lbl"> {{el.Name}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-sm btn-primary" ms-click="updateAuthorityRole()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

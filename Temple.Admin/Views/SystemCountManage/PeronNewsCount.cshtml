@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "保险同城网-管理系统-统计管理-文章统计列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        统计管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            文章统计列表
+        </small>
+    </h1>
+</div>
+<div class="row-fluid" ms-controller="newCountList">
+    <input type="hidden" id="aboutTypeId_pageDom" value="@ViewBag.collectId" />
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <div class="span12">
+                      <input id="date1" name="date1" type="text" onclick="WdatePicker()" runat="server"  style="width:80px;" readonly="readonly" />—
+                      <input id="date2" name="date2" type="text" onclick="WdatePicker()" runat="server"  style="width:80px;" readonly="readonly" />
+
+                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                        <i class="icon-search"></i>
+                        查询
+                    </button>
+                </div>
+            </div>
+
+
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>发布文章数量</th> 
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="14" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">对不起,没有数据!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td>{{el.Name}}</td>
+                        <td>{{el.DemandCount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>

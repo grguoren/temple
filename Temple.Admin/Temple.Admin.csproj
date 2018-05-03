@@ -1,0 +1,1085 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{493C4DC3-3721-4F62-84C4-C930F01FA42B}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Temple.Admin</RootNamespace>
+    <AssemblyName>Temple.Admin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJSON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\LitJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="Mail">
+      <HintPath>..\packages\Mail.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.QRCode, Version=1.0.3990.25764, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Admin\trunk\Hokkaido\Hokkaido.Admin\bin\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing, Version=1.0.4246.32288, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Admin\trunk\Hokkaido\Hokkaido.Admin\bin\zxing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AjaxUnauthorizedResult.cs" />
+    <Compile Include="Attributes\AuthorityCheckAttribute.cs" />
+    <Compile Include="Attributes\LoggingFilterAttribute.cs" />
+    <Compile Include="Base\BaseCurrent.cs" />
+    <Compile Include="Common\CacheHelper.cs" />
+    <Compile Include="Common\CityCache.cs" />
+    <Compile Include="Common\CurrentCache.cs" />
+    <Compile Include="Common\SystemCountBrandCache.cs" />
+    <Compile Include="Common\SystemCountCache.cs" />
+    <Compile Include="Common\WeixinHelper.cs" />
+    <Compile Include="Controllers\ActiveManageController.cs" />
+    <Compile Include="Controllers\Ajax\Admin\Ajax_AuthorityController.cs" />
+    <Compile Include="Controllers\Ajax\Admin\Ajax_LogController.cs" />
+    <Compile Include="Controllers\Ajax\Admin\Ajax_MenuController.cs" />
+    <Compile Include="Controllers\Ajax\Admin\Ajax_RoleController.cs" />
+    <Compile Include="Controllers\Ajax\Admin\Ajax_UserController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_AboutController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_ArticleController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_CityController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_CommonHelperController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_CourseController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_FeedbackController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_ForumController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_GeneralizeController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_MessageController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_MyUserController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_SignController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CityManageController.cs" />
+    <Compile Include="Controllers\CourseManageController.cs" />
+    <Compile Include="Controllers\EnterManageController.cs" />
+    <Compile Include="Controllers\FaqManageController.cs" />
+    <Compile Include="Controllers\FeedbackManageController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MakeQRCodeController.cs" />
+    <Compile Include="Controllers\MoneyManageController.cs" />
+    <Compile Include="Controllers\SignManageController.cs" />
+    <Compile Include="Controllers\SystemManageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="lib\Config.cs" />
+    <Compile Include="lib\Data.cs" />
+    <Compile Include="lib\Exception.cs" />
+    <Compile Include="lib\HttpService.cs" />
+    <Compile Include="lib\Log.cs" />
+    <Compile Include="lib\Notify.cs" />
+    <Compile Include="lib\WxPayApi.cs" />
+    <Compile Include="Models\LoginMember\CurrentModel.cs" />
+    <Compile Include="Models\MenuView\MenuView.cs" />
+    <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\SystemCount\SystemCountView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\CommonHelper\KindeditorHelper\FisForm1.aspx.cs">
+      <DependentUpon>FisForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Scripts\CommonHelper\KindeditorHelper\FisForm1.aspx.designer.cs">
+      <DependentUpon>FisForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="AgreementHTML.htm" />
+    <Content Include="Content\admin_style.css" />
+    <Content Include="Content\Bootstrap_ACE\css\ace-ie.min.css" />
+    <Content Include="Content\Bootstrap_ACE\css\ace-responsive.min.css" />
+    <Content Include="Content\Bootstrap_ACE\css\ace-rtl.min.css" />
+    <Content Include="Content\Bootstrap_ACE\css\ace-skins.min.css" />
+    <Content Include="Content\Bootstrap_ACE\css\ace.min.css" />
+    <Content Include="Content\Bootstrap_ACE\css\bootstrap-theme.css" />
+    <Content Include="Content\Bootstrap_ACE\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Bootstrap_ACE\css\bootstrap.css" />
+    <Content Include="Content\Bootstrap_ACE\css\bootstrap.min-2.3.3.css" />
+    <Content Include="Content\Bootstrap_ACE\css\bootstrap.min-3.2.0.css" />
+    <Content Include="Content\Bootstrap_ACE\css\bootstrap.min-3.3.2.css" />
+    <Content Include="Content\Bootstrap_ACE\css\datepicker.css" />
+    <Content Include="Content\Bootstrap_ACE\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\Bootstrap_ACE\css\font-awesome.min.css" />
+    <Content Include="Content\Bootstrap_ACE\css\images\border.png" />
+    <Content Include="Content\Bootstrap_ACE\css\images\controls.png" />
+    <Content Include="Content\Bootstrap_ACE\css\images\loading.gif" />
+    <Content Include="Content\Bootstrap_ACE\css\images\loading_background.png" />
+    <Content Include="Content\Bootstrap_ACE\css\images\overlay.png" />
+    <Content Include="Content\Bootstrap_ACE\css\img\alpha.png" />
+    <Content Include="Content\Bootstrap_ACE\css\img\hue.png" />
+    <Content Include="Content\Bootstrap_ACE\css\img\saturation.png" />
+    <Content Include="Content\Bootstrap_ACE\css\jquery-ui-1.10.3.full.min.css" />
+    <Content Include="Content\Bootstrap_ACE\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Bootstrap_ACE\font\fontawesome-webfont.svg" />
+    <Content Include="Content\Bootstrap_ACE\js\ace-elements.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\ace-extra.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\ace.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\bootbox.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\bootstrap.js" />
+    <Content Include="Content\Bootstrap_ACE\js\bootstrap.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\2.0.0.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\blur.timepicker.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\bootstrap-datepicker.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\bootstrap-timepicker.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\button.applyBtn.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\button.clearBtn.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\changeTime.timepicker.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\click.timepicker.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\daterangepicker.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\focus.timepicker.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\hide.timepicker.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\input.bootstrap-timepicker-hour.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\input.bootstrap-timepicker-meridian.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\input.bootstrap-timepicker-minute.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\input.bootstrap-timepicker-second.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\keydown.timepicker.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\mm\dd\yyyy.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\moment.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\mousedown.timepicker.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\select.monthselect.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\select.yearselect.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\show.timepicker.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\span.bootstrap-timepicker-hour.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\span.bootstrap-timepicker-meridian.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\span.bootstrap-timepicker-minute.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\span.bootstrap-timepicker-second.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\td.available.html" />
+    <Content Include="Content\Bootstrap_ACE\js\date-time\tfoot th.today.html" />
+    <Content Include="Content\Bootstrap_ACE\js\html5shiv.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\css\ui.jqgrid.css" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\Changes.txt" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-ar.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-bg.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-bg1251.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-cat.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-cn.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-cs.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-da.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-de.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-dk.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-el.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-en.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-es.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-fa.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-fi.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-fr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-gl.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-he.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-hr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-hr1250.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-hu.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-id.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-is.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-it.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-ja.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-kr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-lt.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-mne.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-nl.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-no.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-pl.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-pt.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-ro.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-ru.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-sk.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-sr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-sv.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-th.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-tr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-tw.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-ua.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\i18n\grid.locale-vi.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\install.txt" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\jquery-1.11.0.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\jquery.jqGrid.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\js\jquery.jqGrid.src.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\grid.addons.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\grid.postext.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\grid.setcolumns.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\jquery.contextmenu.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\jquery.searchFilter.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\jquery.tablednd.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\searchFilter.css" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\ui.multiselect.css" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\plugins\ui.multiselect.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\css\ui.jqgrid.css" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\css\ui.multiselect.css" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.base.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.celledit.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.common.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.custom.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.filter.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.formedit.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.grouping.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.import.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.inlinedit.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.jqueryui.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.loader.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.pivot.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.subgrid.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.tbltogrid.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\grid.treegrid.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-ar.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-bg.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-bg1251.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-cat.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-cn.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-cs.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-da.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-de.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-dk.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-el.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-en.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-es.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-fa.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-fi.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-fr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-gl.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-he.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-hr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-hr1250.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-hu.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-id.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-is.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-it.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-ja.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-kr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-lt.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-mne.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-nl.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-no.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-pl.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-pt-br.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-pt.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-ro.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-ru.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-sk.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-sr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-sv.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-th.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-tr.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-tw.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-ua.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\i18n\grid.locale-vi.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\jqDnR.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\jqModal.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\jquery.fmatter.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\jquery.jqGrid.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jqGrid\src\JsonXml.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jquery-2.0.3.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="Content\Bootstrap_ACE\js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jquery-ui-1.10.3.full.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\jquery.validate.min.js" />
+    <Content Include="Content\Bootstrap_ACE\js\respond.min.js" />
+    <Content Include="Content\main.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\icon-close.png" />
+    <Content Include="Images\livebgg.jpg" />
+    <Content Include="Images\livebgg.png" />
+    <Content Include="Images\loading.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\toux1.jpg" />
+    <Content Include="Images\tp1.jpg" />
+    <Content Include="Images\tp2.jpg" />
+    <Content Include="Images\tp3.jpg" />
+    <Content Include="Images\tp4.jpg" />
+    <Content Include="Images\tp5.jpg" />
+    <Content Include="Scripts\CommonHelper\avalon.getModel.js" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\PIE.htc" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\text\xml\ellipsis.xml" />
+    <Content Include="Scripts\CommonHelper\chameleon\oniui-common.css" />
+    <Content Include="Scripts\CommonHelper\chameleon\oniui-theme.css" />
+    <Content Include="Scripts\CommonHelper\DatepickerHelper\avalon.datepicker.css" />
+    <Content Include="Scripts\CommonHelper\DatepickerHelper\avalon.datepicker.html" />
+    <Content Include="Scripts\CommonHelper\DatepickerHelper\avalon.datepicker.js" />
+    <Content Include="Scripts\CommonHelper\DatepickerHelper\avalon.datepicker.lang.js" />
+    <Content Include="Scripts\CommonHelper\DraggableHelper\avalon.draggable.js" />
+    <Content Include="Scripts\CommonHelper\DropdownHelper\avalon.dropdown.css" />
+    <Content Include="Scripts\CommonHelper\DropdownHelper\avalon.dropdown.html" />
+    <Content Include="Scripts\CommonHelper\DropdownHelper\avalon.dropdown.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\ajaxfileupload.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\asp.net\bin\LitJSON.dll" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\asp.net\demo.aspx" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\asp.net\README.txt" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317102150_4494.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317102517_2662.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317102636_8137.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317103008_8959.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317103111_0804.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317110655_3130.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317130343_6328.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317130351_6313.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317133145_2110.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317133532_2850.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317141955_2733.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150317\20150317142331_2907.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150318\20150318094250_9441.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150319\20150319095711_0375.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150320\20150320130909_0256.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150326\20150326164037_3988.png" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150401\20150401143006_0348.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\attached\image\20150417\20150417084451_0973.jpg" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\avalon.kindeditor.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\bin\LitJSON.dll" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\fileload.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\FisForm1.aspx" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\FlvPlayer.swf" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\jquery-form.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\kindeditor-all-min.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\kindeditor-all.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\kindeditor-min.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\kindeditor.4.1.0.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\kindeditor.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\lang\ar.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\lang\en.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\lang\ko.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\lang\zh_CN.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\lang\zh_TW.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\anchor\anchor.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\autoheight\autoheight.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\baidumap\baidumap.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\baidumap\index.html" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\baidumap\map.html" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\clearhtml\clearhtml.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\code\code.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\code\prettify.css" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\code\prettify.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\emoticons.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\0.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\1.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\10.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\100.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\101.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\102.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\103.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\104.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\105.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\106.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\107.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\108.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\109.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\11.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\110.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\111.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\112.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\113.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\114.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\115.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\116.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\117.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\118.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\119.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\12.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\120.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\121.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\122.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\123.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\124.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\125.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\126.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\127.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\128.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\129.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\13.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\130.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\131.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\132.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\133.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\134.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\14.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\15.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\16.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\17.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\18.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\19.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\2.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\20.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\21.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\22.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\23.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\24.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\25.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\26.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\27.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\28.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\29.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\3.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\30.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\31.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\32.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\33.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\34.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\35.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\36.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\37.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\38.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\39.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\4.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\40.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\41.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\42.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\43.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\44.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\45.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\46.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\47.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\48.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\49.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\5.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\50.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\51.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\52.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\53.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\54.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\55.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\56.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\57.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\58.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\59.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\6.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\60.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\61.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\62.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\63.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\64.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\65.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\66.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\67.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\68.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\69.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\7.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\70.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\71.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\72.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\73.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\74.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\75.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\76.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\77.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\78.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\79.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\8.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\80.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\81.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\82.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\83.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\84.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\85.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\86.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\87.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\88.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\89.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\9.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\90.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\91.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\92.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\93.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\94.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\95.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\96.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\97.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\98.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\99.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\emoticons\images\static.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\filemanager\filemanager.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\filemanager\images\file-16.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\filemanager\images\file-64.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\filemanager\images\go-up.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\flash\flash.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\image\image.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\image\images\align_left.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\image\images\align_right.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\image\images\align_top.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\image\images\refresh.png" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\insertfile\insertfile.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\lineheight\lineheight.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\link\link.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\map\map.html" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\map\map.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\media\media.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\multiimage\images\image.png" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\multiimage\images\select-files-zh_CN.png" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\multiimage\multiimage.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\pagebreak\pagebreak.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\plainpaste\plainpaste.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\preview\preview.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\quickformat\quickformat.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\table\table.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\template\html\1.html" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\template\html\2.html" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\template\html\3.html" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\template\template.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\plugins\wordpaste\wordpaste.js" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\common\anchor.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\common\blank.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\common\flash.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\common\loading.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\common\media.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\common\rm.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\default\background.png" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\default\default.css" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\default\default.png" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\qq\editor.gif" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\qq\qq.css" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\themes\simple\simple.css" />
+    <Content Include="Scripts\CommonHelper\PageHelper\avalon.pager.html" />
+    <Content Include="Scripts\CommonHelper\PageHelper\avalon.pager.js" />
+    <Content Include="Scripts\CommonHelper\PreviewHelper\avalon.preview.js" />
+    <Content Include="Scripts\CommonHelper\ScrollbarHelper\avalon.scrollbar.css" />
+    <Content Include="Scripts\CommonHelper\ScrollbarHelper\avalon.scrollbar.html" />
+    <Content Include="Scripts\CommonHelper\ScrollbarHelper\avalon.scrollbar.js" />
+    <Content Include="Scripts\CommonHelper\SliderHelper\avalon.slider.css" />
+    <Content Include="Scripts\CommonHelper\SliderHelper\avalon.slider.html" />
+    <Content Include="Scripts\CommonHelper\SliderHelper\avalon.slider.js" />
+    <Content Include="Scripts\domtoimage.js" />
+    <Content Include="Scripts\html2canvas.js" />
+    <Content Include="Scripts\Lib\ajaxfileupload\ajaxfileupload.js" />
+    <Content Include="Scripts\Lib\ajaxfileupload\ajaxfileupload_new.js" />
+    <Content Include="Scripts\Lib\avalon\avalon.js" />
+    <Content Include="Scripts\Lib\avalon\css.js" />
+    <Content Include="Scripts\Lib\avalon\domReady.js" />
+    <Content Include="Scripts\Lib\avalon\text.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\bar.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\chord.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\eventRiver.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\force.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\funnel.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\gauge.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\k.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\line.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\map.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\pie.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\radar.js" />
+    <Content Include="Scripts\Lib\echarts\dist\chart\scatter.js" />
+    <Content Include="Scripts\Lib\echarts\dist\echarts-all.js" />
+    <Content Include="Scripts\Lib\echarts\dist\echarts.js" />
+    <Content Include="Scripts\Lib\echarts\dist\util\shape\HalfSmoothPolygon.js" />
+    <Content Include="Scripts\Lib\echarts\echarts-all.js" />
+    <Content Include="Scripts\Lib\echarts\echarts.js" />
+    <Content Include="Scripts\Lib\highslide\graphics\close.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\closeX.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\controlbar-black-border.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\controlbar-text-buttons.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\controlbar-white-small.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\controlbar-white.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\controlbar2.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\controlbar3.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\controlbar4-hover.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\controlbar4.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\fullexpand.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\geckodimmer.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\icon.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\loader.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\loader.white.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\outlines\beveled.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\outlines\drop-shadow.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\outlines\glossy-dark.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\outlines\outer-glow.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\outlines\rounded-black.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\outlines\rounded-white.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\resize.gif" />
+    <Content Include="Scripts\Lib\highslide\graphics\scrollarrows.png" />
+    <Content Include="Scripts\Lib\highslide\graphics\zoomin.cur" />
+    <Content Include="Scripts\Lib\highslide\graphics\zoomout.cur" />
+    <Content Include="Scripts\Lib\highslide\highslide-full.js" />
+    <Content Include="Scripts\Lib\highslide\highslide-full.min.js" />
+    <Content Include="Scripts\Lib\highslide\highslide-full.packed.js" />
+    <Content Include="Scripts\Lib\highslide\highslide-ie6.css" />
+    <Content Include="Scripts\Lib\highslide\highslide-with-gallery.js" />
+    <Content Include="Scripts\Lib\highslide\highslide-with-gallery.min.js" />
+    <Content Include="Scripts\Lib\highslide\highslide-with-gallery.packed.js" />
+    <Content Include="Scripts\Lib\highslide\highslide-with-html.js" />
+    <Content Include="Scripts\Lib\highslide\highslide-with-html.min.js" />
+    <Content Include="Scripts\Lib\highslide\highslide-with-html.packed.js" />
+    <Content Include="Scripts\Lib\highslide\highslide.css" />
+    <Content Include="Scripts\Lib\highslide\highslide.js" />
+    <Content Include="Scripts\Lib\highslide\highslide.min.js" />
+    <Content Include="Scripts\Lib\highslide\highslide.packed.js" />
+    <Content Include="Scripts\Lib\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\Lib\jquery\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\Lib\jquery\jquery.min.js" />
+    <Content Include="Scripts\Lib\jquery\notify.js" />
+    <Content Include="Scripts\Lib\jquery\socket.io.js" />
+    <Content Include="Scripts\Lib\requireJS\require.min.js" />
+    <Content Include="Scripts\Main.js" />
+    <Content Include="Scripts\My97DatePicker\calendar.js" />
+    <Content Include="Scripts\My97DatePicker\config.js" />
+    <Content Include="Scripts\My97DatePicker\lang\en.js" />
+    <Content Include="Scripts\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\My97DatePicker\My97DatePicker.htm" />
+    <Content Include="Scripts\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Scripts\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\My97DatePicker\WdatePicker.js" />
+    <Content Include="Scripts\Page\ActiveManage\LiveTicket.js" />
+    <Content Include="Scripts\Page\CityManage\List.js" />
+    <Content Include="Scripts\Page\CourseManage\AdviceList.js" />
+    <Content Include="Scripts\Page\CourseManage\CourseAdd.js" />
+    <Content Include="Scripts\Page\CourseManage\Index.js" />
+    <Content Include="Scripts\Page\CourseManage\TopicList.js" />
+    <Content Include="Scripts\Page\CourseManage\WareAdd.js" />
+    <Content Include="Scripts\Page\EnterManage\CompanyList.js" />
+    <Content Include="Scripts\Page\EnterManage\CTeacherList.js" />
+    <Content Include="Scripts\Page\EnterManage\Index.js" />
+    <Content Include="Scripts\Page\EnterManage\TeacherAdd.js" />
+    <Content Include="Scripts\Page\FaqManage\Add.js" />
+    <Content Include="Scripts\Page\FaqManage\List.js" />
+    <Content Include="Scripts\Page\FaqManage\TypeAdd.js" />
+    <Content Include="Scripts\Page\FaqManage\TypeList.js" />
+    <Content Include="Scripts\Page\FeedbackManage\List.js" />
+    <Content Include="Scripts\Page\Menu\LeftMenu.html" />
+    <Content Include="Scripts\Page\Menu\LeftMenu.js" />
+    <Content Include="Scripts\Page\MoneyManage\Consume.js" />
+    <Content Include="Scripts\Page\ShareManage\List.js" />
+    <Content Include="Scripts\Page\ShareManage\RecruitList.js" />
+    <Content Include="Scripts\Page\SignManage\Add.js" />
+    <Content Include="Scripts\Page\SignManage\List.js" />
+    <Content Include="Scripts\Page\SystemManage\AuthorityIndex.js" />
+    <Content Include="Scripts\Page\SystemManage\ErrorCorrect.js" />
+    <Content Include="Scripts\Page\SystemManage\LogList.js" />
+    <Content Include="Scripts\Page\SystemManage\MailLogList.js" />
+    <Content Include="Scripts\Page\SystemManage\MenuIndex.js" />
+    <Content Include="Scripts\Page\SystemManage\RoleIndex.js" />
+    <Content Include="Scripts\Page\SystemManage\SalesIndex.js" />
+    <Content Include="Scripts\Page\SystemManage\SmSLogList.js" />
+    <Content Include="Scripts\Page\SystemManage\UserIndex.js" />
+    <Content Include="Scripts\Public.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Metadata\deploymentTemplates\" />
+    <Folder Include="Scripts\CommonHelper\KindeditorHelper\attached\flash\" />
+    <Folder Include="Scripts\CommonHelper\KindeditorHelper\attached\media\" />
+    <Folder Include="Scripts\CommonHelper\KindeditorHelper\ImgInder\" />
+    <Folder Include="Scripts\My97DatePicker\skin\default\.svn\prop-base\" />
+    <Folder Include="Scripts\My97DatePicker\skin\default\.svn\props\" />
+    <Folder Include="Scripts\My97DatePicker\skin\default\.svn\text-base\" />
+    <Folder Include="Scripts\My97DatePicker\skin\default\.svn\tmp\prop-base\" />
+    <Folder Include="Scripts\My97DatePicker\skin\default\.svn\tmp\props\" />
+    <Folder Include="Scripts\My97DatePicker\skin\default\.svn\tmp\text-base\" />
+    <Folder Include="Scripts\My97DatePicker\skin\whyGreen\.svn\prop-base\" />
+    <Folder Include="Scripts\My97DatePicker\skin\whyGreen\.svn\props\" />
+    <Folder Include="Scripts\My97DatePicker\skin\whyGreen\.svn\text-base\" />
+    <Folder Include="Scripts\My97DatePicker\skin\whyGreen\.svn\tmp\prop-base\" />
+    <Folder Include="Scripts\My97DatePicker\skin\whyGreen\.svn\tmp\props\" />
+    <Folder Include="Scripts\My97DatePicker\skin\whyGreen\.svn\tmp\text-base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcelOperate\ExcelOperate.csproj">
+      <Project>{3e92e0aa-80a0-4dd8-a10b-487768196383}</Project>
+      <Name>ExcelOperate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Temple.Core\Temple.Core.csproj">
+      <Project>{c36edf2b-6ac6-42cd-b7dc-2c33e36ca2e8}</Project>
+      <Name>Temple.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Temple.Domain\Temple.Domain.csproj">
+      <Project>{9948173f-0cfe-4d00-9e02-f98c833fc8ee}</Project>
+      <Name>Temple.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Temple.IService\Temple.IService.csproj">
+      <Project>{1e9e3485-08fb-435e-8d3b-ff63898e80f4}</Project>
+      <Name>Temple.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Temple.Mapping\Temple.Mapping.csproj">
+      <Project>{7d1ae647-d5fe-4e99-92eb-659f999c564f}</Project>
+      <Name>Temple.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Temple.Service\Temple.Service.csproj">
+      <Project>{84ebd5f0-c1ad-4110-8488-b4568f968baf}</Project>
+      <Name>Temple.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Bootstrap_ACE\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Bootstrap_ACE\css\bootstrap.css.map" />
+    <Content Include="Content\Bootstrap_ACE\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Bootstrap_ACE\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Bootstrap_ACE\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Bootstrap_ACE\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Bootstrap_ACE\font\fontawesome-webfont.eot" />
+    <Content Include="Content\Bootstrap_ACE\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\Bootstrap_ACE\font\fontawesome-webfont.woff" />
+    <Content Include="Content\Bootstrap_ACE\font\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\CommonHelper\chameleon\.gitignore" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_appearance.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_background-clip.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_background-origin.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_background-size.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_border-radius.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_box-shadow.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_box-sizing.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_box.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_columns.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_filter.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_font-face.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_hyphenation.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_images.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_inline-block.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_opacity.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_pie.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_regions.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_shared.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_text-shadow.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_transform-legacy.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_transform.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_transition.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\css3\_user-interface.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\layout\vertical-align\_block.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\layout\_flexible-box-model.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\layout\_grid-background.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\layout\_sticky-footer.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\layout\_stretching.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\layout\_vertical-align.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\themes\_smoothness.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\animation\_animation.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\animation\_keyframes.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\animation\_timing-function.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_blueprint-grid.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_carbon-fiber.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_checkerboard.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_cicada-stripes.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_gradients.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_houndstooth.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_lined-paper.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_madras.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_metal.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_noise.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_polka-dot.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_radial-overlay.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_rainbow.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_stripes.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_tablecloth.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\background\_tartan.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\effect\_bevel.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\effect\_corners-tucked.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\effect\_cutout.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\effect\_folded-corner.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\effect\_glass.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\effect\_ribbon.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\effect\_scatter.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\effect\_tape.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\drop\_curled-corners.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\drop\_curved.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\drop\_flying.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\drop\_lifted-corners.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\drop\_perspective.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\drop\_raised.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\drop\_transform-requirement.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\_drop.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shadow\_top-edge.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_hexagon.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_octagon.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_parallelogram.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_pentagon.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_rectangle.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_rhombus.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_square.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_star.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_trapezoid.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\polygon\_triangle.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\symbol\_diamond.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\symbol\_egg.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\symbol\_heart.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\symbol\_infinity.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\symbol\_pacman.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\symbol\_yin-yang.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\_ellipse.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\_polygon.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\shape\_symbol.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\text\_ellipsis.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\text\_force-wrap.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\text\_nowrap.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\text\_replacement.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_animation.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_background.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_clearfix.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_color.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_effect.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_float.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_hacks.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_list.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_min.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_pseudo-element.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_reset.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_shadow.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_shape.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\tools\_text.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\_config.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\_css3.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\compass\_tools.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\oniui-common.scss" />
+    <Content Include="Scripts\CommonHelper\chameleon\oniui-theme.scss" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\asp.net\file_manager_json.ashx" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\asp.net\upload_json.ashx" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\asp.net\upload_toimgSvr.ashx" />
+    <Content Include="Scripts\CommonHelper\KindeditorHelper\KindeditorHelperback.zip" />
+    <Content Include="Scripts\Lib\highslide\graphics\outlines\Outlines.psd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_MenuLeft.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\SystemManage\AuthorityIndex.cshtml" />
+    <Content Include="Views\SystemManage\LogList.cshtml" />
+    <Content Include="Views\SystemManage\MailLogList.cshtml" />
+    <Content Include="Views\SystemManage\MailView.cshtml" />
+    <Content Include="Views\SystemManage\MenuIndex.cshtml" />
+    <Content Include="Views\SystemManage\RoleIndex.cshtml" />
+    <Content Include="Views\SystemManage\SmSLogList.cshtml" />
+    <Content Include="Views\SystemManage\UserIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\LoginOut.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SystemCountManage\BBSList.cshtml" />
+    <Content Include="Views\SystemCountManage\DemandList.cshtml" />
+    <Content Include="Views\SystemCountManage\Index.cshtml" />
+    <Content Include="Views\SystemCountManage\ReUserList.cshtml" />
+    <Content Include="Views\SystemCountManage\UserInfomationList.cshtml" />
+    <Content Include="Views\SystemCountManage\WebSiteList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CityManage\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SystemManage\SalesIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SystemCountManage\ReUserCount.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SystemCountManage\NewsCount.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SystemManage\ErrorCorrect.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bx58_data\config\city.config" />
+    <Content Include="bx58_data\config\county.config" />
+    <Content Include="bx58_data\config\province.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SystemCountManage\RegSucssList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cert\apiclient_cert.p12" />
+    <Content Include="livevideo.xls" />
+    <None Include="Properties\PublishProfiles\bxadmin.pubxml" />
+    <None Include="Properties\PublishProfiles\newbxmanage.pubxml" />
+    <Content Include="Views\Login\QrLogin.cshtml" />
+    <Content Include="Views\Home\SendTestPaper.cshtml" />
+    <None Include="Properties\PublishProfiles\zhcloudmanage.pubxml" />
+    <Content Include="Views\FaqManage\Index.cshtml" />
+    <Content Include="Views\FaqManage\TypeList.cshtml" />
+    <Content Include="Views\FaqManage\TypeAdd.cshtml" />
+    <Content Include="Views\FaqManage\List.cshtml" />
+    <Content Include="Views\FaqManage\Add.cshtml" />
+    <Content Include="Views\MoneyManage\Consume.cshtml" />
+    <Content Include="Views\MoneyManage\Index.cshtml" />
+    <Content Include="Views\CourseManage\Index.cshtml" />
+    <Content Include="Views\CourseManage\AdviceList.cshtml" />
+    <Content Include="Views\CourseManage\TopicList.cshtml" />
+    <Content Include="Views\EnterManage\Index.cshtml" />
+    <Content Include="Views\FeedbackManage\List.cshtml" />
+    <Content Include="Views\EnterManage\CompanyList.cshtml" />
+    <Content Include="Views\CourseManage\CourseAdd.cshtml" />
+    <Content Include="Views\EnterManage\CTeacherList.cshtml" />
+    <Content Include="Views\EnterManage\TeacherAdd.cshtml" />
+    <Content Include="Views\ActiveManage\GetLiveTicket.cshtml" />
+    <Content Include="Views\ActiveManage\LiveTicket.cshtml" />
+    <Content Include="Views\ActiveManage\DaoRuLive.cshtml" />
+    <Content Include="Views\MakeQRCode\Index.cshtml" />
+    <Content Include="Views\CourseManage\WareAdd.cshtml" />
+    <Content Include="Views\SignManage\List.cshtml" />
+    <Content Include="signuser.xls" />
+    <Content Include="Views\SignManage\DaoRu.cshtml" />
+    <Content Include="Views\SignManage\Add.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5603</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:18224/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

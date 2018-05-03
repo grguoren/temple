@@ -1,0 +1,118 @@
+﻿@{
+    Layout = null;
+    string controller = ViewContext.RouteData.Route.GetRouteData(this.Context).Values["controller"].ToString();
+    string action = ViewContext.RouteData.Route.GetRouteData(this.Context).Values["action"].ToString();
+    List<Temple.Admin.Models.MenuView.MenuView> List = ViewBag.List as List<Temple.Admin.Models.MenuView.MenuView>;
+}
+<ul class="nav nav-list">
+    @foreach (var item in List)
+    {
+        string openstr = ViewBag.OpenList;
+        bool res = false;
+        if (item.Status == 1)
+        {
+            var list = openstr.Split('|');
+            foreach (string k in list)
+            {
+                if (k == item.Id.ToString())//去掉
+                {
+                    res = true;
+                }
+            }
+
+            if (res)
+            {
+                <li class="active"  value="@item.Id" >
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-desktop"></i>
+                        <span class="menu-text ">@item.CodeName</span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                        <ul class="submenu">
+                            @foreach (var el in item.list)
+                            {
+                                if (el.Status == 1)
+                                {
+                                    <li>
+                                        <a href="@Html.Raw(string.IsNullOrEmpty("") ? "javascript:alert('该页面正在建设中,请见谅');" : Url.Content("~/" ))">
+                                            <i class="icon-double-angle-right"></i>
+                                            <span>@el.CodeName</span>
+                                        </a>
+                                    </li>
+                                }
+                             }
+                        </ul>
+                   </li> 
+               }
+        else
+        {
+            <li class="active open" value="@item.Id">
+                <a href="#" class="dropdown-toggle">
+                    <i class="icon-desktop"></i>
+                    <span class="menu-text ">@item.CodeName</span>
+
+                    <b class="arrow icon-angle-down"></b>
+                </a>
+                <ul class="submenu" style="display: none">
+                    @foreach (var el in item.list)
+                    {
+                        if (el.Status == 1)
+                        {
+                            <li>
+                                <a href="@Html.Raw(string.IsNullOrEmpty("") ? "javascript:alert('该页面正在建设中,请见谅');" : Url.Content("~/"))">
+                                    <i class="icon-double-angle-right"></i>
+                                    <span >@el.CodeName</span>
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </li> 
+       }
+    }
+}
+</ul>
+<script src="~/Scripts/Lib/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    var check = 9;
+    $(
+        function () {
+            $("ul.nav.nav-list li").click(
+                function () {
+                    var type = 2;
+                    var cname = $(this).attr("class"); //console.log(cname);
+                    var id = $(this).val();
+                    if (cname == "active")
+                    {
+                        type = 0;
+                    }
+                    else if (cname == "active open")
+                    {
+                        type = 1;
+                    }
+                    console.log(cname+"||"+id+"||"+type +"||"+check);
+                    if (id != 0 && check != 8) {
+                        $.ajax({
+                            type: 'POST',
+                            url: Config.WebUrl + 'Home/AddMenuCookie',
+                            data: {
+                                type: type,
+                                id: id
+                            },
+                            timeout: 200000,
+                            success: function (ajaxData) {
+                                if (ajaxData === "True") {
+                                    //alert('添加成功');
+                                    //location.href = Config.WebUrl + "DemandCollect/List";
+                                }
+                            },
+                            dataType: 'text'
+                        });
+                    }
+                    else {
+                        check = 8;
+                    }
+                });
+        })
+</script>

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-统计管理-顾客需求统计";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header position-relative">
+    <h1>
+        统计管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            顾客需求统计
+        </small>
+    </h1>
+</div>
+
+<div class="row-fluid" ms-controller="demandList">
+    <div class="span12">
+        <div class="row" style="height:420px;">
+            <div class="col-sm-5" style="height:400px;" id="echarts_main_day"></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5" style="height:400px;" id="echarts_main_mon"></div>
+        </div>
+
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <div class="span12">
+                    <span>日期类型：</span>
+                    <span><select ms-duplex="Model_DateType"><option value="1">按天</option><option value="2">按月</option></select></span>
+                    <span>选择日期：</span>
+                    <span><input type="text" class="input-xs" ms-duplex="Model_Date" ms-widget="datepicker, a, $aOpts" /></span>
+                    <span>
+                        <button type="button" class="btn btn-danger btn-sm" ms-click="RefData" ms-attr-disabled="ButtonView"><i class="icon-refresh"></i>计算数据</button>
+                    </span>
+                    <span class="red">PS:按月计算时,选择某一个月里的任何一天即可</span>
+                </div>
+            </div>
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th>类型</th>
+                        <th>日期</th>
+                        <th width="45px;">操作</th>
+                        <th>发布数量</th>
+                        <th>初始时间</th>
+                        <th>初始人</th>
+                        <th>刷新时间</th>
+                        <th>刷新人</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="15" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">对不起,没有数据!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td ms-class-red="el.DateType == 2">{{el.DateType == 1 ? "按天" : "按月"}}</td>
+                        <td>{{el.Date}}</td>
+                        <td>
+                            <button title="刷新数据" class="btn btn-xs btn-danger" ms-click="RefDataByOne(el.DateType,el.Date)"><i class="icon-refresh"></i></button>
+                        </td>
+                        <td>{{el.Count}}</td>
+                        <td>{{el.AddTime| date("yyyy/MM/dd HH:mm")}}</td>
+                        <td>{{el.AddName}}</td>
+                        <td>{{el.UpdateTime| date("yyyy/MM/dd HH:mm")}}</td>
+                        <td>{{el.UpdateName}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+        </div>
+    </div>
+</div>
+
+<script src="@Url.Content("~/Scripts/Lib/echarts/echarts.js")"></script>

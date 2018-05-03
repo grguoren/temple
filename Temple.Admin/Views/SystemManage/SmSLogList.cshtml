@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-系统管理-短信发送日志";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        系统管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            短信发送日志
+        </small>
+    </h1>
+</div>
+<div class="row-fluid" ms-controller="smsLogList">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <div class="span12">
+                     <span>
+                        短信类别
+                    </span>
+                    <span>
+                         <select class="input-sm" id="Search_Type" ms-duplex="Search_Type">
+                            <option value="-1" selected>全部</option>
+                            <option value="0">会员注册</option>
+                            <option value="1">顾客需求</option>
+                            <option value="2">顾客留言</option>
+                            <option value="3">提交订单</option>
+                            <option value="4">名片设计</option>
+                            <option value="5">会员升级</option>
+                            <option value="6">会员开通</option>
+                             <option value="7">招商加盟</option>
+                            <option value="8">网站到期</option>
+                            <option value="9">密码重置</option>
+                        </select>
+                    </span>
+                    <span>
+                        是否成功
+                    </span>
+                    <span>
+                        <select class="input-sm" id="Search_Type" ms-duplex="Search_Title">
+                            <option value="-1" selected>全部</option>
+                            <option value="0">失败</option>
+                            <option value="1">成功</option>
+                        </select>
+                    </span>
+                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                        <i class="icon-search"></i>
+                        查询
+                    </button>
+                </div>
+            </div>
+
+
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th>发送类别</th>
+                        <th>发送时间</th>
+                        <th>短信内容</th>
+                        <th>用户名</th>
+                        <th>姓名</th>
+                        <th>手机号码</th>
+                        <th>是否成功</th>
+                 @*       <th>操作</th>*@
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="15" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">对不起,没有数据!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td>{{el.Type == 0 ? "会员注册" :(el.Type == 1 ? "顾客需求" :(el.Type == 2 ? "顾客留言" : (el.Type ==3 ? "提交订单" : (el.Type == 4 ? "名片设计" : (el.Type == 5 ? "会员升级" : (el.Type == 6 ? "会员开通" : (el.Type == 7 ? "招商加盟" : (el.Type == 8 ? "网站到期" :(el.Type == 9 ? "密码重置" : "其他")))))))))}}</td>
+                        <td>{{el.SentTime| date("yyyy/MM/dd HH:mm")}}</td>
+                        <td>{{el.Content}}</td>
+                        <td><a ms-attr-href="http://www.bx58.com/user/{{el.UserName}}" target="_blank">{{el.UserName}}</a></td>
+                        <td>{{el.User == null ? "" : el.User.RealName}}</td>
+                        <td>{{el.User == null ? "" : el.User.Telephone}}</td>
+                        <td>{{el.IsSuccess == 1 ? "发送成功" : "发送失败"}}</td>
+    @*                    <td> <a title="查看邮件"  ms-attr-href="@Url.Content("~/SystemManage/MailView/{{el.Id}}")" target="_blank">查看邮件详情</a></td>*@
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+        </div>
+    </div>
+</div>
