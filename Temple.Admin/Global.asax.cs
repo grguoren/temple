@@ -34,7 +34,6 @@ namespace Temple.Admin
             //做好一个service需在这里注册下
             builder.RegisterType<UserInfoService>().As<IUserInfoService>();
             builder.RegisterType<MenuInfoService>().As<IMenuInfoService>();
-            builder.RegisterType<AuthorityInfoService>().As<IAuthorityInfoService>();
             builder.RegisterType<RoleInfoService>().As<IRoleInfoService>();
             builder.RegisterType<LoggerService>().As<ILoggerService>();
           

@@ -50,5 +50,7 @@ namespace Temple.IService
         /// <param name="UserID"></param>
         /// <returns></returns>
         List<SystemPro> GetUserMenu(int UserID);
+
+        bool DeleteRoleMenu(int id);
     }
 }

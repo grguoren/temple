@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminCommon\AuthorityInfoService.cs" />
     <Compile Include="AdminCommon\LoggerService.cs" />
     <Compile Include="AdminCommon\MenuInfoService.cs" />
     <Compile Include="AdminCommon\RoleInfoService.cs" />

@@ -13,8 +13,7 @@ namespace Temple.Admin.Controllers.Ajax
     {
         readonly IUserInfoService userse;
         readonly IRoleInfoService rolese;
-        readonly IAuthorityInfoService authormenuse;
-        public Ajax_RoleController(IUserInfoService _userse, IRoleInfoService _rolese, IAuthorityInfoService _authormenuse)
+        public Ajax_RoleController(IUserInfoService _userse, IRoleInfoService _rolese)
             : base(_userse)
         {
             userse = _userse;
@@ -49,7 +48,7 @@ namespace Temple.Admin.Controllers.Ajax
         [HttpPost]
         public string DeleteRole(int id)
         {
-            authormenuse.DeleteAuthorityRole(id);
+            userse.DeleteUserRole(id);//删除角色绑定的用户
             return rolese.DeleteRole(id).ToString();
         }
 
@@ -66,9 +65,9 @@ namespace Temple.Admin.Controllers.Ajax
         [HttpPost]
         public JsonResult GetRole_UserList(int userid)
         {
-            List<Role_User> list = rolese.GetRole_UserListByUserID(userid);
+            List<UserRole> list = rolese.GetRole_UserListByUserID(userid);
             List<string> str = new List<string>();
-            list.ForEach(x => str.Add(x.RoleID.ToString()));
+            list.ForEach(x => str.Add(x.RoleId.ToString()));
             ResultModel refs = new ResultModel();
             refs.Count = str.Count();
             refs.Data = str.ToList<object>();

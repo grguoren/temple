@@ -70,5 +70,7 @@ namespace Temple.IService
         List<SystemPro> GetUserMenu(int UserID);
         List<SystemPro> GetAllChildMenu();
 
+        bool DeleteUserRole(int id);
+
     }
 }

@@ -47,11 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountMapping.cs" />
-    <Compile Include="AdminCommon\AuthorityInfoMapping.cs" />
-    <Compile Include="AdminCommon\Authority_MenuMapping.cs" />
-    <Compile Include="AdminCommon\Authority_RoleMapping.cs" />
     <Compile Include="AdminCommon\LoggerMapping.cs" />
-    <Compile Include="AdminCommon\Role_UserMapping.cs" />
     <Compile Include="AppellationMapping.cs" />
     <Compile Include="CalendarMapping.cs" />
     <Compile Include="FriendMapping.cs" />

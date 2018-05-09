@@ -16,14 +16,12 @@ namespace Temple.Admin.Controllers
         readonly IUserInfoService userse;
         readonly IMenuInfoService menuse;
         readonly IRoleInfoService rolese;
-        readonly IAuthorityInfoService authorityse;
-        public HomeController(IUserInfoService _userse, IMenuInfoService _menuse, IRoleInfoService _rolese, IAuthorityInfoService _authorityse)
+        public HomeController(IUserInfoService _userse, IMenuInfoService _menuse, IRoleInfoService _rolese)
             : base(_userse)
         {
             userse = _userse;
             menuse = _menuse;
             rolese = _rolese;
-            authorityse = _authorityse;
         }
         //
         // GET: /Home/
@@ -53,18 +51,10 @@ namespace Temple.Admin.Controllers
                     foreach (var item in list)
                     {
                         MenuView model = new MenuView();
-                        //model.CreateTime = item.CreateTime;
-                        //model.FID = item.FID;
                         model.Id = item.Id;
                         model.list = menuse.GetAllMenuListByPID(item.Id);
-                        //model.LinkUrl = item.LinkUrl;
                         model.CodeName = item.Name;
-                        //model.PID = item.PID;
                         model.Status = item.Status == true ? 1 : 0;
-                        //model.Type = item.Type;
-                        //model.UpdateTime = item.UpdateTime;
-                        //model.ImportantLevel = item.ImportantLevel;
-
                         array.Add(model);
                     }
                 }
@@ -75,10 +65,7 @@ namespace Temple.Admin.Controllers
                         MenuView model = new MenuView();
        
                         model.Id = item.Id;
-                        //model.LinkUrl = item.LinkUrl;
-
                         model.CodeName = item.Name;
-                
                         model.Status = item.Status==true?1:0;
   
                         model.list = new List<SystemPro>();
@@ -86,22 +73,21 @@ namespace Temple.Admin.Controllers
                         array.Add(model);
                     }
 
-                    //List<SystemPro> slist = menuse.GetUserMenu(currentMember.Id);
                     List<SystemPro> slist = ViewBag.UserMenuList;
                     foreach (var item in slist)
                     {
                         MenuView model = new MenuView();
   
                         model.Id = item.Id;
-                        //model.LinkUrl = item.LinkUrl;
+                        model.LinkUrl = item.LinkUrl;
                         model.CodeName = item.CodeName;
-                        //model.PID = item.PID;
                         model.Status = item.Status;
+                        model.SysId = item.SysId;
                         //model.Type = item.Type;
                         //model.UpdateTime = item.UpdateTime;
                         //model.ImportantLevel = item.ImportantLevel;
 
-                        MenuView info = array.Where(x => x.Id == model.Id).FirstOrDefault();
+                        MenuView info = array.Where(x => x.Id == model.SysId).FirstOrDefault();
                         if (info != null)
                         {
                             info.list.Add(model);
@@ -192,13 +178,5 @@ namespace Temple.Admin.Controllers
             return "true";
         }
 
-        public ActionResult SendTestPaper(string mopenid,int money)
-        {
-            string strData = "", strUrl = "https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack", strResult = "";
-            strData = WeixinHelper.GetJsApiParameters(mopenid, money);
-            strResult = WeixinHelper.WxRedPackPost(strUrl, strData);
-            ViewBag.Result = strResult;
-            return View();
-        }
     }
 }

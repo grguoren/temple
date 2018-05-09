@@ -13,16 +13,14 @@ namespace Temple.Service
     {
         private readonly IRepository<SystemPro> _menuinfoRepository;
         private readonly IRepository<WuxiSystem> _topmenuinfoRepository;
-        private readonly IRepository<Role_User> _roleuserRepository;
-        private readonly IRepository<Authority_Role> _authorityroleRepository;
-        private readonly IRepository<Authority_Menu> _authoritymenuRepository;
+        private readonly IRepository<UserRole> _roleuserRepository;
+        private readonly IRepository<RolePermission> _authoritymenuRepository;
 
         public MenuInfoService(IUnitOfWork unitofwork)
         {
             this._menuinfoRepository = unitofwork.Repository<SystemPro>();
-            this._roleuserRepository = unitofwork.Repository<Role_User>();
-            this._authorityroleRepository = unitofwork.Repository<Authority_Role>();
-            this._authoritymenuRepository = unitofwork.Repository<Authority_Menu>();
+            this._roleuserRepository = unitofwork.Repository<UserRole>();
+            this._authoritymenuRepository = unitofwork.Repository<RolePermission>();
             this._topmenuinfoRepository = unitofwork.Repository<WuxiSystem>();
         }
 
@@ -34,7 +32,7 @@ namespace Temple.Service
         public List<SystemPro> GetAllMenuListByPID(int PID)
         {
             var query = this._menuinfoRepository.Entities;
-            query = query.Where(x => x.SysId == PID);
+            query = query.Where(x => x.SysId == PID && x.Status == 1);
             query = query.OrderByDescending(x => x.SysCode);
             return query.ToList();
         }
@@ -110,7 +108,10 @@ namespace Temple.Service
             return this._menuinfoRepository.GetByKey(ID);
         }
 
-
+        public bool DeleteRoleMenu(int id)
+        {
+            return _authoritymenuRepository.Delete(t => t.SysProId == id) > 0;
+        }
         /// <summary>
         /// 根据用户ID获取该用户有权限访问的菜单
         /// </summary>
@@ -120,13 +121,11 @@ namespace Temple.Service
         {
             var menuList = _menuinfoRepository.Entities;
             var roleUserList = _roleuserRepository.Entities;
-            var authorityRoleList = _authorityroleRepository.Entities;
             var authorityMenuList = _authoritymenuRepository.Entities;
             var list = from m in menuList
-                       join am in authorityMenuList on m.Id equals am.MenuID 
-                       join ar in authorityRoleList on am.AuthorityID equals ar.AuthorityID 
-                       join ru in roleUserList on ar.RoleID equals ru.RoleID 
-                       where ru.UserID == UserID 
+                       join am in authorityMenuList on m.Id equals am.SysProId 
+                       join ru in roleUserList on am.RoleId equals ru.RoleId 
+                       where ru.UserId == UserID 
                        select m;
 
 

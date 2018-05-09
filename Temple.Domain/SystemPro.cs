@@ -30,9 +30,11 @@ namespace Temple.Domain
         /// CodeName
         /// </summary>
 		public string  CodeName { get; set; }
+
+        public string LinkUrl { get; set; }
 		
 		/// <summary>
-        /// Status
+        /// Status 1 显示，0 关闭
         /// </summary>
 		public int ? Status { get; set; }
 		

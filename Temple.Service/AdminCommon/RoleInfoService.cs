@@ -12,12 +12,12 @@ namespace Temple.Service
     public partial class RoleInfoService : IRoleInfoService
     {
         private readonly IRepository<Role> _roleRepository;
-        private readonly IRepository<Role_User> _roleuserRepository;
+        private readonly IRepository<UserRole> _roleuserRepository;
 
         public RoleInfoService(IUnitOfWork unitofwork)
         {
             this._roleRepository = unitofwork.Repository<Role>();
-            this._roleuserRepository = unitofwork.Repository<Role_User>();
+            this._roleuserRepository = unitofwork.Repository<UserRole>();
         }
 
         /// <summary>
@@ -92,16 +92,16 @@ namespace Temple.Service
         public void AddRoleUser(string[] RoleIDs, int UserID)
         {
             var query = this._roleuserRepository.Entities;
-            query = query.Where(x => x.UserID == UserID);
+            query = query.Where(x => x.UserId == UserID);
             if (query.ToList() != null && query.Count() > 0)
             {
                 this._roleuserRepository.Delete(query);
             }
             foreach (var item in RoleIDs)
             {
-                Role_User info = new Role_User();
-                info.RoleID = Convert.ToInt32(item);
-                info.UserID = UserID;
+                UserRole info = new UserRole();
+                info.RoleId = Convert.ToInt32(item);
+                info.UserId = UserID;
                 this._roleuserRepository.Insert(info);
             }
         }
@@ -110,10 +110,10 @@ namespace Temple.Service
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        public List<Role_User> GetRole_UserListByUserID(int UserID)
+        public List<UserRole> GetRole_UserListByUserID(int UserID)
         {
             var query = this._roleuserRepository.Entities;
-            query = query.Where(x => x.UserID == UserID);
+            query = query.Where(x => x.UserId == UserID);
             return query.ToList();
         }
         /// <summary>
@@ -123,7 +123,7 @@ namespace Temple.Service
         public void DeleteRoleUser(int UserID)
         {
             var query = this._roleuserRepository.Entities;
-            query = query.Where(x => x.UserID == UserID);
+            query = query.Where(x => x.UserId == UserID);
             if (query.ToList() != null && query.Count() > 0)
             {
                 this._roleRepository.Delete(query);

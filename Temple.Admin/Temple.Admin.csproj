@@ -126,10 +126,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="ThoughtWorks.QRCode, Version=1.0.3990.25764, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Admin\trunk\Hokkaido\Hokkaido.Admin\bin\ThoughtWorks.QRCode.dll</HintPath>
-    </Reference>
     <Reference Include="zxing, Version=1.0.4246.32288, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Admin\trunk\Hokkaido\Hokkaido.Admin\bin\zxing.dll</HintPath>
@@ -171,10 +167,9 @@
     <Compile Include="Controllers\FeedbackManageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\MakeQRCodeController.cs" />
     <Compile Include="Controllers\MoneyManageController.cs" />
     <Compile Include="Controllers\SignManageController.cs" />
-    <Compile Include="Controllers\SystemManageController.cs" />
+    <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -970,14 +965,14 @@
     <Content Include="Views\Home\_MenuLeft.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\SystemManage\AuthorityIndex.cshtml" />
-    <Content Include="Views\SystemManage\LogList.cshtml" />
-    <Content Include="Views\SystemManage\MailLogList.cshtml" />
-    <Content Include="Views\SystemManage\MailView.cshtml" />
-    <Content Include="Views\SystemManage\MenuIndex.cshtml" />
-    <Content Include="Views\SystemManage\RoleIndex.cshtml" />
-    <Content Include="Views\SystemManage\SmSLogList.cshtml" />
-    <Content Include="Views\SystemManage\UserIndex.cshtml" />
+    <Content Include="Views\System\AuthorityIndex.cshtml" />
+    <Content Include="Views\System\LogList.cshtml" />
+    <Content Include="Views\System\MailLogList.cshtml" />
+    <Content Include="Views\System\MailView.cshtml" />
+    <Content Include="Views\System\MenuIndex.cshtml" />
+    <Content Include="Views\System\Role.cshtml" />
+    <Content Include="Views\System\SmSLogList.cshtml" />
+    <Content Include="Views\System\UserIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Login\Login.cshtml" />
@@ -995,7 +990,7 @@
     <Content Include="Views\CityManage\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\SystemManage\SalesIndex.cshtml" />
+    <Content Include="Views\System\SalesIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SystemCountManage\ReUserCount.cshtml" />
@@ -1004,7 +999,7 @@
     <Content Include="Views\SystemCountManage\NewsCount.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\SystemManage\ErrorCorrect.cshtml" />
+    <Content Include="Views\System\ErrorCorrect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bx58_data\config\city.config" />
@@ -1066,7 +1061,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5603</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:18224/</IISUrl>
+          <IISUrl>http://localhost:18100/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

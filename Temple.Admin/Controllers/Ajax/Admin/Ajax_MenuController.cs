@@ -14,13 +14,11 @@ namespace Temple.Admin.Controllers.Ajax
     {
         readonly IUserInfoService userse;
         readonly IMenuInfoService menuse;
-        readonly IAuthorityInfoService authormenuse;
-        public Ajax_MenuController(IUserInfoService _userse, IMenuInfoService _menuse, IAuthorityInfoService _authormenuse)
+        public Ajax_MenuController(IUserInfoService _userse, IMenuInfoService _menuse)
             : base(_userse)
         {
             userse = _userse;
             menuse = _menuse;
-            authormenuse = _authormenuse;
         }
         //
         // GET: /Ajax_Menu/
@@ -79,7 +77,7 @@ namespace Temple.Admin.Controllers.Ajax
         [HttpPost]
         public string DeleteMenu(int id)
         {
-            authormenuse.DeleteAuthorityMenu(id);
+            menuse.DeleteRoleMenu(id);
             return menuse.DeleteMenu(id).ToString();
         }
 

@@ -13,11 +13,10 @@ namespace Temple.Service
 {
     public partial class UserInfoService : IUserInfoService
     {
-        private readonly IRepository<User> _userinfoRepository;
-        private readonly IRepository<Role_User> _roleuserRepository;
-        private readonly IRepository<Authority_Role> _authorityroleRepository;
-        private readonly IRepository<Authority_Menu> _authoritymenuRepository;
-        private readonly IRepository<SystemPro> _menuinfoRepository;
+        private readonly IRepository<User> _userinfoRepository; //用户
+        private readonly IRepository<UserRole> _roleuserRepository; //用户角色
+        private readonly IRepository<RolePermission> _authoritymenuRepository;//角色程式
+        private readonly IRepository<SystemPro> _menuinfoRepository; //程式
 
         /// <summary>
         /// 内存缓存
@@ -27,9 +26,8 @@ namespace Temple.Service
         public UserInfoService(IUnitOfWork unitofwork)
         {
             this._userinfoRepository = unitofwork.Repository<User>();
-            this._roleuserRepository = unitofwork.Repository<Role_User>();
-            this._authorityroleRepository = unitofwork.Repository<Authority_Role>();
-            this._authoritymenuRepository = unitofwork.Repository<Authority_Menu>();
+            this._roleuserRepository = unitofwork.Repository<UserRole>();
+            this._authoritymenuRepository = unitofwork.Repository<RolePermission>();
             this._menuinfoRepository = unitofwork.Repository<SystemPro>();
         }
 
@@ -170,22 +168,22 @@ namespace Temple.Service
         }
 
         /// <summary>
-        /// 根据用户ID获取用户权限
+        /// 根据用户ID获取用户程式
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
         public List<int> GetUserAuthorityList(int UserID)
         {
             var roleUserList = _roleuserRepository.Entities;
-            var authorityRoleList = _authorityroleRepository.Entities;
+            var authorityRoleList = _authoritymenuRepository.Entities;
             var list = from ar in authorityRoleList
-                       join ru in roleUserList on ar.RoleID equals ru.RoleID
-                       where ru.UserID == UserID
+                       join ru in roleUserList on ar.RoleId equals ru.RoleId
+                       where ru.UserId == UserID
                        select ar;
             List<int> aList = new List<int>();
             foreach (var item in list.Distinct().ToList())
             {
-                aList.Add(item.AuthorityID);
+                aList.Add(item.SysProId.Value);
             }
             return aList;
         }
@@ -199,13 +197,11 @@ namespace Temple.Service
         {
             var menuList = _menuinfoRepository.Entities;
             var roleUserList = _roleuserRepository.Entities;
-            var authorityRoleList = _authorityroleRepository.Entities;
             var authorityMenuList = _authoritymenuRepository.Entities;
             var list = from m in menuList
-                       join am in authorityMenuList on m.Id equals am.MenuID
-                       join ar in authorityRoleList on am.AuthorityID equals ar.AuthorityID
-                       join ru in roleUserList on ar.RoleID equals ru.RoleID
-                       where ru.UserID == UserID
+                       join am in authorityMenuList on m.Id equals am.SysProId
+                       join ru in roleUserList on am.RoleId equals ru.RoleId
+                       where ru.UserId == UserID
                        select m;
             return list.Distinct().ToList();
         }
@@ -222,6 +218,12 @@ namespace Temple.Service
 
             localCache.Set(key, query.ToList(), 3600);
             return query.ToList();
+        }
+
+
+        public bool DeleteUserRole(int id)
+        {
+            return _roleuserRepository.Delete(t => t.RoleId == id)>0;
         }
     }
 }

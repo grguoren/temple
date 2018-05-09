@@ -40,11 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="AdminCommon\AuthorityInfo.cs" />
-    <Compile Include="AdminCommon\Authority_Menu.cs" />
-    <Compile Include="AdminCommon\Authority_Role.cs" />
     <Compile Include="AdminCommon\Logger.cs" />
-    <Compile Include="AdminCommon\Role_User.cs" />
     <Compile Include="Appellation.cs" />
     <Compile Include="Calendar.cs" />
     <Compile Include="enum\enum.cs" />

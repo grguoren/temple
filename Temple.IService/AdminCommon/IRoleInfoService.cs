@@ -56,7 +56,7 @@ namespace Temple.IService
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        List<Role_User> GetRole_UserListByUserID(int UserID);
+        List<UserRole> GetRole_UserListByUserID(int UserID);
 
         /// <summary>
         /// 删除用户下关联的角色

@@ -34,8 +34,8 @@
                             {
                                 if (el.Status == 1)
                                 {
-                                    <li>
-                                        <a href="@Html.Raw(string.IsNullOrEmpty("") ? "javascript:alert('该页面正在建设中,请见谅');" : Url.Content("~/" ))">
+                                    <li @Html.Raw((el.LinkUrl == (controller + "/" + action)) ? "class='active'" : "") >
+                                        <a href="@Html.Raw(string.IsNullOrEmpty(el.LinkUrl) ? "javascript:alert('该页面正在建设中,请见谅');" : Url.Content("~/"+ el.LinkUrl ))">
                                             <i class="icon-double-angle-right"></i>
                                             <span>@el.CodeName</span>
                                         </a>
@@ -59,8 +59,8 @@
                     {
                         if (el.Status == 1)
                         {
-                            <li>
-                                <a href="@Html.Raw(string.IsNullOrEmpty("") ? "javascript:alert('该页面正在建设中,请见谅');" : Url.Content("~/"))">
+                            <li @Html.Raw((el.LinkUrl == (controller + "/" + action)) ? "class='active'" : "") >
+                                <a href="@Html.Raw(string.IsNullOrEmpty(el.LinkUrl) ? "javascript:alert('该页面正在建设中,请见谅');" : Url.Content("~/"+ el.LinkUrl))">
                                     <i class="icon-double-angle-right"></i>
                                     <span >@el.CodeName</span>
                                 </a>
