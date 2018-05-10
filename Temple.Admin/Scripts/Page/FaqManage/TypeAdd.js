@@ -82,7 +82,7 @@ function GetAboutTypeById_Ajax() {
             AboutTypeAddOrUpdate.aboutTypeModel.Remark = ajaxData.Remark;
             AboutTypeAddOrUpdate.aboutTypeModel.Sort = ajaxData.Sort;
         }, error: function () {
-            alert('对不起,没有数据可以修改!');
+            alert('對不起,沒有數據可以修改!');
             location.href = Config.WebUrl + "FaqManage/TypeList";
         },
         dataType: 'json'

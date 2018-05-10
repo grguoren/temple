@@ -33,4 +33,3 @@ D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Redis.xml
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Text.xml
 D:\TWProgram\Temple.Admin\Temple.Core\obj\Debug\Temple.Core.dll
 D:\TWProgram\Temple.Admin\Temple.Core\obj\Debug\Temple.Core.pdb
-D:\TWProgram\Temple.Admin\Temple.Core\obj\Debug\Temple.Core.csprojResolveAssemblyReference.cache

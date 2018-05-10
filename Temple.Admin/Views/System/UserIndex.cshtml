@@ -4,7 +4,7 @@
 }
 <div class="page-header position-relative">
     <h1>
-        系统管理
+        系統管理
         <small>
             <i class="icon-double-angle-right"></i>
             使用者基本資料管理
@@ -43,41 +43,36 @@
             <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
                 <thead>
                     <tr>
+                        <th style="width:120px;">使用者帳號</th>
+                        <th style="width:120px;">使用者名稱</th>
+                        <th style="width:120px;">行動電話</th>
+                        <th style="width:120px;">狀態</th> 
                         <th width="120px">操作</th>
-                        <th>使用者姓名</th>
-                        <th>所属部门</th>
-                        <th>用户名</th>
-                        <th>登陆密码</th>
-                        <th>最近登陆时间</th>
-                        <th>创建时间</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr ms-if="!ListLoading"><td colspan="19" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
-                    <tr ms-if="!ListNoData"><td colspan="18" style="text-align:center;">对不起,没有数据!</td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="18" style="text-align:center;">對不起,沒有數據!</td></tr>
                     <tr ms-repeat="array" ms-visible="ListLoading">
+                        
+                        <td>{{el.UserId}} </td> 
+                        <td>{{el.UserName}}</td>
+                        <td>{{el.Mobile}}</td> 
+                        <td><span ms-class-red="el.Status == true">{{el.Status == true ? "啟用" : "停用"}}</span></td>
                         <td>
-                            <button title="设置角色" class="btn btn-xs" ms-click="getRoleList(el)" data-target="#setRole_Modal_UserIndex" data-toggle="modal"><i class="icon-sitemap"></i></button>
+                            <button title="設置角色" class="btn btn-xs" ms-click="getRoleList(el)" data-target="#setRole_Modal_UserIndex" data-toggle="modal"><i class="icon-sitemap"></i></button>
                             @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
                             { 
-                                <span><button title="编辑" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button></span>
+                                <span><button title="編輯" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button></span>
                             }
                             else
                             {
-                            <span ms-if="(el.UserName !='zhihupz')"><button title="编辑" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button></span>
+                            <span ms-if="(el.UserName !='zhihupz')"><button title="編輯" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button></span>
                             }
 
-                            <button title="删除" class="btn btn-xs btn-danger" ms-click="removeUser(el.ID)"><i class="icon-trash"></i></button>
+                            <button title="刪除" class="btn btn-xs btn-danger" ms-click="removeUser(el.Id)"><i class="icon-trash"></i></button>
                         </td>
-                        <td><input type="text" ms-duplex="el.NickName" style="width:120px;" /> </td> 
-                        <td><input type="text" ms-duplex="el.DepartName" style="width:120px;" /> </td>
-                        <td><input type="text" ms-duplex="el.UserName" style="width:120px;" /></td>
-                        <td><input type="text" ms-duplex="el.Pwd" style="width:120px;" />
-                            <a title="修改资料" href="javascript:;" ms-click="EditData(el.ID,el.NickName,el.DepartName,el.UserName,el.Pwd)">修改</a>  
-                        </td>
-                        <td>{{el.UpdateTime| date("yyyy/MM/dd HH:mm")}}</td>
-                        <td>{{el.CreateTime| date("yyyy/MM/dd HH:mm")}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -91,37 +86,37 @@
                 <div class="modal-header no-padding">
                     <div class="table-header" style="line-height:32px;">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        {{type}}用户
+                        {{type}}用戶
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="control-group">
-                        <label class="control-label" for="form-field-username">用户账号</label>
+                        <label class="control-label" for="form-field-username">使用者帳號</label>
                         <div class="controls">
-                            <input type="text" id="form-field-username" placeholder="用户账号" ms-duplex="UserName" />
+                            <input type="text" id="form-field-username" placeholder="使用者帳號" ms-duplex="UserName" />
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="form-field-nickname">用户姓名</label>
+                        <label class="control-label" for="form-field-nickname">使用者名稱</label>
                         <div class="controls">
-                            <input type="text" id="form-field-nickname" placeholder="用户姓名" ms-duplex="NickName" />
+                            <input type="text" id="form-field-nickname" placeholder="使用者名稱" ms-duplex="NickName" />
                         </div>
                     </div>
                      <div class="control-group">
-                        <label class="control-label" for="form-field-nickname">所属部门</label>
+                        <label class="control-label" for="form-field-nickname">行動電話</label>
                         <div class="controls">
-                            <input type="text" id="form-field-dpartname" placeholder="所属部门" ms-duplex="DepartName" />
+                            <input type="text" id="form-field-dpartname" placeholder="行動電話" ms-duplex="DepartName" />
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="form-field-pwd">用户密码</label>
+                        <label class="control-label" for="form-field-pwd">密碼</label>
                         <div class="controls">
-                            <input type="text" id="form-field-pwd" placeholder="用户密码" ms-duplex="PWD" />
+                            <input type="text" id="form-field-pwd" placeholder="密碼" ms-duplex="PWD" />
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">關閉</button>
          
                         <button type="button" class="btn btn-primary btn-sm" ms-click="update()">{{type}}</button>
                           
@@ -136,23 +131,23 @@
                 <div class="modal-header no-padding">
                     <div class="table-header" style="line-height:32px;">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        设置角色
+                        設置角色
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="control-group">
-                        <label class="control-label bolder blue">请给用户[{{RoleDom.userName}}]选择角色</label>
+                        <label class="control-label bolder blue">請給用戶[{{RoleDom.userName}}]選擇角色</label>
 
                         <div class="checkbox" ms-repeat="RoleDom.roleList">
                             <label>
-                                <input name="form-field-checkbox" type="checkbox" class="ace" ms-duplex-string="RoleDom.selectList" ms-attr-value="el.ID" />
-                                <span class="lbl"> {{el.Name}}</span>
+                                <input name="form-field-checkbox" type="checkbox" class="ace" ms-duplex-string="RoleDom.selectList" ms-attr-value="el.Id" />
+                                <span class="lbl"> {{el.RoleName}}</span>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">關閉</button>
                     <button type="button" class="btn btn-sm btn-primary" ms-click="updateRoleUser()">保存</button>
                 </div>
             </div>

@@ -40,14 +40,10 @@ namespace Temple.Service
         public IPagedList<User> GetUserList(int page, int size, string username, string UserName)
         {
             var query = this._userinfoRepository.Entities;
-            query = query.Where(x => x.Status == true  && x.UserName != "superadmin");
+            query = query.Where(x => x.Status == true && x.UserId != "superadmin");
             if (!string.IsNullOrEmpty(username))
             {
                 query = query.Where(x => x.UserName.Contains(username));
-            }
-            if (!string.IsNullOrEmpty(UserName))
-            {
-                query = query.Where(x => x.UserName.Contains(UserName));
             }
             query = query.OrderByDescending(x => x.Id);
             IPagedList<User> list = new PagedList<User>(query, page, size);
@@ -65,7 +61,7 @@ namespace Temple.Service
             {
                 throw new ArgumentNullException("用户对象不能为空");
             }
-            if (string.IsNullOrEmpty(info.UserName))
+            if (string.IsNullOrEmpty(info.UserId))
             {
                 throw new ArgumentNullException("用户账号不能为空");
             }
@@ -77,7 +73,7 @@ namespace Temple.Service
             {
                 throw new ArgumentNullException("用户密码不能为空");
             }
-            if (_userinfoRepository.Entities.Where(x => x.UserName == info.UserName).FirstOrDefault() != null)
+            if (_userinfoRepository.Entities.Where(x => x.UserId == info.UserId).FirstOrDefault() != null)
             {
                 return false;
             }
@@ -117,7 +113,7 @@ namespace Temple.Service
             {
                 throw new ArgumentNullException("用户ID不能为空");
             }
-            if (string.IsNullOrEmpty(info.UserName))
+            if (string.IsNullOrEmpty(info.UserId))
             {
                 throw new ArgumentNullException("用户账号不能为空");
             }
@@ -154,7 +150,7 @@ namespace Temple.Service
         /// <returns></returns>
         public User LoginUser(User info)
         {
-            if (string.IsNullOrEmpty(info.UserName))
+            if (string.IsNullOrEmpty(info.UserId))
             {
                 throw new ArgumentNullException("用户名不能为空");
             }
@@ -163,7 +159,7 @@ namespace Temple.Service
                 throw new ArgumentNullException("用户密码不能为空");
             }
             var query = this._userinfoRepository.Entities;
-            query = query.Where(x => x.UserName == info.UserName && x.Password == info.Password);
+            query = query.Where(x => x.UserId == info.UserId && x.Password == info.Password);
             return query.FirstOrDefault();
         }
 

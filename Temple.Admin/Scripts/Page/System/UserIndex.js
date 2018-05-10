@@ -157,8 +157,8 @@ var UserList = avalon.define('userList', function (vm) {
         });
     };
     vm.getRoleList = function (obj) {
-        vm.RoleDom.userID = obj.ID;
-        vm.RoleDom.userName = obj.NickName;
+        vm.RoleDom.userID = obj.Id;
+        vm.RoleDom.userName = obj.UserName;
         $.ajax({
             type: 'POST',
             url: Config.WebUrl + 'Ajax_Role/GetRoleList',

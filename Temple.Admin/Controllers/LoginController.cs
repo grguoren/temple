@@ -125,7 +125,7 @@ namespace Temple.Admin.Controllers
                 #endregion
 
                 User user = new User();
-                user.UserName = name;
+                user.UserId = name;
                 user.Password = name != "adminzh" ? EncryptHelper.Encrypt(pwd) : pwd;
                 //user.Pwd = pwd;
                 user = userse.LoginUser(user);
@@ -143,8 +143,8 @@ namespace Temple.Admin.Controllers
                         user.OnBoardDate = DateTime.Now;//记录最近登陆时间
                         userse.UpdateUser(user);
                         model.Id = user.Id;
-                        model.NickName = user.FileName;
-                        model.UserName = user.UserName;
+                        model.NickName = user.UserName;
+                        model.UserName = user.UserId;
 
                         Temple.Admin.Common.CurrentCache.Insert(model.Id, model);
                     }

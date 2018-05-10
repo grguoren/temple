@@ -35,4 +35,3 @@ D:\TWProgram\Temple.Admin\ExcelOperate\obj\Debug\ExcelOperate.ReadExcel.Reader.B
 D:\TWProgram\Temple.Admin\ExcelOperate\obj\Debug\ExcelOperate.csproj.GenerateResource.Cache
 D:\TWProgram\Temple.Admin\ExcelOperate\obj\Debug\ExcelOperate.dll
 D:\TWProgram\Temple.Admin\ExcelOperate\obj\Debug\ExcelOperate.pdb
-D:\TWProgram\Temple.Admin\ExcelOperate\obj\Debug\ExcelOperate.csprojResolveAssemblyReference.cache

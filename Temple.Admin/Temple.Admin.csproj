@@ -762,15 +762,15 @@
     <Content Include="Scripts\Page\ShareManage\RecruitList.js" />
     <Content Include="Scripts\Page\SignManage\Add.js" />
     <Content Include="Scripts\Page\SignManage\List.js" />
-    <Content Include="Scripts\Page\SystemManage\AuthorityIndex.js" />
-    <Content Include="Scripts\Page\SystemManage\ErrorCorrect.js" />
-    <Content Include="Scripts\Page\SystemManage\LogList.js" />
-    <Content Include="Scripts\Page\SystemManage\MailLogList.js" />
-    <Content Include="Scripts\Page\SystemManage\MenuIndex.js" />
-    <Content Include="Scripts\Page\SystemManage\RoleIndex.js" />
-    <Content Include="Scripts\Page\SystemManage\SalesIndex.js" />
-    <Content Include="Scripts\Page\SystemManage\SmSLogList.js" />
-    <Content Include="Scripts\Page\SystemManage\UserIndex.js" />
+    <Content Include="Scripts\Page\System\AuthorityIndex.js" />
+    <Content Include="Scripts\Page\System\ErrorCorrect.js" />
+    <Content Include="Scripts\Page\System\LogList.js" />
+    <Content Include="Scripts\Page\System\MailLogList.js" />
+    <Content Include="Scripts\Page\System\MenuIndex.js" />
+    <Content Include="Scripts\Page\System\RoleIndex.js" />
+    <Content Include="Scripts\Page\System\SalesIndex.js" />
+    <Content Include="Scripts\Page\System\SmSLogList.js" />
+    <Content Include="Scripts\Page\System\UserIndex.js" />
     <Content Include="Scripts\Public.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

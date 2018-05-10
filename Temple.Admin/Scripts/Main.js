@@ -1,5 +1,5 @@
 ﻿
-var Config = { WebUrl: "http://localhost:18224/", ImgUrl: "http://image.bx58.com/", SiteUrl: "http://manage.bxtest.com/" };
+var Config = { WebUrl: "http://localhost:18100/", ImgUrl: "http://image.bx58.com/", SiteUrl: "http://manage.bxtest.com/" };
 //var Config = { WebUrl: "http://192.168.0.30/", ImgUrl: "http://image.bx58.com/", SiteUrl: "http://www.bxtest.com/" };
 //var Config = { WebUrl: "http://manage.zhihucn.com/", ImgUrl: "http://yun.zhihucn.com/", SiteUrl: "http://edu.zhihucn.com/" };
 //var Config = { WebUrl: "http://192.168.0.30:8038/", ImgUrl: "http://image.bx58.com", SiteUrl: "http://qy.zxtcw.cn/" };
@@ -56,8 +56,8 @@ require(['bootbox', 'publicCommon'], function () {
                 }
 
                 //用户管理模块
-                if (urlStr.indexOf("/SystemManage/UserIndex") > -1) {
-                    require([Config.WebUrl + 'Scripts/Page/SystemManage/UserIndex.js?' + Math.random()], function () {
+                if (urlStr.indexOf("/System/UserIndex") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/System/UserIndex.js?' + Math.random()], function () {
                         avalon.log("用户管理模块加载成功...");
                     });
                 }
@@ -71,26 +71,21 @@ require(['bootbox', 'publicCommon'], function () {
                 }
                
                     //菜单管理模块
-                else if (urlStr.indexOf("/SystemManage/MenuIndex") > -1) {
-                    require([Config.WebUrl + 'Scripts/Page/SystemManage/MenuIndex.js?' + Math.random()], function () {
+                else if (urlStr.indexOf("/System/MenuIndex") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/System/MenuIndex.js?' + Math.random()], function () {
                         avalon.log("菜单管理模块加载成功...");
                     });
                 }
-                    //权限管理模块
-                else if (urlStr.indexOf("/SystemManage/AuthorityIndex") > -1) {
-                    require([Config.WebUrl + 'Scripts/Page/SystemManage/AuthorityIndex.js?' + Math.random()], function () {
-                        avalon.log("权限管理模块加载成功...");
-                    });
-                }
+
                     //角色管理模块
-                else if (urlStr.indexOf("/SystemManage/RoleIndex") > -1) {
-                    require([Config.WebUrl + 'Scripts/Page/SystemManage/RoleIndex.js?' + Math.random()], function () {
+                else if (urlStr.indexOf("/System/Role") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/System/RoleIndex.js?' + Math.random()], function () {
                         avalon.log("角色管理模块加载成功...");
                     });
                 }
                     //操作日志模块
-                else if (urlStr.indexOf("/SystemManage/LogList") > -1) {
-                    require([Config.WebUrl + 'Scripts/Page/SystemManage/LogList.js?' + Math.random()], function () {
+                else if (urlStr.indexOf("/System/LogList") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/System/LogList.js?' + Math.random()], function () {
                         avalon.log("操作日志模块加载成功...");
                     });
                 }

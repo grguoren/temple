@@ -90,7 +90,7 @@ function GetCourseById_Ajax() {
             CourseAddOrUpdate.CourseModel.Hassign = ajaxData.Hassign
             
         }, error: function () {
-            alert('对不起,没有数据可以修改!');
+            alert('對不起,沒有數據可以修改!');
             location.href = Config.WebUrl + "SignManage/List";
         },
         dataType: 'json'

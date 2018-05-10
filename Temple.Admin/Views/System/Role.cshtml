@@ -31,10 +31,10 @@
                             <div class="action-buttons">
                                 <a href="#" class="green" title="编辑权限" data-target="#setAuthority_Modal_RoleIndex" data-toggle="modal" ms-click="getAuthority(el)"><i class="icon-sitemap bigger-120"></i></a>
                                 <a href="#" class="blue" title="编辑" data-target="#updateRole_Modal" data-toggle="modal" ms-click="edit(el)"><i class="icon-pencil bigger-120"></i></a>
-                                <a href="#" class="red" title="删除" ms-click="removeMenu(el.ID)"><i class="icon-trash bigger-120"></i></a>
+                                <a href="#" class="red" title="删除" ms-click="removeMenu(el.Id)"><i class="icon-trash bigger-120"></i></a>
                             </div>
                         </div>
-                        <div class="dd2-content" style="padding-left:90px;" ms-attr-title="el.Describe"><span>{{el.Name}}</span><span class="pull-right">[{{formatStr(el.Describe)}}]</span></div>
+                        <div class="dd2-content" style="padding-left:90px;" ms-attr-title="el.RoleName"><span>{{el.RoleName}}</span><span class="pull-right">[{{formatStr(el.Remark)}}]</span></div>
 
                         @*<ol class="dd-list">
                                 <li class="dd-item dd2-item" data-id="16">
@@ -63,16 +63,22 @@
                     </div>
                 </div>
                 <div class="modal-body">
+                     <div class="control-group">
+                        <label class="control-label" for="form-field-username">角色名称</label>
+                        <div class="controls">
+                            <input type="text" id="form-field-roleid" placeholder="角色名称" ms-duplex="RoleId" />
+                        </div>
+                    </div>
                     <div class="control-group">
                         <label class="control-label" for="form-field-username">角色名称</label>
                         <div class="controls">
-                            <input type="text" id="form-field-username" placeholder="角色名称" ms-duplex="Name" />
+                            <input type="text" id="form-field-username" placeholder="角色名称" ms-duplex="RoleName" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="form-field-type">角色描述</label>
                         <div class="controls">
-                            <input type="text" id="form-field-type" placeholder="角色描述" ms-duplex="Describe" />
+                            <input type="text" id="form-field-type" placeholder="角色描述" ms-duplex="Remark" />
                         </div>
                     </div>
                 </div>

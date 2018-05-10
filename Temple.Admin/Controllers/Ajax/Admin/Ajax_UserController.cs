@@ -43,16 +43,17 @@ namespace Temple.Admin.Controllers.Ajax
         }
 
         [HttpPost]
-        public string AddUser(string UserName, string FileName, string Remark, string Password)
+        public string AddUser(string UserId,string UserName, string FileName, string Remark, string Password)
         {
             User model = new User();
             model.OnBoardDate = DateTime.Now;
             model.FileName = FileName;
+            model.UserId = UserId;
             model.Remark = Remark;
             model.Password = Password;
             model.Password = EncryptHelper.Encrypt(Password);
             model.Status = true;
-            model.ResignationDate = model.OnBoardDate;
+            model.ResignationDate = model.ResignationDate;
             model.UserName = UserName;
 
             return userse.AddUser(model).ToString();
@@ -60,10 +61,11 @@ namespace Temple.Admin.Controllers.Ajax
         
 
         [HttpPost]
-        public string UpdateUser(int ID, string UserName, string FileName,string Remark, string Password)
+        public string UpdateUser(int ID, string UserId, string UserName,string ResignationDate, string FileName, string Remark, string Password)
         {
             User model = userse.GetUserInfoByID(ID);
             model.FileName = FileName;
+            model.UserId = UserId;
             model.Password = Password;
             model.Password = EncryptHelper.Encrypt(Password);
             model.Remark = Remark;
