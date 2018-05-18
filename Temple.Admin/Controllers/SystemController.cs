@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace Temple.Admin.Controllers
 {
+    /// <summary>
+    /// 系统管理作业
+    /// </summary>
     public class SystemController : BaseController
     {
         readonly IUserInfoService userse;
@@ -25,7 +28,7 @@ namespace Temple.Admin.Controllers
         }
 
 
-        public ActionResult Menu()
+        public ActionResult MenuIndex()
         {
             return View();
         }

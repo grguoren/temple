@@ -26,7 +26,7 @@ namespace Temple.Admin.Controllers.Ajax
         [HttpPost]
         public JsonResult GetMenuList(int pid)
         {
-            List<SystemPro> list = menuse.GetAllMenuListByPID(pid);
+            List<Temple.Domain.System> list = menuse.GetTopMenuList();
             List<MenuView> array = new List<MenuView>();
             foreach (var item in list)
             {
@@ -37,12 +37,11 @@ namespace Temple.Admin.Controllers.Ajax
                 model.list = menuse.GetAllMenuListByPID(item.Id);
                 //model.LinkUrl = item.LinkUrl;
                 //model.MenuLevel = item.MenuLevel;
-                model.CodeName = item.CodeName;
+                model.Name = item.Name;
                 //model.PID = item.PID;
-                model.Status = item.Status;
                 //model.Type = item.Type;
-                //model.UpdateTime = item.UpdateTime;
-                //model.Rank = item.Rank;
+                model.Status = item.Status==true?1:0;
+                model.Remark = item.Remark;
                 //model.ImportantLevel = item.ImportantLevel;
 
 
@@ -54,21 +53,33 @@ namespace Temple.Admin.Controllers.Ajax
             refs.Status = (array != null && array.Count > 0);
             return Json(refs);
         }
+        
+        [HttpPost]
+        public JsonResult GetTopMenuList()
+        {
+            List<Temple.Domain.System> list = menuse.GetTopMenuList();
+            ResultModel model = new ResultModel();
+            model.Count = 0;
+            model.Data = list.ToList<object>();
+            model.Status = (list != null && list.Count > 0);
+            return Json(model);
+        }
 
         [HttpPost]
-        public string AddMenu(string name, string linkurl, int pid, int fid, string rank, int status, int imlevel)
+        public string AddMenu(string name, string linkurl, int pid, string code, int status, string remark)
         {
             SystemPro model = new SystemPro();
             //model.CreateTime = DateTime.Now;
             //model.FID = fid;
             //model.LinkUrl = linkurl;
             //model.MenuLevel = 1;
-            model.CodeName = name;
+            model.Name = name;
+            model.LinkUrl = linkurl;
             //model.PID = pid;
             model.Status = status;
-            model.SysCode = "sys";
-            model.Remark = rank;
-            model.SysId = imlevel;
+            model.Code = code;
+            model.Remark = remark;
+            model.System_id = pid;
 
            
             return menuse.AddMenu(model).ToString();
@@ -82,13 +93,13 @@ namespace Temple.Admin.Controllers.Ajax
         }
 
         [HttpPost]
-        public string UpdateMenu(int id, string name, string linkurl, string rank, int status, int imlevel)
+        public string UpdateMenu(int id, string name, string linkurl, string code, int status)
         {
             SystemPro model = menuse.GetMenuInfoByID(id);
             //model.LinkUrl = linkurl;
-            model.CodeName = name;
-
-            model.SysCode = rank;
+            model.Name = name;
+            model.LinkUrl = linkurl;
+            model.Code = code;
             model.Status = status;
 
 

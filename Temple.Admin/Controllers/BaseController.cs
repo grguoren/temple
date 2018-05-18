@@ -166,7 +166,7 @@ namespace Temple.Admin.Controllers
                     user = userse.GetUserInfoByID(memberID);
                     model.Id = memberID;
                     model.NickName = user.FileName;
-                    model.UserName = user.UserName;
+                    model.UserName = user.Name;
                     //model.DepartName = user.DepartName;
 
                     Temple.Admin.Common.CurrentCache.Insert(model.Id, model);

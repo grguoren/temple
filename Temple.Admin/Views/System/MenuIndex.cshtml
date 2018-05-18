@@ -1,13 +1,13 @@
 ﻿@{
-    ViewBag.Title = "無極證道-管理系统-系统管理-菜单管理";
+    ViewBag.Title = "無極證道-管理系統-系統管理-程式清單管理";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="page-header position-relative">
     <h1>
-        系统管理
+        系統管理
         <small>
             <i class="icon-double-angle-right"></i>
-            菜单管理
+            程式清單管理
         </small>
     </h1>
 </div>
@@ -17,7 +17,7 @@
         <span>
             <button type="button" class="btn btn-xs btn-success" data-target="#updateMenu_Modal" data-toggle="modal" ms-click="add(0,0)">
                 <i class="icon-plus-sign"></i>
-                新增顶级菜单
+                新增頂級菜單
             </button>
         </span>
     </div>
@@ -27,17 +27,17 @@
                 <div class="panel panel-default" ms-repeat="array">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" ms-attr-href="'#tab_m_' + el.ID">
+                            <a class="accordion-toggle" data-toggle="collapse" ms-attr-href="'#tab_m_' + el.Id">
                                 <i class="icon-angle-right bigger-110" data-icon-show="icon-angle-right" data-icon-hide="icon-angle-down"></i>
-                                {{el.Name}}【{{el.LinkUrl}}】
+                                {{el.Name}}
                             </a>
                         </h4>
                     </div>
-                    <div class="panel-collapse collapse" ms-attr-id="'tab_m_' + el.ID">
+                    <div class="panel-collapse collapse" ms-attr-id="'tab_m_' + el.Id">
                         <div class="pull-right action-buttons" style="margin-top:-25px;">
-                            <a href="#" title="添加" class="green" data-target="#updateMenu_Modal" data-toggle="modal" ms-click="add(el.ID,el.ID)"><i class="icon-plus-sign bigger-110"></i></a>
-                            <a href="#" title="编辑" class="blue" data-target="#updateMenu_Modal" data-toggle="modal" ms-click="edit(el)"><i class="icon-pencil bigger-110"></i></a>
-                            <a href="#" title="删除" class="red" ms-click="removeMenu(el.ID)"><i class="icon-trash bigger-110"></i></a>
+                            <a href="#" title="添加" class="green" data-target="#updateMenu_Modal" data-toggle="modal" ms-click="add(el.Id,el.Id)"><i class="icon-plus-sign bigger-110"></i></a>
+                            <a href="#" title="編輯" class="blue" data-target="#updateMenu_Modal" data-toggle="modal" ms-click="edit(el)"><i class="icon-pencil bigger-110"></i></a>
+                            <a href="#" title="刪除" class="red" ms-click="removeMenu(el.Id)"><i class="icon-trash bigger-110"></i></a>
                         </div>
                         <div class="panel-body">
                             <div class="dd dd-draghandle" style="max-width:800px;">
@@ -45,9 +45,8 @@
                                     <li class="dd-item dd2-item" ms-repeat-elem="el.list">
                                         <div class="dd-handle dd2-handle" style="width:75px;">
                                             <div class="action-buttons">
-                                                <a href="#" class="green" title="编辑权限" data-target="#setAuthority_Modal_MenuIndex" data-toggle="modal" ms-click="getAuthority(elem)"><i class="icon-sitemap bigger-120"></i></a>
-                                                <a href="#" class="blue" title="编辑" data-target="#updateMenu_Modal" data-toggle="modal" ms-click="edit(elem)"><i class="icon-pencil bigger-120"></i></a>
-                                                <a href="#" class="red" title="删除" ms-click="removeMenu(elem.ID)"><i class="icon-trash bigger-120"></i></a>
+                                                <a href="#" class="blue" title="編輯" data-target="#updateMenu_Modal" data-toggle="modal" ms-click="edit(elem)"><i class="icon-pencil bigger-120"></i></a>
+                                                <a href="#" class="red" title="刪除" ms-click="removeMenu(elem.Id)"><i class="icon-trash bigger-120"></i></a>
                                             </div>
                                         </div>
                                         <div class="dd2-content" style="padding-left:90px;"><span>{{elem.Name}}</span><span class="pull-right">[{{elem.LinkUrl}}]</span></div>
@@ -79,45 +78,38 @@
                 <div class="modal-header no-padding">
                     <div class="table-header" style="line-height:32px;">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        {{updatetype}}菜单
+                        {{updatetype}}菜單
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="control-group">
-                        <label class="control-label" for="form-field-username">菜单名称</label>
+                        <label class="control-label" for="form-field-username">菜單名稱</label>
                         <div class="controls">
-                            <input type="text" id="form-field-username" placeholder="菜单名称" ms-duplex="Name" />
+                            <input type="text" id="form-field-username" placeholder="菜單名稱" ms-duplex="Name" />
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="form-field-linkurl">菜单链接</label>
+                        <label class="control-label" for="form-field-linkurl">菜單鏈接</label>
                         <div class="controls">
-                            <input type="text" id="form-field-linkurl" placeholder="菜单链接" ms-duplex="LinkUrl" />
+                            <input type="text" id="form-field-linkurl" placeholder="菜單鏈接" ms-duplex="LinkUrl" />
                         </div>
                     </div>
-                    <div class="control-group">
+@*                    <div class="control-group">
                         <label class="control-label" for="form-field-rank">排序</label>
                         <div class="controls">
                             <input type="text" id="form-field-rank" placeholder="排序" ms-duplex="Rank" />
                         </div>
-                    </div>
+                    </div>*@
                     <div class="control-group">
-                        <label class="control-label">是否菜单显示</label>
+                        <label class="control-label">狀態</label>
                         <div class="controls">
-                            <input type="radio" value="1" ms-duplex-number="Status" />是
-                            <input type="radio" value="0" ms-duplex-number="Status" />否
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">是否重要</label>
-                        <div class="controls">
-                            <input type="radio" value="1" ms-duplex-number="ImportantLevel" />是
-                            <input type="radio" value="0" ms-duplex-number="ImportantLevel" />否
+                            <input type="radio" value="1" ms-duplex-number="Status" />開啟
+                            <input type="radio" value="0" ms-duplex-number="Status" />關閉
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">關閉</button>
                     <button type="button" class="btn btn-primary btn-sm" ms-click="update()">{{updatetype}}</button>
                 </div>
             </div>

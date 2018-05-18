@@ -22,6 +22,6 @@ namespace Temple.Domain
             this.HasKey(x => x.Id);
             //the PrimaryKeyName +1
             this.Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-																		        }
+																					        }
 	}
 }

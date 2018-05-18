@@ -222,7 +222,7 @@ var AboutTypeList = avalon.define('cityList', function (vm) {
 
     vm.UpdateProvince = function () {
         if (vm.Province_Name == "" || vm.Province_FirstEng == "" || vm.Province_AliasEng == "") {
-            alert("请填写完整的数据");
+            alert("請填寫完整的数据");
             return false;
         }
 
@@ -246,7 +246,7 @@ var AboutTypeList = avalon.define('cityList', function (vm) {
 
     vm.UpdateCity = function () {
         if (vm.City_Pid <= 0 || vm.City_Name == "" || vm.City_FirstEng == "" || vm.City_AliasEng == "") {
-            alert("请填写完整的数据");
+            alert("請填寫完整的数据");
             return false;
         }
 
@@ -269,7 +269,7 @@ var AboutTypeList = avalon.define('cityList', function (vm) {
 
     vm.UpdateCounty = function () {
         if (vm.County_Cid <= 0 || vm.County_Pid <= 0 || vm.County_Name == "") {
-            alert("请填写完整的数据");
+            alert("請填寫完整的数据");
             return false;
         }
 

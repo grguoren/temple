@@ -50,6 +50,7 @@
     <Compile Include="AdminCommon\MenuInfoService.cs" />
     <Compile Include="AdminCommon\RoleInfoService.cs" />
     <Compile Include="AdminCommon\UserInfoService.cs" />
+    <Compile Include="BasicService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

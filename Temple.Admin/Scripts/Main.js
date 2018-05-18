@@ -56,11 +56,20 @@ require(['bootbox', 'publicCommon'], function () {
                 }
 
                 //用户管理模块
-                if (urlStr.indexOf("/System/UserIndex") > -1) {
-                    require([Config.WebUrl + 'Scripts/Page/System/UserIndex.js?' + Math.random()], function () {
-                        avalon.log("用户管理模块加载成功...");
+                //if (urlStr.indexOf("/System/UserIndex") > -1) {
+                //    require([Config.WebUrl + 'Scripts/Page/System/UserIndex.js?' + Math.random()], function () {
+                //        avalon.log("用户管理模块加载成功...");
+                //    });
+                //}
+                else if (urlStr.indexOf("/System/UserIndex") > -1) {
+                    require([Config.WebUrl + 'Scripts/CommonHelper/PreviewHelper/avalon.preview.js',
+                    , Config.WebUrl + 'Scripts/CommonHelper/KindeditorHelper/avalon.kindeditor.js',
+                    Config.WebUrl + 'Scripts/Lib/ajaxfileupload/ajaxfileupload.js'], function () {
+                        require([Config.WebUrl + 'Scripts/Page//System/UserIndex.js?' + Math.random()]);
+                        avalon.log("系統管理--用户管理模块加载成功...");
                     });
                 }
+
 
                     //省份城市管理--城市列表
                 else if (urlStr.indexOf("/CityManage/List") > -1) {
@@ -101,11 +110,59 @@ require(['bootbox', 'publicCommon'], function () {
                         avalon.log("短信发送日志模块加载成功...");
                     });
                 }
-                else if (urlStr.indexOf("/MoneyManage/Consume") > -1) {
-                    require([Config.WebUrl + 'Scripts/Page/MoneyManage/Consume.js?' + Math.random()], function () {
-                        avalon.log("提现申请管理列表模块加载成功...");
+                else if (urlStr.indexOf("/AccountManage/AccountList") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/AccountManage/AccountList.js?' + Math.random()], function () {
+                        avalon.log("入帳單位管理列表模塊加載成功...");
                     });
                 }
+                else if (urlStr.indexOf("/AccountManage/AccountAdd") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/AccountManage/AccountAdd.js?' + Math.random()], function () {
+                        avalon.log("入帳單位管理編輯模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/AccountManage/ServiceList") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/AccountManage/ServiceList.js?' + Math.random()], function () {
+                        avalon.log("服務項目管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/AccountManage/ServiceAdd") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/AccountManage/ServiceAdd.js?' + Math.random()], function () {
+                        avalon.log("服務項目管理編輯模塊加載成功...");
+                    });
+                }
+
+                else if (urlStr.indexOf("/ServiceManage/List") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/ServiceManage/List.js?' + Math.random()], function () {
+                        avalon.log("功德項目管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/ServiceManage/Add") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/ServiceManage/Add.js?' + Math.random()], function () {
+                        avalon.log("功德項目管理編輯模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/BasicManage/Title") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/BasicManage/Title.js?' + Math.random()], function () {
+                        avalon.log("稱謂管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/BasicManage/AddTitle") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/BasicManage/AddTitle.js?' + Math.random()], function () {
+                        avalon.log("稱謂管理編輯模塊加載成功...");
+                    });
+                }
+                    //付款方式模塊
+                else if (urlStr.indexOf("/BasicManage/Payment") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/BasicManage/Payment.js?' + Math.random()], function () {
+                        avalon.log("付款方式管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/BasicManage/Add") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/BasicManage/PaymentAdd.js?' + Math.random()], function () {
+                        avalon.log("付款方式管理編輯模塊加載成功...");
+                    });
+                }
+               
                 else if (urlStr.indexOf("/EnumManage/Add") > -1) {
                     require([Config.WebUrl + 'Scripts/Page/EnumManage/Add.js?' + Math.random()], function () {
                         avalon.log("参数管理修改模块加载成功...");

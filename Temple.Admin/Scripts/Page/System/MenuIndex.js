@@ -6,7 +6,7 @@ var MenuList = avalon.define('menuList', function (vm) {
     vm.FID = 0;
     vm.ID = 0;
     vm.LinkUrl = "";
-    vm.Rank = 0;
+    vm.Code = "";
     vm.Status = 1;
     vm.ImportantLevel = 0;
     vm.array = [];
@@ -16,8 +16,8 @@ var MenuList = avalon.define('menuList', function (vm) {
             vm.LinkUrl = "";
         }
         vm.ID = 0;
-        vm.Rank = 0;
-        vm.Status = 0;
+        vm.Code = "";
+        vm.Status = 1;
         vm.ImportantLevel = 0;
         vm.PID = pid;
         vm.FID = fid;
@@ -25,10 +25,11 @@ var MenuList = avalon.define('menuList', function (vm) {
     };
     vm.edit = function (item) {
         vm.updatetype = "修改";
-        vm.ID = item.ID;
+        vm.ID = item.Id;
         vm.Name = item.Name;
         vm.LinkUrl = item.LinkUrl;
-        vm.Rank = item.Rank;
+        vm.PID = item.System_id;
+        vm.Code = item.Code;
         vm.Status = item.Status;
         vm.ImportantLevel = item.ImportantLevel;
     };
@@ -92,7 +93,7 @@ var MenuList = avalon.define('menuList', function (vm) {
         });
     };
     vm.getAuthority = function (obj) {
-        vm.authorityDom.menuID = obj.ID;
+        vm.authorityDom.menuID = obj.Id;
         vm.authorityDom.menuName = obj.Name;
         $.ajax({
             type: 'POST',
@@ -107,7 +108,7 @@ var MenuList = avalon.define('menuList', function (vm) {
         $.ajax({
             type: 'POST',
             url: Config.WebUrl + 'Ajax_Authority/GetAuthority_MenuList',
-            data: { menuid: obj.ID },
+            data: { menuid: obj.Id },
             timeout: 200000,
             success: function (ajaxData) {
                 vm.authorityDom.selectList = ajaxData.Data;
@@ -126,7 +127,7 @@ function updateItem(updatetype) {
             $.ajax({
                 type: 'POST',
                 url: Config.WebUrl + 'Ajax_Menu/AddMenu',
-                data: { name: MenuList.Name, linkurl: MenuList.LinkUrl, pid: MenuList.PID, fid: MenuList.FID, rank: MenuList.Rank, status: MenuList.Status, imlevel: MenuList.ImportantLevel },
+                data: { name: MenuList.Name, linkurl: MenuList.LinkUrl, pid: MenuList.PID, code: MenuList.Code, status: MenuList.Status},
                 timeout: 200000,
                 success: function (ajaxData) {
                     if (ajaxData === "True") {
@@ -148,7 +149,7 @@ function updateItem(updatetype) {
             $.ajax({
                 type: 'POST',
                 url: Config.WebUrl + 'Ajax_Menu/UpdateMenu',
-                data: { id: MenuList.ID, name: MenuList.Name, linkurl: MenuList.LinkUrl, rank: MenuList.Rank, status: MenuList.Status, imlevel: MenuList.ImportantLevel },
+                data: { id: MenuList.ID, name: MenuList.Name, linkurl: MenuList.LinkUrl, code: MenuList.Code, status: MenuList.Status },
                 timeout: 200000,
                 success: function (ajaxData) {
                     if (ajaxData === "True") {

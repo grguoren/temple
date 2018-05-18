@@ -75,7 +75,7 @@ namespace Temple.Admin.Base
                     user = userse.GetUserInfoByID(memberID);
                     model.Id = memberID;
                     model.NickName = user.FileName;
-                    model.UserName = user.UserName;
+                    model.UserName = user.Name;
 
                     CurrentCache.Insert(model.Id, model);
                 }

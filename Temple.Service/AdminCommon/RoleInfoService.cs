@@ -12,22 +12,30 @@ namespace Temple.Service
     public partial class RoleInfoService : IRoleInfoService
     {
         private readonly IRepository<Role> _roleRepository;
-        private readonly IRepository<UserRole> _roleuserRepository;
+        private readonly IRepository<User_Role> _roleuserRepository;
 
         public RoleInfoService(IUnitOfWork unitofwork)
         {
             this._roleRepository = unitofwork.Repository<Role>();
-            this._roleuserRepository = unitofwork.Repository<UserRole>();
+            this._roleuserRepository = unitofwork.Repository<User_Role>();
         }
 
         /// <summary>
         /// 获取所有角色列表
         /// </summary>
         /// <returns></returns>
-        public List<Domain.Role> GetAllRoleList()
+        public List<Domain.Role> GetAllRoleList(int status = 1)
         {
             var query = this._roleRepository.Entities;
-            query = query.Where(x => x.Status == true);
+            if (status == 1)
+            {
+                query = query.Where(x => x.Status == true);
+            }
+            else if (status == 0)
+            {
+                query = query.Where(x => x.Status == false);
+            }
+           
             return query.ToList();
         }
         /// <summary>
@@ -41,7 +49,7 @@ namespace Temple.Service
             {
                 throw new ArgumentNullException("角色对象不能为空");
             }
-            if (string.IsNullOrEmpty(info.RoleName))
+            if (string.IsNullOrEmpty(info.Name))
             {
                 throw new ArgumentNullException("角色名称不能为空");
             }
@@ -92,16 +100,16 @@ namespace Temple.Service
         public void AddRoleUser(string[] RoleIDs, int UserID)
         {
             var query = this._roleuserRepository.Entities;
-            query = query.Where(x => x.UserId == UserID);
+            query = query.Where(x => x.User_Id == UserID);
             if (query.ToList() != null && query.Count() > 0)
             {
                 this._roleuserRepository.Delete(query);
             }
             foreach (var item in RoleIDs)
             {
-                UserRole info = new UserRole();
-                info.RoleId = Convert.ToInt32(item);
-                info.UserId = UserID;
+                User_Role info = new User_Role();
+                info.Role_Id = Convert.ToInt32(item);
+                info.User_Id = UserID;
                 this._roleuserRepository.Insert(info);
             }
         }
@@ -110,10 +118,10 @@ namespace Temple.Service
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        public List<UserRole> GetRole_UserListByUserID(int UserID)
+        public List<User_Role> GetRole_UserListByUserID(int UserID)
         {
             var query = this._roleuserRepository.Entities;
-            query = query.Where(x => x.UserId == UserID);
+            query = query.Where(x => x.User_Id == UserID);
             return query.ToList();
         }
         /// <summary>
@@ -123,7 +131,7 @@ namespace Temple.Service
         public void DeleteRoleUser(int UserID)
         {
             var query = this._roleuserRepository.Entities;
-            query = query.Where(x => x.UserId == UserID);
+            query = query.Where(x => x.User_Id == UserID);
             if (query.ToList() != null && query.Count() > 0)
             {
                 this._roleRepository.Delete(query);

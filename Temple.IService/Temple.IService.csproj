@@ -43,6 +43,7 @@
     <Compile Include="AdminCommon\IMenuInfoService.cs" />
     <Compile Include="AdminCommon\IRoleInfoService.cs" />
     <Compile Include="AdminCommon\IUserInfoService.cs" />
+    <Compile Include="IBasicService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

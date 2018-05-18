@@ -56,8 +56,8 @@
                     <tr ms-if="!ListNoData"><td colspan="18" style="text-align:center;">對不起,沒有數據!</td></tr>
                     <tr ms-repeat="array" ms-visible="ListLoading">
                         
-                        <td>{{el.UserId}} </td> 
-                        <td>{{el.UserName}}</td>
+                        <td>{{el.Account}} </td> 
+                        <td>{{el.Name}}</td>
                         <td>{{el.Mobile}}</td> 
                         <td><span ms-class-red="el.Status == true">{{el.Status == true ? "啟用" : "停用"}}</span></td>
                         <td>
@@ -108,6 +108,19 @@
                             <input type="text" id="form-field-dpartname" placeholder="行動電話" ms-duplex="DepartName" />
                         </div>
                     </div>
+                     <div class="control-group">
+                        <label class="control-label"> 电子发票上传 </label>
+                        <div class="controls">
+                            <input type="file" class="input-sm" id="file" name="file" />
+                             <div ms-widget="preview" id="preview_img_page"></div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <span style="word-break:break-all;" class="middle red">{{imgTip}}</span>
+                            <button type="button" class="btn btn-xs" ms-click="uploadAjaxInfomationImg" ms-visible="viewImgButton">确认上传</button>
+                        </div>
+                    </div>
                     <div class="control-group">
                         <label class="control-label" for="form-field-pwd">密碼</label>
                         <div class="controls">
@@ -125,7 +138,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="setRole_Modal_UserIndex" tabindex="-1" role="dialog" style="margin-top:170px;">
+    <div class="modal fade" id="setRole_Modal_UserIndex" tabindex="-1" role="dialog" style="margin-top:100px;">
         <div class="modal-dialog">
             <div class="modal-content" style="width:500px;">
                 <div class="modal-header no-padding">
@@ -141,7 +154,7 @@
                         <div class="checkbox" ms-repeat="RoleDom.roleList">
                             <label>
                                 <input name="form-field-checkbox" type="checkbox" class="ace" ms-duplex-string="RoleDom.selectList" ms-attr-value="el.Id" />
-                                <span class="lbl"> {{el.RoleName}}</span>
+                                <span class="lbl"> {{el.Name}}</span>
                             </label>
                         </div>
                     </div>

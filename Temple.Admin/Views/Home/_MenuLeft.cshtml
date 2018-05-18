@@ -25,7 +25,7 @@
                 <li class="active"  value="@item.Id" >
                     <a href="#" class="dropdown-toggle">
                         <i class="icon-desktop"></i>
-                        <span class="menu-text ">@item.CodeName</span>
+                        <span class="menu-text ">@item.Name</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
@@ -37,7 +37,7 @@
                                     <li @Html.Raw((el.LinkUrl == (controller + "/" + action)) ? "class='active'" : "") >
                                         <a href="@Html.Raw(string.IsNullOrEmpty(el.LinkUrl) ? "javascript:alert('该页面正在建设中,请见谅');" : Url.Content("~/"+ el.LinkUrl ))">
                                             <i class="icon-double-angle-right"></i>
-                                            <span>@el.CodeName</span>
+                                            <span>@el.Name</span>
                                         </a>
                                     </li>
                                 }
@@ -50,7 +50,7 @@
             <li class="active open" value="@item.Id">
                 <a href="#" class="dropdown-toggle">
                     <i class="icon-desktop"></i>
-                    <span class="menu-text ">@item.CodeName</span>
+                    <span class="menu-text ">@item.Name</span>
 
                     <b class="arrow icon-angle-down"></b>
                 </a>
@@ -62,7 +62,7 @@
                             <li @Html.Raw((el.LinkUrl == (controller + "/" + action)) ? "class='active'" : "") >
                                 <a href="@Html.Raw(string.IsNullOrEmpty(el.LinkUrl) ? "javascript:alert('该页面正在建设中,请见谅');" : Url.Content("~/"+ el.LinkUrl))">
                                     <i class="icon-double-angle-right"></i>
-                                    <span >@el.CodeName</span>
+                                    <span >@el.Name</span>
                                 </a>
                             </li>
                         }

@@ -30,9 +30,9 @@ namespace Temple.Admin.Controllers.Ajax
             IPagedList<User> list = userse.GetUserList(page, size, username, FileName);
             foreach (User item in list)
             {
-                if (item.Password.Length >= 16)
+                if (item.Passwd.Length >= 16)
                 {
-                    item.Password = EncryptHelper.Decrypt(item.Password);
+                    item.Passwd = EncryptHelper.Decrypt(item.Passwd);
                 }
             }
             ResultModel model = new ResultModel();
@@ -48,13 +48,13 @@ namespace Temple.Admin.Controllers.Ajax
             User model = new User();
             model.OnBoardDate = DateTime.Now;
             model.FileName = FileName;
-            model.UserId = UserId;
+            model.Account = UserId;
             model.Remark = Remark;
-            model.Password = Password;
-            model.Password = EncryptHelper.Encrypt(Password);
+            model.Passwd = Password;
+            model.Passwd = EncryptHelper.Encrypt(Password);
             model.Status = true;
             model.ResignationDate = model.ResignationDate;
-            model.UserName = UserName;
+            model.Name = UserName;
 
             return userse.AddUser(model).ToString();
         }
@@ -65,12 +65,12 @@ namespace Temple.Admin.Controllers.Ajax
         {
             User model = userse.GetUserInfoByID(ID);
             model.FileName = FileName;
-            model.UserId = UserId;
-            model.Password = Password;
-            model.Password = EncryptHelper.Encrypt(Password);
+            model.Account = UserId;
+            model.Passwd = Password;
+            model.Passwd = EncryptHelper.Encrypt(Password);
             model.Remark = Remark;
             model.ResignationDate = DateTime.Now;
-            model.UserName = UserName;
+            model.Name = UserName;
             return userse.UpdateUser(model).ToString();
         }
 

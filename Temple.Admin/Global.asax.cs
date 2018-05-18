@@ -35,7 +35,8 @@ namespace Temple.Admin
             builder.RegisterType<UserInfoService>().As<IUserInfoService>();
             builder.RegisterType<MenuInfoService>().As<IMenuInfoService>();
             builder.RegisterType<RoleInfoService>().As<IRoleInfoService>();
-            builder.RegisterType<LoggerService>().As<ILoggerService>();
+            builder.RegisterType<LoggerService>().As<ILoggerService>(); 
+            builder.RegisterType<BasicService>().As<IBasicService>();
           
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

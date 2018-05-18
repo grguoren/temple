@@ -17,22 +17,22 @@ namespace Temple.Domain
 		public int  Id { get; set; }
 		
 		/// <summary>
-        /// RoleId
+        /// 角色代碼
         /// </summary>
-		public string  RoleId { get; set; }
+		public string  Code { get; set; }
 		
 		/// <summary>
-        /// RoleName
+        /// 角色名稱
         /// </summary>
-		public string  RoleName { get; set; }
+		public string  Name { get; set; }
 		
 		/// <summary>
-        /// Status
+        /// 狀態  0 關 1 開
         /// </summary>
 		public bool  Status { get; set; }
 		
 		/// <summary>
-        /// Remark
+        /// 備注
         /// </summary>
 		public string  Remark { get; set; }
 		

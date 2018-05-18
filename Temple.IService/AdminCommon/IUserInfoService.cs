@@ -72,5 +72,11 @@ namespace Temple.IService
 
         bool DeleteUserRole(int id);
 
+        List<RolePermission> GetAuthority_RoleListByRoleID(int RoleID);
+
+        void AddAuthorityRole(string[] AuthorityIDs, int RoleID);
+
+        List<SystemPro> GetAllProgramList(int pid);
+
     }
 }

@@ -15,7 +15,7 @@ namespace Temple.IService
         /// <param name="PID"></param>
         /// <returns></returns>
         List<SystemPro> GetAllMenuListByPID(int PID);
-        List<WuxiSystem> GetTopMenuList();
+        List<Temple.Domain.System> GetTopMenuList();
         /// <summary>
         /// 添加菜单
         /// </summary>

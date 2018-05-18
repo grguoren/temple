@@ -60,11 +60,15 @@ namespace Temple.Admin.Controllers.Ajax
             }
             String fileExt = Path.GetExtension(file.FileName).ToLower();//缩略图后缀名
             string sFileName =  DateTime.Now.ToString("yyyyMMddHHmmss_ffff", DateTimeFormatInfo.InvariantInfo) + fileExt;  // 文件名称
-            string FullPath = DirectoryPath + "/" + sFileName;        // 服务器端文件路径
-            upload.SetImageSize(0,0,0,0);
-          
-            string url = upload.OssUpload(file, FullPath);
-
+            string FullPath = Server.MapPath("../") + "UpPic";        // 服务器端文件路径
+            if (!Directory.Exists(FullPath))
+            {
+                Directory.CreateDirectory(FullPath);
+            }
+            //upload.SetImageSize(0,0,0,0);
+            string strpath = Server.MapPath("../") + "UpPic\\" + sFileName;
+            string url = upload.PostUrl + "UpPic/" + sFileName;
+            file.SaveAs(strpath);
        
             if (url==null)
             {
@@ -91,9 +95,15 @@ namespace Temple.Admin.Controllers.Ajax
          
             String fileExt = Path.GetExtension(fileUp.FileName).ToLower();//缩略图后缀名
             string sFileName = DateTime.Now.ToString("yyyyMMddHHmmss_ffff", DateTimeFormatInfo.InvariantInfo) + fileExt;  // 文件名称
-            string FullPath = DirectoryPath + "/" + sFileName;        // 服务器端文件路径
-            string url = upload.OssUpload(fileUp, FullPath);
-
+            string FullPath = Server.MapPath("../") + "UpPic";        // 服务器端文件路径
+            if (!Directory.Exists(FullPath))
+            {
+                Directory.CreateDirectory(FullPath);
+            }
+            //upload.SetImageSize(0,0,0,0);
+            string strpath = Server.MapPath("../") + "UpPic\\" + sFileName;
+            string url = upload.PostUrl + "UpPic/" + sFileName;
+            fileUp.SaveAs(strpath);
 
             if (url == null)
             {
@@ -183,7 +193,7 @@ namespace Temple.Admin.Controllers.Ajax
             }
 
             HttpPostedFileBase file = HttpContext.Request.Files[0];
-
+       
             String fileName = file.FileName;
             String fileExt = Path.GetExtension(fileName).ToLower();
 

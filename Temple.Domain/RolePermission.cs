@@ -12,24 +12,19 @@ namespace Temple.Domain
 	public partial class RolePermission : EntityBase
 	{
 		/// <summary>
-        /// Id
+        /// 主鍵
         /// </summary>
 		public int  Id { get; set; }
 		
 		/// <summary>
-        /// RoleId
+        /// 角色系統序號
         /// </summary>
-		public int ? RoleId { get; set; }
+		public int ? Role_Id { get; set; }
 		
 		/// <summary>
-        /// SysProId
+        /// 程式名稱序號
         /// </summary>
-		public int ? SysProId { get; set; }
-		
-		/// <summary>
-        /// Remark
-        /// </summary>
-		public string  Remark { get; set; }
+		public int ? SysPro_Id { get; set; }
 		
 				
 	}

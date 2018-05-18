@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-基本資料管理系統-" + ViewBag.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        稱謂資料維護作業
+        <small>
+            <i class="icon-double-angle-right"></i>
+            @Html.Raw(ViewBag.PageTitle)
+        </small>
+    </h1>
+</div>
+<div class="row" ms-controller="DataAddOrUpdate">
+    <input type="hidden" id="Id_pageDom" value="@ViewBag.NewDataId" />
+    <div class="col-xs-12">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> <span class="red">*</span>稱謂代號</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Code" maxlength="2" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Code) === ''">{{errorMsg.Code}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>稱謂名稱</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Name" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Name) === ''">{{errorMsg.Name}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span> 狀態 </label>
+                <div class="col-sm-9">
+                    <span><input type="radio" ms-duplex-number="NewModel.Status" value="1" />開啟</span>
+                    <span><input type="radio" ms-duplex-number="NewModel.Status" value="0" />關閉</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> 備注 </label>
+
+                <div class="col-sm-9">
+                    <textarea ms-duplex="NewModel.Remark" class="col-sm-4" rows="6"></textarea>
+                </div>
+            </div>
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-4 col-md-6">
+                    <button class="btn btn-info" type="button" ms-click="addDataFun">
+                        <i class="icon-ok bigger-110"></i>
+                        {{buttonType}}
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn" type="reset">
+                        <i class="icon-undo bigger-110"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

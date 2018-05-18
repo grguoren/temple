@@ -42,7 +42,7 @@ namespace Temple.Admin.Controllers
         public ActionResult _MenuLeft()
         {
             List<MenuView> array = new List<MenuView>();
-            List<WuxiSystem> list = new List<WuxiSystem>();
+            List<Temple.Domain.System> list = new List<Temple.Domain.System>();
             list = menuse.GetTopMenuList();
             if (currentMember != null)
             {
@@ -53,7 +53,7 @@ namespace Temple.Admin.Controllers
                         MenuView model = new MenuView();
                         model.Id = item.Id;
                         model.list = menuse.GetAllMenuListByPID(item.Id);
-                        model.CodeName = item.Name;
+                        model.Name = item.Name;
                         model.Status = item.Status == true ? 1 : 0;
                         array.Add(model);
                     }
@@ -65,7 +65,7 @@ namespace Temple.Admin.Controllers
                         MenuView model = new MenuView();
        
                         model.Id = item.Id;
-                        model.CodeName = item.Name;
+                        model.Name = item.Name;
                         model.Status = item.Status==true?1:0;
   
                         model.list = new List<SystemPro>();
@@ -80,14 +80,14 @@ namespace Temple.Admin.Controllers
   
                         model.Id = item.Id;
                         model.LinkUrl = item.LinkUrl;
-                        model.CodeName = item.CodeName;
+                        model.Name = item.Name;
                         model.Status = item.Status;
-                        model.SysId = item.SysId;
+                        model.System_id = item.System_id;
                         //model.Type = item.Type;
                         //model.UpdateTime = item.UpdateTime;
                         //model.ImportantLevel = item.ImportantLevel;
 
-                        MenuView info = array.Where(x => x.Id == model.SysId).FirstOrDefault();
+                        MenuView info = array.Where(x => x.Id == model.System_id).FirstOrDefault();
                         if (info != null)
                         {
                             info.list.Add(model);

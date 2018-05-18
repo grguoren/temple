@@ -2,22 +2,30 @@
 var RoleList = avalon.define('roleList', function (vm) {
     vm.updatetype = "添加";
     vm.Name = "";
-    vm.Describe = "";
+    vm.Remark = "";
+    vm.Code = "";
+    vm.Status = 1;
+    vm.SystemId = 1;
     vm.ID = 0;
     vm.array = [];
+    vm.sysList = [];
     vm.add = function () {
         if (vm.updatetype == "修改") {
             vm.Name = "";
-            vm.Describe = "";
+            vm.Remark = "";
+            vm.Code = "";
+            vm.Status = 1;
         }
         vm.ID = 0;
         vm.updatetype = "添加";
     };
     vm.edit = function (item) {
         vm.updatetype = "修改";
-        vm.ID = item.ID;
+        vm.ID = item.Id;
         vm.Name = item.Name;
-        vm.Describe = item.Describe
+        vm.Code = item.Code;
+        vm.Remark = item.Remark;
+        vm.Status = item.Status == true ? 1 : 0;
     };
     vm.update = function () {
         updateItem(vm.updatetype);
@@ -26,7 +34,7 @@ var RoleList = avalon.define('roleList', function (vm) {
         $.ajax({
             type: 'POST',
             url: Config.WebUrl + 'Ajax_Role/GetRoleList',
-            data: { },
+            data: { pid:2},
             timeout: 200000,
             success: function (ajaxData) {
                 if (ajaxData.Status == true) {
@@ -54,6 +62,22 @@ var RoleList = avalon.define('roleList', function (vm) {
             return false;
         }
     };
+
+    vm.getSystemList = function () {
+        $.ajax({
+            type: 'POST',
+            url: Config.WebUrl + 'Ajax_Menu/GetTopMenuList',
+            data: {},
+            timeout: 200000,
+            success: function (ajaxData) {
+                if (ajaxData.Status == true) {
+                    vm.sysList = ajaxData.Data;
+                }
+            },
+            dataType: 'json'
+        });
+    };
+
     vm.formatStr = function (str) {
         str = str.length >= 10 ? str.substring(0, 10) + "..." : str;
         return str;
@@ -65,30 +89,11 @@ var RoleList = avalon.define('roleList', function (vm) {
         authorityList: [],
         selectList: []
     };
-    vm.updateAuthorityRole = function () {
+    vm.changeSystem = function () {
         $.ajax({
             type: 'POST',
-            url: Config.WebUrl + 'Ajax_Authority/AddAuthority_Role',
-            data: { authorityids: vm.authorityDom.selectList.toString(), roleid: vm.authorityDom.roleID },
-            timeout: 200000,
-            success: function (ajaxData) {
-                if (ajaxData === "True") {
-                    $('#setAuthority_Modal_RoleIndex').modal('hide');
-                }
-                else {
-                    alert("设置权限失败,请重新保存,或者稍后再试...");
-                }
-            },
-            dataType: 'text'
-        });
-    };
-    vm.getAuthority = function (obj) {
-        vm.authorityDom.roleID = obj.ID;
-        vm.authorityDom.roleName = obj.Name;
-        $.ajax({
-            type: 'POST',
-            url: Config.WebUrl + 'Ajax_Authority/GetAuthorityList',
-            data: { pid: 0 },
+            url: Config.WebUrl + 'Ajax_Role/GetProgramList',
+            data: { pid: vm.SystemId },
             timeout: 200000,
             success: function (ajaxData) {
                 vm.authorityDom.authorityList = ajaxData.Data;
@@ -97,8 +102,49 @@ var RoleList = avalon.define('roleList', function (vm) {
         });
         $.ajax({
             type: 'POST',
-            url: Config.WebUrl + 'Ajax_Authority/GetAuthority_RoleList',
-            data: { roleid: obj.ID },
+            url: Config.WebUrl + 'Ajax_Role/GetProgram_RoleList',
+            data: { roleid: vm.authorityDom.roleID },
+            timeout: 200000,
+            success: function (ajaxData) {
+                vm.authorityDom.selectList = ajaxData.Data;
+            },
+            dataType: 'json'
+        });
+    };
+    vm.updateAuthorityRole = function () {
+        $.ajax({
+            type: 'POST',
+            url: Config.WebUrl + 'Ajax_Role/AddProgramList_Role',
+            data: { authorityids: vm.authorityDom.selectList.toString(), roleid: vm.authorityDom.roleID },
+            timeout: 200000,
+            success: function (ajaxData) {
+                if (ajaxData === "True") {
+                    $('#setAuthority_Modal_RoleIndex').modal('hide');
+                }
+                else {
+                    alert("設置程式失敗,請重新保存,或者稍后再試...");
+                }
+            },
+            dataType: 'text'
+        });
+    };
+    vm.getAuthority = function (obj) {
+        vm.authorityDom.roleID = obj.Id;
+        vm.authorityDom.roleName = obj.Name;
+        $.ajax({
+            type: 'POST',
+            url: Config.WebUrl + 'Ajax_Role/GetProgramList',
+            data: { pid: vm.SystemId },
+            timeout: 200000,
+            success: function (ajaxData) {
+                vm.authorityDom.authorityList = ajaxData.Data;
+            },
+            dataType: 'json'
+        });
+        $.ajax({
+            type: 'POST',
+            url: Config.WebUrl + 'Ajax_Role/GetProgram_RoleList',
+            data: { roleid: obj.Id },
             timeout: 200000,
             success: function (ajaxData) {
                 vm.authorityDom.selectList = ajaxData.Data;
@@ -108,8 +154,9 @@ var RoleList = avalon.define('roleList', function (vm) {
     };
     /**设置权限的各个操作对象---(avalonJS不能直接给对象添加新属性,但是可以给对象的属性添加子属性,另外添加属性在IE6-8会出现异常需要特殊处理,所以尽量不要采用添加属性的方式,详见官网API)**/
 });
-RoleList.getList();
 avalon.scan();
+RoleList.getList();
+RoleList.getSystemList();
 
 function updateItem(updatetype) {
     if (updatetype == "添加") {
@@ -117,13 +164,14 @@ function updateItem(updatetype) {
             $.ajax({
                 type: 'POST',
                 url: Config.WebUrl + 'Ajax_Role/AddRole',
-                data: { name: RoleList.Name, describe: RoleList.Describe },
+                data: { name: RoleList.Name, Remark: RoleList.Remark,code :RoleList.Code,status : RoleList.Status},
                 timeout: 200000,
                 success: function (ajaxData) {
                     if (ajaxData === "True") {
                         $('#updateRole_Modal').modal('hide');
                         RoleList.Name = "";
-                        RoleList.Describe = "";
+                        RoleList.Remark = "";
+                        RoleList.Code = "";
                         RoleList.getList();
                     }
                 },
@@ -136,10 +184,11 @@ function updateItem(updatetype) {
     }
     if (updatetype == "修改") {
         if (RoleList.Name !== "") {
+            console.log(RoleList);
             $.ajax({
                 type: 'POST',
                 url: Config.WebUrl + 'Ajax_Role/UpdateRole',
-                data: { id: RoleList.ID, name: RoleList.Name, describe: RoleList.Describe },
+                data: { id: RoleList.ID, name: RoleList.Name, Remark: RoleList.Remark, code: RoleList.Code, status: RoleList.Status },
                 timeout: 200000,
                 success: function (ajaxData) {
                     if (ajaxData === "True") {

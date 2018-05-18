@@ -17,47 +17,47 @@ namespace Temple.Domain
 		public int  Id { get; set; }
 		
 		/// <summary>
-        /// 使用者帐号
+        /// 使用者帳號
         /// </summary>
-		public string  UserId { get; set; }
+		public string  Account { get; set; }
 		
 		/// <summary>
-        /// 使用者姓名
+        /// 使用者名稱
         /// </summary>
-		public string  UserName { get; set; }
+		public string  Name { get; set; }
 		
 		/// <summary>
-        /// 移动手机
+        /// 行動電話
         /// </summary>
 		public string  Mobile { get; set; }
 		
 		/// <summary>
-        /// 到职日期
+        /// 到職日期
         /// </summary>
 		public DateTime  OnBoardDate { get; set; }
 		
 		/// <summary>
-        /// 离职日期
+        /// 離職日期
         /// </summary>
         public DateTime? ResignationDate { get; set; }
 		
 		/// <summary>
-        /// 密码
+        /// 密碼
         /// </summary>
-		public string  Password { get; set; }
+		public string  Passwd { get; set; }
 		
 		/// <summary>
-        /// 状态 0 关 1 开
+        /// 狀態 0 關 1 開
         /// </summary>
 		public bool  Status { get; set; }
 		
 		/// <summary>
-        /// 备注
+        /// 備注
         /// </summary>
 		public string  Remark { get; set; }
 		
 		/// <summary>
-        /// 图片路径
+        /// 照片路徑
         /// </summary>
 		public string  FileName { get; set; }
 		

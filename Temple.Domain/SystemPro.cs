@@ -7,7 +7,7 @@ using Temple.Core.Entity;
 namespace Temple.Domain
 {
 	/// <summary>
-    /// 程序名称
+    /// SystemPro
     /// </summary>
 	public partial class SystemPro : EntityBase
 	{
@@ -17,31 +17,34 @@ namespace Temple.Domain
 		public int  Id { get; set; }
 		
 		/// <summary>
-        /// SysId
+        /// 序號
         /// </summary>
-		public int ? SysId { get; set; }
+		public int  System_id { get; set; }
 		
 		/// <summary>
-        /// SysCode
+        /// 系統名稱代號
         /// </summary>
-		public string  SysCode { get; set; }
+		public string  Code { get; set; }
 		
 		/// <summary>
-        /// CodeName
+        /// 程式名稱
         /// </summary>
-		public string  CodeName { get; set; }
-
-        public string LinkUrl { get; set; }
+		public string  Name { get; set; }
 		
 		/// <summary>
-        /// Status 1 显示，0 关闭
+        /// 狀態 0 關 1 開
         /// </summary>
 		public int ? Status { get; set; }
 		
 		/// <summary>
-        /// Remark
+        /// 備注
         /// </summary>
 		public string  Remark { get; set; }
+		
+		/// <summary>
+        /// 程式鏈接
+        /// </summary>
+		public string  LinkUrl { get; set; }
 		
 				
 	}

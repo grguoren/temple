@@ -142,12 +142,14 @@
     <Compile Include="Common\SystemCountBrandCache.cs" />
     <Compile Include="Common\SystemCountCache.cs" />
     <Compile Include="Common\WeixinHelper.cs" />
+    <Compile Include="Controllers\AccountManageController.cs" />
     <Compile Include="Controllers\ActiveManageController.cs" />
     <Compile Include="Controllers\Ajax\Admin\Ajax_AuthorityController.cs" />
     <Compile Include="Controllers\Ajax\Admin\Ajax_LogController.cs" />
     <Compile Include="Controllers\Ajax\Admin\Ajax_MenuController.cs" />
     <Compile Include="Controllers\Ajax\Admin\Ajax_RoleController.cs" />
     <Compile Include="Controllers\Ajax\Admin\Ajax_UserController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_AccountController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_AboutController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_ArticleController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_CityController.cs" />
@@ -159,7 +161,10 @@
     <Compile Include="Controllers\Ajax\Ajax_MessageController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_MyUserController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_SignController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_PaymentController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_TitleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BasicManageController.cs" />
     <Compile Include="Controllers\CityManageController.cs" />
     <Compile Include="Controllers\CourseManageController.cs" />
     <Compile Include="Controllers\EnterManageController.cs" />
@@ -168,7 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MoneyManageController.cs" />
-    <Compile Include="Controllers\SignManageController.cs" />
+    <Compile Include="Controllers\ServiceManageController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -739,7 +744,15 @@
     <Content Include="Scripts\My97DatePicker\skin\whyGreen\datepicker.css" />
     <Content Include="Scripts\My97DatePicker\skin\whyGreen\img.gif" />
     <Content Include="Scripts\My97DatePicker\WdatePicker.js" />
+    <Content Include="Scripts\Page\AccountManage\AccountAdd.js" />
+    <Content Include="Scripts\Page\AccountManage\AccountList.js" />
+    <Content Include="Scripts\Page\AccountManage\ServiceAdd.js" />
+    <Content Include="Scripts\Page\AccountManage\ServiceList.js" />
     <Content Include="Scripts\Page\ActiveManage\LiveTicket.js" />
+    <Content Include="Scripts\Page\BasicManage\AddTitle.js" />
+    <Content Include="Scripts\Page\BasicManage\Payment.js" />
+    <Content Include="Scripts\Page\BasicManage\PaymentAdd.js" />
+    <Content Include="Scripts\Page\BasicManage\Title.js" />
     <Content Include="Scripts\Page\CityManage\List.js" />
     <Content Include="Scripts\Page\CourseManage\AdviceList.js" />
     <Content Include="Scripts\Page\CourseManage\CourseAdd.js" />
@@ -760,8 +773,8 @@
     <Content Include="Scripts\Page\MoneyManage\Consume.js" />
     <Content Include="Scripts\Page\ShareManage\List.js" />
     <Content Include="Scripts\Page\ShareManage\RecruitList.js" />
-    <Content Include="Scripts\Page\SignManage\Add.js" />
-    <Content Include="Scripts\Page\SignManage\List.js" />
+    <Content Include="Scripts\Page\ServiceManage\Add.js" />
+    <Content Include="Scripts\Page\ServiceManage\List.js" />
     <Content Include="Scripts\Page\System\AuthorityIndex.js" />
     <Content Include="Scripts\Page\System\ErrorCorrect.js" />
     <Content Include="Scripts\Page\System\LogList.js" />
@@ -1042,6 +1055,16 @@
     <Content Include="signuser.xls" />
     <Content Include="Views\SignManage\DaoRu.cshtml" />
     <Content Include="Views\SignManage\Add.cshtml" />
+    <Content Include="Views\BasicManage\Payment.cshtml" />
+    <Content Include="Views\BasicManage\Add.cshtml" />
+    <Content Include="Views\BasicManage\AddTitle.cshtml" />
+    <Content Include="Views\BasicManage\Title.cshtml" />
+    <Content Include="Views\AccountManage\AccountList.cshtml" />
+    <Content Include="Views\AccountManage\AccountAdd.cshtml" />
+    <Content Include="Views\AccountManage\ServiceList.cshtml" />
+    <Content Include="Views\AccountManage\ServiceAdd.cshtml" />
+    <Content Include="Views\ServiceManage\List.cshtml" />
+    <Content Include="Views\ServiceManage\Add.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

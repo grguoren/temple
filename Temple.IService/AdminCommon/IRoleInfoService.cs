@@ -13,7 +13,7 @@ namespace Temple.IService
         /// 获取所有角色列表
         /// </summary>
         /// <returns></returns>
-        List<Role> GetAllRoleList();
+        List<Role> GetAllRoleList(int status = 1);
 
         /// <summary>
         /// 添加角色
@@ -56,7 +56,7 @@ namespace Temple.IService
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        List<UserRole> GetRole_UserListByUserID(int UserID);
+        List<User_Role> GetRole_UserListByUserID(int UserID);
 
         /// <summary>
         /// 删除用户下关联的角色
