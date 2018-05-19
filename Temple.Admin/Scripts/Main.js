@@ -56,17 +56,17 @@ require(['bootbox', 'publicCommon'], function () {
                 }
 
                 //用户管理模块
-                //if (urlStr.indexOf("/System/UserIndex") > -1) {
-                //    require([Config.WebUrl + 'Scripts/Page/System/UserIndex.js?' + Math.random()], function () {
-                //        avalon.log("用户管理模块加载成功...");
-                //    });
-                //}
-                else if (urlStr.indexOf("/System/UserIndex") > -1) {
+                if (urlStr.indexOf("/System/UserIndex") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/System/UserIndex.js?' + Math.random()], function () {
+                        avalon.log("用户管理模块加载成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/System/UserAdd") > -1) {
                     require([Config.WebUrl + 'Scripts/CommonHelper/PreviewHelper/avalon.preview.js',
                     , Config.WebUrl + 'Scripts/CommonHelper/KindeditorHelper/avalon.kindeditor.js',
                     Config.WebUrl + 'Scripts/Lib/ajaxfileupload/ajaxfileupload.js'], function () {
-                        require([Config.WebUrl + 'Scripts/Page//System/UserIndex.js?' + Math.random()]);
-                        avalon.log("系統管理--用户管理模块加载成功...");
+                        require([Config.WebUrl + 'Scripts/Page//System/UserAdd.js?' + Math.random()]);
+                        avalon.log("系統管理--用户管理模块編輯加载成功...");
                     });
                 }
 

@@ -783,6 +783,7 @@
     <Content Include="Scripts\Page\System\RoleIndex.js" />
     <Content Include="Scripts\Page\System\SalesIndex.js" />
     <Content Include="Scripts\Page\System\SmSLogList.js" />
+    <Content Include="Scripts\Page\System\UserAdd.js" />
     <Content Include="Scripts\Page\System\UserIndex.js" />
     <Content Include="Scripts\Public.js" />
     <Content Include="Web.config">
@@ -1065,6 +1066,7 @@
     <Content Include="Views\AccountManage\ServiceAdd.cshtml" />
     <Content Include="Views\ServiceManage\List.cshtml" />
     <Content Include="Views\ServiceManage\Add.cshtml" />
+    <Content Include="Views\System\UserAdd.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

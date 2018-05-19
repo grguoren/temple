@@ -27,6 +27,12 @@ namespace Temple.Admin.Controllers
             return View();
         }
 
+        public ActionResult UserAdd(int? id)
+        {
+            ViewBag.PageTitle = id.HasValue ? "編輯使用者基本資料" : "新增使用者基本資料";
+            ViewBag.NewDataId = id.HasValue ? id.Value : 0;
+            return View();
+        }
 
         public ActionResult MenuIndex()
         {

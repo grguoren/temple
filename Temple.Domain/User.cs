@@ -34,7 +34,7 @@ namespace Temple.Domain
 		/// <summary>
         /// 到職日期
         /// </summary>
-		public DateTime  OnBoardDate { get; set; }
+        public DateTime OnBoardDate { get; set; }
 		
 		/// <summary>
         /// 離職日期

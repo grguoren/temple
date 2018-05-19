@@ -139,9 +139,9 @@ namespace Temple.Admin.Controllers
                     {
                         Temple.Admin.Models.LoginMember.CurrentModel model = new Temple.Admin.Models.LoginMember.CurrentModel();
 
-                        user = userse.GetUserInfoByID(user.Id);
-                        user.OnBoardDate = DateTime.Now;//记录最近登陆时间
-                        userse.UpdateUser(user);
+                        //user = userse.GetUserInfoByID(user.Id);
+                        //user.OnBoardDate = DateTime.Now;//记录最近登陆时间
+                        //userse.UpdateUser(user);
                         model.Id = user.Id;
                         model.NickName = user.Name;
                         model.UserName = user.Account;

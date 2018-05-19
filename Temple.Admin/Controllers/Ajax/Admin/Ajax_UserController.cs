@@ -43,35 +43,51 @@ namespace Temple.Admin.Controllers.Ajax
         }
 
         [HttpPost]
-        public string AddUser(string UserId,string UserName, string FileName, string Remark, string Password)
+        public string AddUser(string jsonModel)
         {
+       
+            bool res = false;
             User model = new User();
-            model.OnBoardDate = DateTime.Now;
-            model.FileName = FileName;
-            model.Account = UserId;
-            model.Remark = Remark;
-            model.Passwd = Password;
-            model.Passwd = EncryptHelper.Encrypt(Password);
-            model.Status = true;
-            model.ResignationDate = model.ResignationDate;
-            model.Name = UserName;
-
-            return userse.AddUser(model).ToString();
+            model = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(jsonModel);
+            if (model.OnBoardDate != null)
+            {
+                model.OnBoardDate = StringHelper.TwDateToWestDate(model.OnBoardDate.ToString());
+            }
+   
+            model.Passwd = EncryptHelper.Encrypt(model.Passwd);
+            res = userse.AddUser(model);
+            return res.ToString();
         }
         
 
         [HttpPost]
-        public string UpdateUser(int ID, string UserId, string UserName,string ResignationDate, string FileName, string Remark, string Password)
+        public string UpdateUser(string jsonModel)
         {
-            User model = userse.GetUserInfoByID(ID);
-            model.FileName = FileName;
-            model.Account = UserId;
-            model.Passwd = Password;
-            model.Passwd = EncryptHelper.Encrypt(Password);
-            model.Remark = Remark;
-            model.ResignationDate = DateTime.Now;
-            model.Name = UserName;
+            bool res = false;
+            User model = new User();
+            model = Newtonsoft.Json.JsonConvert.DeserializeObject<User>(jsonModel);
+            User info = userse.GetUserInfoByID(model.Id);
+
+            info.FileName = !string.IsNullOrEmpty(model.FileName)?model.FileName:"";
+            info.Account = model.Account;
+            info.Passwd = EncryptHelper.Encrypt(model.Passwd);
+            info.Remark = model.Remark;
+            if (model.ResignationDate != null)
+            {
+                info.ResignationDate = DateTime.Now;
+            }
+            info.Name = model.Name;
             return userse.UpdateUser(model).ToString();
+        }
+
+        [HttpPost]
+        public JsonResult GetUserById(int id)
+        {
+            User model = userse.GetUserInfoByID(id);
+            model.Passwd = EncryptHelper.Decrypt(model.Passwd);
+            //model.OnBoardDate = Convert.ToDateTime(StringHelper.WestDateToTwDate(model.OnBoardDate.ToString()));
+
+            return Json(model);
         }
 
         [HttpPost]

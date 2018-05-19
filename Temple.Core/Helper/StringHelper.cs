@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -792,5 +793,36 @@ namespace System
             cs.FlushFinalBlock();
             return Encoding.Default.GetString(ms.ToArray());
         }
+
+        /// <summary>
+        /// 民國日期轉西元日期
+        /// </summary>
+        /// <param name="twdate">民國日期：101/02/29</param>
+        /// <returns></returns>
+        public static DateTime TwDateToWestDate(string twdate)
+        {
+            string sampleDate = twdate;
+            CultureInfo culture = new CultureInfo("zh-TW");
+            culture.DateTimeFormat.Calendar = new TaiwanCalendar();
+            var rel = DateTime.Parse(sampleDate, culture);
+            return rel;
+        }
+
+        /// <summary>
+        /// 西元日期轉民國日期
+        /// </summary>
+        /// <param name="westdate">西元日期: 2012-2-29</param>
+        /// <returns></returns>
+        public static string WestDateToTwDate(string westdate)
+        {
+            string sampleDate = westdate;
+            DateTime dt = DateTime.Parse(sampleDate);
+            CultureInfo culture = new CultureInfo("zh-TW");
+            culture.DateTimeFormat.Calendar = new TaiwanCalendar();
+            var rel = dt.ToString("yyy/MM/dd", culture);
+            return rel;
+        }
+
+
     }
 }

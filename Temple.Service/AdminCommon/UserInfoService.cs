@@ -65,10 +65,6 @@ namespace Temple.Service
             {
                 throw new ArgumentNullException("用户账号不能为空");
             }
-            if (string.IsNullOrEmpty(info.FileName))
-            {
-                throw new ArgumentNullException("用户名称不能为空");
-            }
             if (string.IsNullOrEmpty(info.Passwd))
             {
                 throw new ArgumentNullException("用户密码不能为空");

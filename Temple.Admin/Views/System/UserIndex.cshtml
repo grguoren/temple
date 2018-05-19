@@ -16,7 +16,7 @@
     <div class="span12">
         <div class="table-responsive">
             <div class="well well-lg">
-                <button type="button" class="btn btn-xs btn-success" data-target="#addUser_Modal" data-toggle="modal" ms-click="add()">
+                <button type="button" class="btn btn-xs btn-success" data-target="#addUser_Modal" data-toggle="modal" ms-click="HrefSelf(Config.WebUrl + 'System/UserAdd','')">
                     <i class="icon-plus-sign"></i>
                     新增資料
                 </button>
@@ -61,16 +61,8 @@
                         <td>{{el.Mobile}}</td> 
                         <td><span ms-class-red="el.Status == true">{{el.Status == true ? "啟用" : "停用"}}</span></td>
                         <td>
-                            <button title="設置角色" class="btn btn-xs" ms-click="getRoleList(el)" data-target="#setRole_Modal_UserIndex" data-toggle="modal"><i class="icon-sitemap"></i></button>
-                            @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
-                            { 
-                                <span><button title="編輯" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button></span>
-                            }
-                            else
-                            {
-                            <span ms-if="(el.UserName !='zhihupz')"><button title="編輯" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button></span>
-                            }
-
+                            <button title="設置角色" class="btn btn-xs" ms-click="getRoleList(el)" data-target="#setRole_Modal_UserIndex" data-toggle="modal"><i class="icon-sitemap"></i></button> 
+                            <span><button title="編輯" class="btn btn-xs btn-primary" ms-click="HrefFun('@Url.Content("~/System/UserAdd/")',el.Id)"  ><i class="icon-edit"></i></button></span>
                             <button title="刪除" class="btn btn-xs btn-danger" ms-click="removeUser(el.Id)"><i class="icon-trash"></i></button>
                         </td>
                     </tr>
@@ -80,63 +72,6 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="addUser_Modal" tabindex="-1" role="dialog" style="margin-top:170px;">
-        <div class="modal-dialog">
-            <div class="modal-content" style="width:230px;">
-                <div class="modal-header no-padding">
-                    <div class="table-header" style="line-height:32px;">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        {{type}}用戶
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="control-group">
-                        <label class="control-label" for="form-field-username">使用者帳號</label>
-                        <div class="controls">
-                            <input type="text" id="form-field-username" placeholder="使用者帳號" ms-duplex="UserName" />
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="form-field-nickname">使用者名稱</label>
-                        <div class="controls">
-                            <input type="text" id="form-field-nickname" placeholder="使用者名稱" ms-duplex="NickName" />
-                        </div>
-                    </div>
-                     <div class="control-group">
-                        <label class="control-label" for="form-field-nickname">行動電話</label>
-                        <div class="controls">
-                            <input type="text" id="form-field-dpartname" placeholder="行動電話" ms-duplex="DepartName" />
-                        </div>
-                    </div>
-                     <div class="control-group">
-                        <label class="control-label"> 电子发票上传 </label>
-                        <div class="controls">
-                            <input type="file" class="input-sm" id="file" name="file" />
-                             <div ms-widget="preview" id="preview_img_page"></div>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <span style="word-break:break-all;" class="middle red">{{imgTip}}</span>
-                            <button type="button" class="btn btn-xs" ms-click="uploadAjaxInfomationImg" ms-visible="viewImgButton">确认上传</button>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="form-field-pwd">密碼</label>
-                        <div class="controls">
-                            <input type="text" id="form-field-pwd" placeholder="密碼" ms-duplex="PWD" />
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">關閉</button>
-         
-                        <button type="button" class="btn btn-primary btn-sm" ms-click="update()">{{type}}</button>
-                          
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="modal fade" id="setRole_Modal_UserIndex" tabindex="-1" role="dialog" style="margin-top:100px;">
         <div class="modal-dialog">
