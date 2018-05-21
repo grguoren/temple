@@ -160,7 +160,7 @@
     <Compile Include="Controllers\Ajax\Ajax_GeneralizeController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_MessageController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_MyUserController.cs" />
-    <Compile Include="Controllers\Ajax\Ajax_SignController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_ServiceController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_PaymentController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_TitleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -771,6 +771,8 @@
     <Content Include="Scripts\Page\Menu\LeftMenu.html" />
     <Content Include="Scripts\Page\Menu\LeftMenu.js" />
     <Content Include="Scripts\Page\MoneyManage\Consume.js" />
+    <Content Include="Scripts\Page\ServiceManage\PictureAdd.js" />
+    <Content Include="Scripts\Page\ServiceManage\PictureList.js" />
     <Content Include="Scripts\Page\ShareManage\List.js" />
     <Content Include="Scripts\Page\ShareManage\RecruitList.js" />
     <Content Include="Scripts\Page\ServiceManage\Add.js" />
@@ -1067,6 +1069,8 @@
     <Content Include="Views\ServiceManage\List.cshtml" />
     <Content Include="Views\ServiceManage\Add.cshtml" />
     <Content Include="Views\System\UserAdd.cshtml" />
+    <Content Include="Views\ServiceManage\PictureList.cshtml" />
+    <Content Include="Views\ServiceManage\PictureAdd.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

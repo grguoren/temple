@@ -69,8 +69,6 @@ require(['bootbox', 'publicCommon'], function () {
                         avalon.log("系統管理--用户管理模块編輯加载成功...");
                     });
                 }
-
-
                     //省份城市管理--城市列表
                 else if (urlStr.indexOf("/CityManage/List") > -1) {
                     require([Config.WebUrl + 'Scripts/Page/CityManage/List.js?' + Math.random()], function () {
@@ -130,7 +128,40 @@ require(['bootbox', 'publicCommon'], function () {
                         avalon.log("服務項目管理編輯模塊加載成功...");
                     });
                 }
+                    //相片管理模块--相片列表
+                else if (urlStr.indexOf("/ServiceManage/PictureList") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/ServiceManage/PictureList.js?' + Math.random()], function () {
+                        avalon.log("祭拜圖片管理列表模塊加載成功...");
+                        require([Config.WebUrl + 'Scripts/Lib/highslide/highslide-with-gallery.js'], function () {
+                            hs.graphicsDir = Config.WebUrl + 'Scripts/Lib/highslide/graphics/';
+                            hs.align = 'center';
+                            hs.transitions = ['expand', 'crossfade'];
+                            hs.outlineType = 'rounded-white';
+                            hs.fadeInOut = true;
+                            hs.showCredits = false;
+                            hs.addSlideshow({
+                                interval: 5000,
+                                repeat: false,
+                                useControls: true,
+                                fixedControls: 'fit',
+                                overlayOptions: {
+                                    opacity: .75,
+                                    position: 'bottom center',
+                                    hideOnMouseOut: true
+                                }
+                            });
+                        });
+                    });
+                }
 
+                else if (urlStr.indexOf("/ServiceManage/PictureAdd") > -1) {
+                    require([Config.WebUrl + 'Scripts/CommonHelper/PreviewHelper/avalon.preview.js',
+                    , Config.WebUrl + 'Scripts/CommonHelper/KindeditorHelper/avalon.kindeditor.js',
+                    Config.WebUrl + 'Scripts/Lib/ajaxfileupload/ajaxfileupload.js'], function () {
+                        require([Config.WebUrl + 'Scripts/Page//ServiceManage/PictureAdd.js?' + Math.random()]);
+                        avalon.log("祭拜圖片管理編輯加载成功...");
+                    });
+                }
                 else if (urlStr.indexOf("/ServiceManage/List") > -1) {
                     require([Config.WebUrl + 'Scripts/Page/ServiceManage/List.js?' + Math.random()], function () {
                         avalon.log("功德項目管理列表模塊加載成功...");

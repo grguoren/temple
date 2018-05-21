@@ -4,15 +4,11 @@
         Id: $("#Id_pageDom").val(),
         Name: "",
         Status: 1,
-        Account: "",
-        Mobile: "",
-        OnBoardDate: "",
-        ResignationDate: "",
+        Code: "",
+        Remark: "",
         FileName: "",
-        Passwd:"",
-        Remark: ""
+        Type: 1
     };
-
     vm.viewImgButton = true;
     vm.imgTip = "";
     vm.uploadAjaxInfomationImg = function () {
@@ -30,14 +26,9 @@
     };
     //----------------------------------------------错误信息对象
     vm.errorMsg = {
-        Account: "請填寫使用者帳號",
-        Name: "請填寫使用者名稱",
-        Mobile: "請填寫行動電話",
-        OnBoardDate: "請填寫到職日期",
-        Passwd: "請填寫密碼",
+        Name: "請填寫圖片名稱",
         Sort: "請填寫正確的數字"
     };
-
     //----------------------------------------------缩略图控件
     vm.preview = {
         fileInput: document.getElementById("file"),
@@ -65,13 +56,13 @@ function AddData_Ajax() {
         var saveData = JSON.stringify(subData);
         $.ajax({
             type: 'POST',
-            url: Config.WebUrl + 'Ajax_User/AddUser',
+            url: Config.WebUrl + 'Ajax_Service/AddPicture',
             data: { jsonModel: saveData },
             timeout: 200000,
             success: function (ajaxData) {
                 if (ajaxData === "True") {
                     alert('添加成功');
-                    location.href = location.href;
+                    location.href = Config.WebUrl + "ServiceManage/PictureList";
                 }
             },
             dataType: 'text'
@@ -84,13 +75,13 @@ function UpdateData_Ajax() {
         var saveData = JSON.stringify(subData);
         $.ajax({
             type: 'POST',
-            url: Config.WebUrl + 'Ajax_User/UpdateUser',
+            url: Config.WebUrl + 'Ajax_Service/UpdatePicture',
             data: { jsonModel: saveData },
             timeout: 200000,
             success: function (ajaxData) {
                 if (ajaxData === "True") {
                     alert('修改成功');
-                    CloseWindow();
+                    location.href = Config.WebUrl + "ServiceManage/PictureList";
                 }
             },
             dataType: 'text'
@@ -100,17 +91,14 @@ function UpdateData_Ajax() {
 function GetDataById_Ajax() {
     $.ajax({
         type: 'POST',
-        url: Config.WebUrl + 'Ajax_User/GetUserById',
+        url: Config.WebUrl + 'Ajax_Service/GetPictureById',
         data: { id: DataAddOrUpdate.NewModel.Id },
         timeout: 200000,
         success: function (ajaxData) {
             DataAddOrUpdate.NewModel.Name = ajaxData.Name;
             DataAddOrUpdate.NewModel.Status = ajaxData.Status == true ? 1 : 0;
-            DataAddOrUpdate.NewModel.Account = ajaxData.Account;
-            DataAddOrUpdate.NewModel.Mobile = ajaxData.Mobile;
-            DataAddOrUpdate.NewModel.OnBoardDate = returntwDate(avalon.filters.date(ajaxData.OnBoardDate, "yyyyMMdd"));
-            DataAddOrUpdate.NewModel.Passwd = ajaxData.Passwd;
-            DataAddOrUpdate.NewModel.ResignationDate = returntwDate(ajaxData.ResignationDate != null ? avalon.filters.date(ajaxData.ResignationDate, "yyyyMMdd") : "");
+            DataAddOrUpdate.NewModel.Type = ajaxData.Type;
+            DataAddOrUpdate.NewModel.Code = ajaxData.Code;
             DataAddOrUpdate.NewModel.Remark = ajaxData.Remark;
             DataAddOrUpdate.NewModel.FileName = ajaxData.FileName;
             DataAddOrUpdate.imgTip = DataAddOrUpdate.NewModel.FileName;
@@ -123,7 +111,7 @@ function GetDataById_Ajax() {
             }
         }, error: function () {
             alert('對不起,沒有數據可以修改!');
-            location.href = Config.WebUrl + "System/UserIndex";
+            location.href = Config.WebUrl + "ServiceManage/PictureList";
         },
         dataType: 'json'
     });
@@ -137,7 +125,7 @@ function UploadImgFun() {
                     secureuri: false, //一般设置为false
                     fileElementId: 'file', //文件上传空间的id属性  <input type="file" id="file" name="file" />
                     dataType: 'json', //返回值类型 一般设置为json
-                    data: { type: "Invoice" },
+                    data: { type: "Picture" },
                     success: function (data, status)  //服务器成功响应处理函数
                     {
                         var args = data.data.split("|");
@@ -159,42 +147,12 @@ function UploadImgFun() {
     return false;
 }
 
-function returntwDate(westdate)
-{
-    if (westdate != "") {
-        var year = westdate.substr(0, 4) - 1911; //获取完整的年份(4位,1970-????)
-        var month = westdate.substr(4, 2); //获取当前月份(0-11,0代表1月)
-        var day = westdate.substr(6, 2); //获取当前日(1-31)
-        return year + "/" + month + "/" + day;
-    }
-    return "";
-
-}
 function InitValidatorDataFun() {
     var check = true;
-    if ($.trim(DataAddOrUpdate.NewModel.Account) === "") {
-        alert(DataAddOrUpdate.errorMsg.Account);
-        check = false;
-    } else if ($.trim(DataAddOrUpdate.NewModel.Name) === "") {
+    if ($.trim(DataAddOrUpdate.NewModel.Name) === "") {
         alert(DataAddOrUpdate.errorMsg.Name);
         check = false;
-    } else if ($.trim(DataAddOrUpdate.NewModel.Mobile) === "") {
-        alert(DataAddOrUpdate.errorMsg.Mobile);
-        check = false;
-    } else if ($.trim(DataAddOrUpdate.NewModel.OnBoardDate) === "") {
-        alert(DataAddOrUpdate.errorMsg.OnBoardDate);
-        check = false;
-    } else if ($.trim(DataAddOrUpdate.NewModel.Passwd) === "") {
-        alert(DataAddOrUpdate.errorMsg.Passwd);
-        check = false;
     }
-
     return check;
-}
-
-function CloseWindow() {
-    window.opener.OpenWindowFunGetList();
-    window.open('', '_parent', '');
-    window.close();
 }
 

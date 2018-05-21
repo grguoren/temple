@@ -53,7 +53,10 @@ namespace Temple.Admin.Controllers.Ajax
             {
                 model.OnBoardDate = StringHelper.TwDateToWestDate(model.OnBoardDate.ToString());
             }
-   
+            if (model.ResignationDate != null)
+            {
+                model.ResignationDate = StringHelper.TwDateToWestDate(model.ResignationDate.ToString());
+            }
             model.Passwd = EncryptHelper.Encrypt(model.Passwd);
             res = userse.AddUser(model);
             return res.ToString();
@@ -72,12 +75,16 @@ namespace Temple.Admin.Controllers.Ajax
             info.Account = model.Account;
             info.Passwd = EncryptHelper.Encrypt(model.Passwd);
             info.Remark = model.Remark;
+            if (model.OnBoardDate != null)
+            {
+                info.OnBoardDate = StringHelper.TwDateToWestDate(model.OnBoardDate.ToString());
+            }
             if (model.ResignationDate != null)
             {
-                info.ResignationDate = DateTime.Now;
+                info.ResignationDate = StringHelper.TwDateToWestDate(model.ResignationDate.ToString());
             }
             info.Name = model.Name;
-            return userse.UpdateUser(model).ToString();
+            return userse.UpdateUser(info).ToString();
         }
 
         [HttpPost]
@@ -85,7 +92,7 @@ namespace Temple.Admin.Controllers.Ajax
         {
             User model = userse.GetUserInfoByID(id);
             model.Passwd = EncryptHelper.Decrypt(model.Passwd);
-            //model.OnBoardDate = Convert.ToDateTime(StringHelper.WestDateToTwDate(model.OnBoardDate.ToString()));
+
 
             return Json(model);
         }

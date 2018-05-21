@@ -33,6 +33,19 @@ namespace Temple.Admin.Controllers
             return View();
         }
 
+        public ActionResult PictureList()
+        {
+            ViewBag.ReplyName = currentMember.UserName;
+            return View();
+        }
+
+        public ActionResult PictureAdd(int? id)
+        {
+            ViewBag.PageTitle = id.HasValue ? "修改祭拜圖片" : "添加祭拜圖片";
+            ViewBag.NewDataId = id.HasValue ? id.Value : 0;
+            return View();
+        }
+
         public ActionResult DaoRu()
         {
             #region
