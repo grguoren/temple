@@ -37,6 +37,13 @@ namespace Temple.Admin
             builder.RegisterType<RoleInfoService>().As<IRoleInfoService>();
             builder.RegisterType<LoggerService>().As<ILoggerService>(); 
             builder.RegisterType<BasicService>().As<IBasicService>();
+
+            builder.RegisterType<AngelService>().As<IAngelService>();
+            builder.RegisterType<CourseService>().As<ICourseService>();
+            builder.RegisterType<FestivalService>().As<IFestivalService>();
+            builder.RegisterType<MemberService>().As<IMemberService>();
+            builder.RegisterType<OtherService>().As<IOtherService>();
+            builder.RegisterType<TreeService>().As<ITreeService>();
           
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

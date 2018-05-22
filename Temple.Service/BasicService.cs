@@ -18,6 +18,7 @@ namespace Temple.Service
         private readonly IRepository<Service_name> _serviceRepository; //服務項目
         private readonly IRepository<Good_project> _goodRepository; //功德項目
         private readonly IRepository<Worship_pictures> _picturesRepository; //祭拜圖片
+        private readonly IRepository<Good_project_service> _goodserviceRepository; //功德服務項目
 
         public BasicService(IUnitOfWork unitofwork)
         {
@@ -27,6 +28,7 @@ namespace Temple.Service
             this._serviceRepository = unitofwork.Repository<Service_name>();
             this._goodRepository = unitofwork.Repository<Good_project>();
             this._picturesRepository = unitofwork.Repository<Worship_pictures>();
+            this._goodserviceRepository = unitofwork.Repository<Good_project_service>();
         }
 
         #region 付款方式 
@@ -280,5 +282,48 @@ namespace Temple.Service
             return this._picturesRepository.GetByKey(id);
         }
         #endregion
+
+        #region 功德服務項目
+        public IPagedList<Good_project_service> GetGoodServiceList(int page, int size)
+        {
+            var query = this._goodserviceRepository.Entities;
+
+            query = query.OrderByDescending(x => x.Id);
+            IPagedList<Good_project_service> list = new PagedList<Good_project_service>(query, page, size);
+            return list;
+        }
+
+        public bool AddGoodService(Good_project_service info)
+        {
+            if (_goodserviceRepository.Entities.Where(x => x.Good_project_id == info.Good_project_id && x.Service_name_id == info.Service_name_id).FirstOrDefault() != null)
+            {
+                return false;
+            }
+            else
+            {
+                return this._goodserviceRepository.Insert(info) > 0;
+            }
+        }
+
+        public bool DeleteGoodService(int id)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentNullException("ID不能小于等于0");
+            }
+            return this._goodserviceRepository.Delete(id) > 0;
+        }
+
+        public bool UpdateGoodService(Good_project_service info)
+        {
+            return this._goodserviceRepository.Update(info) > 0;
+        }
+
+        public Good_project_service GetGoodServiceByID(int id)
+        {
+            return this._goodserviceRepository.GetByKey(id);
+        }
+        #endregion
+
     }
 }

@@ -50,8 +50,14 @@
     <Compile Include="AdminCommon\MenuInfoService.cs" />
     <Compile Include="AdminCommon\RoleInfoService.cs" />
     <Compile Include="AdminCommon\UserInfoService.cs" />
+    <Compile Include="AngelService.cs" />
     <Compile Include="BasicService.cs" />
+    <Compile Include="CourseService.cs" />
+    <Compile Include="FestivalService.cs" />
+    <Compile Include="MemberService.cs" />
+    <Compile Include="OtherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Temple.Core\Temple.Core.csproj">

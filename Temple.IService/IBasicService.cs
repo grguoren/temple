@@ -239,7 +239,46 @@ namespace Temple.IService
         /// <param name="ID"></param>
         /// <returns></returns>
         Worship_pictures GetPictureByID(int id);
+        #endregion 
+        
+        #region 功德服務項目作業
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        IPagedList<Good_project_service> GetGoodServiceList(int page, int size);
+
+        /// <summary>
+        /// 添加新功德服務項目
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        bool AddGoodService(Good_project_service info);
+
+        /// <summary>
+        /// 删除功德服務項目
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        bool DeleteGoodService(int id);
+
+        /// <summary>
+        /// 更新功德服務項目
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
+        bool UpdateGoodService(Good_project_service info);
+
+        /// <summary>
+        /// 根据ID获取功德服務項目
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        Good_project_service GetGoodServiceByID(int id);
         #endregion
+
 
     }
 }

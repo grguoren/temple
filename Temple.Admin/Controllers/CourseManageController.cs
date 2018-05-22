@@ -8,7 +8,7 @@ using Temple.IService;
 namespace Temple.Admin.Controllers
 {
     /// <summary>
-    /// 课程管理
+    /// 歷程管理
     /// </summary>
     public class CourseManageController : BaseController
     {
@@ -24,30 +24,19 @@ namespace Temple.Admin.Controllers
             return View();
         }
 
-        public ActionResult AdviceList()
+        public ActionResult List()
         {
             return View();
         }
 
-        public ActionResult TopicList()
+        public ActionResult Add(int? id)
         {
-            return View();
-        }
-
-        public ActionResult CourseAdd(int? id)
-        {
-            ViewBag.PageTitle = id.HasValue ? "修改课程" : "添加课程";
+            ViewBag.PageTitle = id.HasValue ? "修改歷程" : "添加歷程";
             ViewBag.CourseId = id.HasValue ? id.Value : 0;
             return View();
         }
 
-        public ActionResult WareAdd(int? id,int? cid=0)
-        {
-            ViewBag.PageTitle = id.HasValue ? "修改课节" : "添加课节";
-            ViewBag.WareId = id.HasValue ? id.Value : 0;
-            ViewBag.CourseId = cid.Value;
-            return View();
-        }
+       
 
     }
 }

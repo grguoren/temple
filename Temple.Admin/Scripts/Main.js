@@ -128,6 +128,28 @@ require(['bootbox', 'publicCommon'], function () {
                         avalon.log("服務項目管理編輯模塊加載成功...");
                     });
                 }
+                else if (urlStr.indexOf("/MemberManage/Index") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/MemberManage/Index.js?' + Math.random()], function () {
+                        avalon.log("彎友管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/MemberManage/Add") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/MemberManage/Add.js?' + Math.random()], function () {
+                        avalon.log("彎友管理編輯模塊加載成功...");
+                    });
+                }
+
+                else if (urlStr.indexOf("/MemberManage/PractitionerList") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/MemberManage/PractitionerList.js?' + Math.random()], function () {
+                        avalon.log("被保舉人管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/MemberManage/PractitionerAdd") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/MemberManage/PractitionerAdd.js?' + Math.random()], function () {
+                        avalon.log("被保舉人管理編輯模塊加載成功...");
+                    });
+                }
+
                     //相片管理模块--相片列表
                 else if (urlStr.indexOf("/ServiceManage/PictureList") > -1) {
                     require([Config.WebUrl + 'Scripts/Page/ServiceManage/PictureList.js?' + Math.random()], function () {

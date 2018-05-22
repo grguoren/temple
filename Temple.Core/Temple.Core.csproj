@@ -67,21 +67,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.CacheAccess.Memcached">
-      <HintPath>..\packages\ServiceStack.Caching.Memcached.3.9.71\lib\net35\ServiceStack.CacheAccess.Memcached.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Common">
-      <HintPath>..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces">
-      <HintPath>..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Redis">
-      <HintPath>..\packages\ServiceStack.Redis.3.9.71\lib\net35\ServiceStack.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
-    </Reference>
     <Reference Include="StackExchange.Redis">
       <HintPath>..\packages\StackExchange.Redis.dll</HintPath>
     </Reference>
@@ -106,14 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache\ICacheManager.cs" />
-    <Compile Include="Cache\MemcachedCacheManager.cs" />
-    <Compile Include="Cache\MemcachedConfigInfo.cs" />
-    <Compile Include="Cache\MemcachedManager.cs" />
     <Compile Include="Cache\MemoryCacheManager.cs" />
     <Compile Include="Cache\RedisCache.cs" />
-    <Compile Include="Cache\RedisCacheManager.cs" />
     <Compile Include="Cache\RedisConfigInfo.cs" />
-    <Compile Include="Cache\RedisManager.cs" />
     <Compile Include="Data\EntityContext.cs" />
     <Compile Include="Data\IDbContext.cs" />
     <Compile Include="Data\IRepository.cs" />

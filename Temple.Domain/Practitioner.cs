@@ -7,7 +7,7 @@ using Temple.Core.Entity;
 namespace Temple.Domain
 {
 	/// <summary>
-    /// Practitioner
+    /// 被保興人
     /// </summary>
 	public partial class Practitioner : EntityBase
 	{

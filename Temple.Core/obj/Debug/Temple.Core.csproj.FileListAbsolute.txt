@@ -12,11 +12,6 @@ D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\Enyim.Caching.dll
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\log4net.dll
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\Mail.dll
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\Newtonsoft.Json.dll
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.CacheAccess.Memcached.dll
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Common.dll
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Interfaces.dll
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Redis.dll
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Text.dll
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\StackExchange.Redis.dll
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\Autofac.xml
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\Autofac.Configuration.xml
@@ -27,9 +22,6 @@ D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\Enyim.Caching.pdb
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\Enyim.Caching.xml
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\log4net.xml
 D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\Newtonsoft.Json.xml
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Common.xml
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Interfaces.xml
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Redis.xml
-D:\TWProgram\Temple.Admin\Temple.Core\bin\Debug\ServiceStack.Text.xml
 D:\TWProgram\Temple.Admin\Temple.Core\obj\Debug\Temple.Core.dll
 D:\TWProgram\Temple.Admin\Temple.Core\obj\Debug\Temple.Core.pdb
+D:\TWProgram\Temple.Admin\Temple.Core\obj\Debug\Temple.Core.csprojResolveAssemblyReference.cache

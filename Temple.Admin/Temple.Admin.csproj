@@ -168,11 +168,11 @@
     <Compile Include="Controllers\CityManageController.cs" />
     <Compile Include="Controllers\CourseManageController.cs" />
     <Compile Include="Controllers\EnterManageController.cs" />
-    <Compile Include="Controllers\FaqManageController.cs" />
-    <Compile Include="Controllers\FeedbackManageController.cs" />
+    <Compile Include="Controllers\AngelManageController.cs" />
+    <Compile Include="Controllers\FestivalManageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\MoneyManageController.cs" />
+    <Compile Include="Controllers\MemberManageController.cs" />
     <Compile Include="Controllers\ServiceManageController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Global.asax.cs">
@@ -768,9 +768,12 @@
     <Content Include="Scripts\Page\FaqManage\TypeAdd.js" />
     <Content Include="Scripts\Page\FaqManage\TypeList.js" />
     <Content Include="Scripts\Page\FeedbackManage\List.js" />
+    <Content Include="Scripts\Page\MemberManage\Add.js" />
+    <Content Include="Scripts\Page\MemberManage\PractitionerAdd.js" />
+    <Content Include="Scripts\Page\MemberManage\PractitionerList.js" />
     <Content Include="Scripts\Page\Menu\LeftMenu.html" />
     <Content Include="Scripts\Page\Menu\LeftMenu.js" />
-    <Content Include="Scripts\Page\MoneyManage\Consume.js" />
+    <Content Include="Scripts\Page\MemberManage\Index.js" />
     <Content Include="Scripts\Page\ServiceManage\PictureAdd.js" />
     <Content Include="Scripts\Page\ServiceManage\PictureList.js" />
     <Content Include="Scripts\Page\ShareManage\List.js" />
@@ -1033,27 +1036,24 @@
     <Content Include="Views\Login\QrLogin.cshtml" />
     <Content Include="Views\Home\SendTestPaper.cshtml" />
     <None Include="Properties\PublishProfiles\zhcloudmanage.pubxml" />
-    <Content Include="Views\FaqManage\Index.cshtml" />
-    <Content Include="Views\FaqManage\TypeList.cshtml" />
-    <Content Include="Views\FaqManage\TypeAdd.cshtml" />
-    <Content Include="Views\FaqManage\List.cshtml" />
-    <Content Include="Views\FaqManage\Add.cshtml" />
-    <Content Include="Views\MoneyManage\Consume.cshtml" />
-    <Content Include="Views\MoneyManage\Index.cshtml" />
+    <Content Include="Views\AngelManage\Index.cshtml" />
+    <Content Include="Views\AngelManage\TypeList.cshtml" />
+    <Content Include="Views\AngelManage\TypeAdd.cshtml" />
+    <Content Include="Views\AngelManage\List.cshtml" />
+    <Content Include="Views\AngelManage\Add.cshtml" />
+    <Content Include="Views\MemberManage\Index.cshtml" />
     <Content Include="Views\CourseManage\Index.cshtml" />
-    <Content Include="Views\CourseManage\AdviceList.cshtml" />
-    <Content Include="Views\CourseManage\TopicList.cshtml" />
+    <Content Include="Views\CourseManage\List.cshtml" />
     <Content Include="Views\EnterManage\Index.cshtml" />
-    <Content Include="Views\FeedbackManage\List.cshtml" />
+    <Content Include="Views\FestivalManage\List.cshtml" />
     <Content Include="Views\EnterManage\CompanyList.cshtml" />
-    <Content Include="Views\CourseManage\CourseAdd.cshtml" />
+    <Content Include="Views\CourseManage\Add.cshtml" />
     <Content Include="Views\EnterManage\CTeacherList.cshtml" />
     <Content Include="Views\EnterManage\TeacherAdd.cshtml" />
     <Content Include="Views\ActiveManage\GetLiveTicket.cshtml" />
     <Content Include="Views\ActiveManage\LiveTicket.cshtml" />
     <Content Include="Views\ActiveManage\DaoRuLive.cshtml" />
     <Content Include="Views\MakeQRCode\Index.cshtml" />
-    <Content Include="Views\CourseManage\WareAdd.cshtml" />
     <Content Include="Views\SignManage\List.cshtml" />
     <Content Include="signuser.xls" />
     <Content Include="Views\SignManage\DaoRu.cshtml" />
@@ -1071,6 +1071,10 @@
     <Content Include="Views\System\UserAdd.cshtml" />
     <Content Include="Views\ServiceManage\PictureList.cshtml" />
     <Content Include="Views\ServiceManage\PictureAdd.cshtml" />
+    <None Include="Properties\PublishProfiles\無極證道系統.pubxml" />
+    <Content Include="Views\MemberManage\Add.cshtml" />
+    <Content Include="Views\MemberManage\PractitionerList.cshtml" />
+    <Content Include="Views\MemberManage\PractitionerAdd.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

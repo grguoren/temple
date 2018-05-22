@@ -16,7 +16,7 @@ namespace Temple.Admin.Controllers
     public class LoginController : Controller
     {
         readonly IUserInfoService userse;
-        private static RedisCacheManager redisCache = new RedisCacheManager();
+      
         private int outTime = 120;
         public LoginController(IUserInfoService _userse)
         {
@@ -34,13 +34,9 @@ namespace Temple.Admin.Controllers
             
             return View();
 
-            token = Server.UrlDecode(token);
+            
             #region 获取扫码用户标记
-            string openid = "";
-            if (!string.IsNullOrEmpty(token) && redisCache.HasKey(token))
-            {
-                openid = redisCache.Get<string>(token);
-            }
+
             #endregion
             #region 防模拟登录
             Session.Timeout = outTime;
@@ -176,10 +172,10 @@ namespace Temple.Admin.Controllers
         {
             string str = "";
             tick = Server.UrlDecode(tick);
-            if (!string.IsNullOrEmpty(tick) && redisCache.HasKey(tick))
-            {
-                str = redisCache.Get<string>(tick);
-            }
+            //if (!string.IsNullOrEmpty(tick) && redisCache.HasKey(tick))
+            //{
+            //    str = redisCache.Get<string>(tick);
+            //}
             return str;
         }
         public string weixinImg()
