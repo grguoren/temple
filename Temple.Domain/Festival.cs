@@ -29,7 +29,7 @@ namespace Temple.Domain
 		/// <summary>
         /// 法會日期
         /// </summary>
-		public string  Date { get; set; }
+		public DateTime  Date { get; set; }
 		
 		/// <summary>
         /// 法會地點
@@ -42,7 +42,7 @@ namespace Temple.Domain
 		public string  Info { get; set; }
 		
 		/// <summary>
-        /// 備注
+        /// 備註
         /// </summary>
 		public string  Remark { get; set; }
 		

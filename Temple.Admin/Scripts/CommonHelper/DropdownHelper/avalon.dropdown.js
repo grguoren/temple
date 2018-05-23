@@ -113,7 +113,7 @@ define(["avalon",
                     //设置label值
                     setLabelTitle(vmodel.value);
 
-                    //注册blur事件
+                    //註册blur事件
                     blurHandler = avalon.bind(document.body, "click", function(e) {
                         //判断是否点击发生在dropdown节点内部
                         //如果不在节点内部即发生了blur事件
@@ -502,7 +502,7 @@ define(["avalon",
 
             /**
              * @interface
-             * @param newValue 设置控件的值，需要注意的是dropdown设置了multiple属性之后，值是数组，未设置multiple属性的时候，可以接受字符串，数字，布尔值；未设置该值时，效果是返回当前控件的值
+             * @param newValue 设置控件的值，需要註意的是dropdown设置了multiple属性之后，值是数组，未设置multiple属性的时候，可以接受字符串，数字，布尔值；未设置该值时，效果是返回当前控件的值
              * @returns vmodel.value 控件当前的值
              */
             vm.val = function(newValue) {
@@ -859,7 +859,7 @@ define(["avalon",
         var elems = select.children
         parent = parent || null
         for (var i = 0, el; el = elems[i++]; ) {
-            if (el.nodeType === 1) {//过滤注释节点
+            if (el.nodeType === 1) {//过滤註释节点
                 if (el.tagName === "OPTGROUP") {
                     parent = {
                         label: el.label,

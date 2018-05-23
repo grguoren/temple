@@ -182,7 +182,7 @@ var UserList = avalon.define('userList', function (vm) {
         var rname = $("#Search_NickName").val();
         if (rname == "")
         {
-            alert("请输入要更新的备注者姓名!");
+            alert("请输入要更新的备註者姓名!");
             $("#Search_NickName").foucs();
         }
         else
@@ -244,7 +244,7 @@ function updateItem(type) {
                         UserList.getList();
                     }
                     else {
-                        alert('备注姓名重复');
+                        alert('备註姓名重复');
                     }
                 },
                 dataType: 'text'

@@ -8,7 +8,7 @@ using Temple.IService;
 namespace Temple.Admin.Controllers
 {
     /// <summary>
-    /// 帮助中心
+    /// 聖示護法
     /// </summary>
     public class AngelManageController : BaseController
     {
@@ -19,9 +19,8 @@ namespace Temple.Admin.Controllers
             userse = _userse;
         }
 
-        public ActionResult List(int? id)
+        public ActionResult List()
         {
-            ViewBag.aboutTypeId = id.HasValue ? id.Value : 0;
             return View();
         }
         public ActionResult TypeList()
@@ -30,8 +29,8 @@ namespace Temple.Admin.Controllers
         }
         public ActionResult Add(int? id)
         {
-            ViewBag.PageTitle = id.HasValue ? "修改常见问题" : "添加常见问题";
-            ViewBag.aboutId = id.HasValue ? id.Value : 0;
+            ViewBag.PageTitle = id.HasValue ? "修改聖示護法" : "添加聖示護法";
+            ViewBag.NewDataId = id.HasValue ? id.Value : 0;
             return View();
         }
         public ActionResult TypeAdd(int? id)

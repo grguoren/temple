@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "無極證道-管理系统-会员管理-备注统计管理";
+    ViewBag.Title = "無極證道-管理系统-会员管理-备註统计管理";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="page-header position-relative">
@@ -7,7 +7,7 @@
         会员管理
         <small>
             <i class="icon-double-angle-right"></i>
-            备注统计管理
+            备註统计管理
         </small>
     </h1>
 </div>
@@ -23,7 +23,7 @@
                     新增用户
                 </button>
                  }
-                <span>备注姓名：</span>
+                <span>备註姓名：</span>
                 <span>
                     <input type="text" class="input-xs" id="Search_NickName" />
                 </span>
@@ -42,7 +42,7 @@
                  <button type="button" class="btn  btn-xs btn-danger" ms-click="UpdateUserCacheFun"><i class="icon-trash"></i>更新缓存</button>
                 <button type="button" class="btn btn-xs btn-danger" ms-click="UpdateRemark()">
                     <i class="icon-repeat"></i>
-                    更新备注用户
+                    更新备註用户
                 </button>
             </div>
 
@@ -56,11 +56,11 @@
                                     @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
                                         { 
                                     <th width="60px">操作</th>}
-                                    <th width="100px">备注姓名</th>
-                                     <th width="60px">备注总人数</th>
+                                    <th width="100px">备註姓名</th>
+                                     <th width="60px">备註总人数</th>
                                     <th width="60px">再次跟进数</th>
                                     <th width="60px">新人跟进数</th>
-                                    <th width="60px">注册数</th>
+                                    <th width="60px">註册数</th>
                                 </tr>
                             </thead>
 
@@ -108,11 +108,11 @@
                                 <tr>@if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
                                         { 
                                     <th width="60px">操作</th>}
-                                    <th width="60px">备注姓名</th>
-                                    <th width="60px">备注总人数</th>
+                                    <th width="60px">备註姓名</th>
+                                    <th width="60px">备註总人数</th>
                                       <th width="60px">再次跟进数</th>
                                     <th width="60px">新人跟进数</th>
-                                     <th width="60px">注册数</th>
+                                     <th width="60px">註册数</th>
                                 </tr>
                             </thead>
 
@@ -161,8 +161,8 @@
                                 <tr>@if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
                                         { 
                                     <th width="60px">操作</th>}
-                                    <th width="60px">备注姓名</th>
-                                    <th width="60px">备注总人数</th>
+                                    <th width="60px">备註姓名</th>
+                                    <th width="60px">备註总人数</th>
                                      <th width="60px">再次跟进数</th>
                                     <th width="60px">新人跟进数</th>
                                 </tr>

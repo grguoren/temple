@@ -75,7 +75,7 @@ namespace Temple.Core.Helper
         }
 
         /// <summary>
-        /// 是否安全字符串，例如包含"slect insert"等注入关键字
+        /// 是否安全字符串，例如包含"slect insert"等註入关键字
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>

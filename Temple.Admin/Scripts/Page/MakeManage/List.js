@@ -1,11 +1,9 @@
 ﻿
-var TicketList = avalon.define('ticketList', function (vm) {
+var MakeList = avalon.define('MakeList', function (vm) {
     vm.array = [];
     vm.changeList = [];
     vm.changeAll = false;
     vm.List_Page = 1;
-    vm.Search_Status = -1;
-    vm.Search_State = -1;
     vm.ListCount = 5;
     vm.ListLoading = false;
     vm.ListNoData = true;
@@ -13,7 +11,7 @@ var TicketList = avalon.define('ticketList', function (vm) {
     vm.$watch("changeAll", function (value, oldValue) {
         if (value) {
             for (var i = 0; i < vm.array.length; i++) {
-                vm.changeList.push(vm.array[i].Id);
+                vm.changeList.push(vm.array[i].cId);
             }
         }
         else {
@@ -28,8 +26,8 @@ var TicketList = avalon.define('ticketList', function (vm) {
         vm.ListLoading = false;
         $.ajax({
             type: 'POST',
-            url: Config.WebUrl + 'Ajax_Article/GetLiveTicketListPage',
-            data: { page: vm.List_Page, size: vm.pager.perPages, type: 1, status: vm.Search_Status, state: vm.Search_State },
+            url: Config.WebUrl + 'Ajax_Make/GetMakeList',
+            data: { page: vm.List_Page, size: vm.pager.perPages },
             timeout: 200000,
             success: function (ajaxData) {
                 if (ajaxData.Count === 0) {
@@ -48,24 +46,10 @@ var TicketList = avalon.define('ticketList', function (vm) {
             dataType: 'json'
         });
     };
-    vm.ClearTicketFun = function (id) {
-        if (window.confirm('你确定要还原吗？')) {
-            $.ajax({
-                type: 'POST',
-                url: Config.WebUrl + 'Ajax_Article/ClearTicket',
-                data: { id: id },
-                timeout: 200000,
-                success: function (ajaxData) {
-                    if (ajaxData === "True") {
-                        vm.getList();
-                    }
-                },
-                dataType: 'text'
-            });
-        } else {
-            return false;
-        }
-    };
+
+    vm.getTWDate = function (edate) {
+        return returntwDate(avalon.filters.date(edate, "yyyyMMdd"));
+    }
     /*************************分页******************************/
     vm.pager = {
         currentPage: 1,
@@ -93,16 +77,35 @@ var TicketList = avalon.define('ticketList', function (vm) {
     });
     vm.$skipArray = ["pager"];
     /*************************分页******************************/
-    //-------------------------删除关于我们
-    vm.DeleteTicketFun = function (id) {
-        if (window.confirm('你确定要删除吗？')) {
+    //vm.EditSort = function (id, Sort) {
+    //    var p = /^\d{0,9}$/;
+    //    if (!p.test(Sort)) {
+    //        alert("请输入数字！");
+    //        return;
+    //    }
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: Config.WebUrl + 'Ajax_Make/UpdateNewsTypeSort',
+    //        data: { id: id, Sort: Sort },
+    //        timeout: 200000,
+    //        success: function (ajaxData) {
+    //            if (ajaxData === "True") {
+    //                alert("排序修改成功");
+    //            }
+    //        },
+    //        dataType: 'text'
+    //    });
+    //}
+    //-------------------------删除法會
+    vm.DeleteMakeFun = function (id) {
+        if (window.confirm('你確定要刪除嗎？')) {
             $.ajax({
                 type: 'POST',
-                url: Config.WebUrl + 'Ajax_Article/DeleteLiveTicket',
+                url: Config.WebUrl + 'Ajax_Make/DeleteMake',
                 data: { id: id },
                 timeout: 200000,
                 success: function (ajaxData) {
-                    if (ajaxData === "1") {
+                    if (ajaxData === "True") {
                         vm.getList();
                     }
                 },
@@ -112,22 +115,21 @@ var TicketList = avalon.define('ticketList', function (vm) {
             return false;
         }
     };
-
-    //-------------------------跳转页面方法
+    //-------------------------跳轉到頁面方法
     vm.HrefFun = function (url, param) {
         location.href = url + param;
     };
-    //-------------------------批量删除
-    vm.DeleteTicketAllFun = function () {
+    //-------------------------批量刪除
+    vm.DeleteNewsTypeAllFun = function () {
         if (vm.changeList.length > 0) {
-            if (window.confirm('你确定要删除选定项吗？')) {
+            if (window.confirm('你確定要刪除選定項嗎？')) {
                 var str = "";
                 for (var i = 0; i < vm.changeList.length; i++) {
                     str += vm.changeList[i] + ",";
                 }
                 $.ajax({
                     type: 'POST',
-                    url: Config.WebUrl + 'Ajax_Article/DeleteAllLiveTicket',
+                    url: Config.WebUrl + 'Ajax_Make/DeleteAllNewsType',
                     data: { list: str },
                     timeout: 200000,
                     success: function (ajaxData) {
@@ -141,7 +143,7 @@ var TicketList = avalon.define('ticketList', function (vm) {
                         vm.changeList.clear();
                         vm.changeAll = false;
                         vm.getList();
-                        alert("批量删除成功!");
+                        alert("批量刪除成功!");
                     },
                     dataType: 'json'
                 });
@@ -151,51 +153,20 @@ var TicketList = avalon.define('ticketList', function (vm) {
             }
         }
         else {
-            alert('请选择要删除的网络门票!');
+            alert('請選擇您要刪除的功德項目!');
         }
     };
-
-    vm.PayTicketAllFun = function (status) {
-        if (vm.changeList.length > 0) {
-            if (window.confirm('你确定要更改选定项的支付状态吗？')) {
-                var str = "";
-                for (var i = 0; i < vm.changeList.length; i++) {
-                    str += vm.changeList[i] + ",";
-                }
-                console.log(str);
-                $.ajax({
-                    type: 'POST',
-                    url: Config.WebUrl + 'Ajax_Article/PayAllLiveTicket',
-                    data: { list: str, ispay: status },
-                    timeout: 200000,
-                    success: function (ajaxData) {
-                        if (!ajaxData.Status) {
-                            var str = "";
-                            for (var i = 0; i < ajaxData.Data.length; i++) {
-                                str += ajaxData.Data[i];
-                            }
-                            alert(str);
-                        }
-                        vm.changeList.clear();
-                        vm.changeAll = false;
-                        vm.getList();
-                        alert("修改支付状态成功!");
-                    },
-                    dataType: 'json'
-                });
-                return true;
-            } else {
-                return false;
-            }
-        }
-        else {
-            alert('请选择要更改支付状态的网络门票!');
-        }
-    };
-
 });
 avalon.scan();
-TicketList.getList();
-function OpenWindowFunGetList() {
-    TicketList.getList();
+MakeList.getList();
+
+function returntwDate(westdate) {
+    if (westdate != "") {
+        var year = westdate.substr(0, 4) - 1911; //获取完整的年份(4位,1970-????)
+        var month = westdate.substr(4, 2); //获取当前月份(0-11,0代表1月)
+        var day = westdate.substr(6, 2); //获取当前日(1-31)
+        return year + "/" + month + "/" + day;
+    }
+    return "";
+
 }

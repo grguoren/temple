@@ -17,10 +17,16 @@ namespace Temple.Admin.Controllers
         }
 
         //
-        // GET: /FeedbackManage/
-
+        // GET: /法會/
         public ActionResult List()
         {
+            return View();
+        }
+
+        public ActionResult Add(int? id)
+        {
+            ViewBag.PageTitle = id.HasValue ? "編輯法會基本資料" : "新增法會基本資料";
+            ViewBag.NewDataId = id.HasValue ? id.Value : 0;
             return View();
         }
     }

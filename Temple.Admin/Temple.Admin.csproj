@@ -143,7 +143,7 @@
     <Compile Include="Common\SystemCountCache.cs" />
     <Compile Include="Common\WeixinHelper.cs" />
     <Compile Include="Controllers\AccountManageController.cs" />
-    <Compile Include="Controllers\ActiveManageController.cs" />
+    <Compile Include="Controllers\MakeManageController.cs" />
     <Compile Include="Controllers\Ajax\Admin\Ajax_AuthorityController.cs" />
     <Compile Include="Controllers\Ajax\Admin\Ajax_LogController.cs" />
     <Compile Include="Controllers\Ajax\Admin\Ajax_MenuController.cs" />
@@ -151,12 +151,12 @@
     <Compile Include="Controllers\Ajax\Admin\Ajax_UserController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_AccountController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_AboutController.cs" />
-    <Compile Include="Controllers\Ajax\Ajax_ArticleController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_MakeController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_CityController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_CommonHelperController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_CourseController.cs" />
-    <Compile Include="Controllers\Ajax\Ajax_FeedbackController.cs" />
-    <Compile Include="Controllers\Ajax\Ajax_ForumController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_FestivalController.cs" />
+    <Compile Include="Controllers\Ajax\Ajax_AngelController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_GeneralizeController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_MessageController.cs" />
     <Compile Include="Controllers\Ajax\Ajax_MyUserController.cs" />
@@ -748,7 +748,8 @@
     <Content Include="Scripts\Page\AccountManage\AccountList.js" />
     <Content Include="Scripts\Page\AccountManage\ServiceAdd.js" />
     <Content Include="Scripts\Page\AccountManage\ServiceList.js" />
-    <Content Include="Scripts\Page\ActiveManage\LiveTicket.js" />
+    <Content Include="Scripts\Page\MakeManage\Add.js" />
+    <Content Include="Scripts\Page\MakeManage\List.js" />
     <Content Include="Scripts\Page\BasicManage\AddTitle.js" />
     <Content Include="Scripts\Page\BasicManage\Payment.js" />
     <Content Include="Scripts\Page\BasicManage\PaymentAdd.js" />
@@ -763,11 +764,12 @@
     <Content Include="Scripts\Page\EnterManage\CTeacherList.js" />
     <Content Include="Scripts\Page\EnterManage\Index.js" />
     <Content Include="Scripts\Page\EnterManage\TeacherAdd.js" />
-    <Content Include="Scripts\Page\FaqManage\Add.js" />
-    <Content Include="Scripts\Page\FaqManage\List.js" />
-    <Content Include="Scripts\Page\FaqManage\TypeAdd.js" />
-    <Content Include="Scripts\Page\FaqManage\TypeList.js" />
-    <Content Include="Scripts\Page\FeedbackManage\List.js" />
+    <Content Include="Scripts\Page\AngelManage\Add.js" />
+    <Content Include="Scripts\Page\AngelManage\List.js" />
+    <Content Include="Scripts\Page\AngelManage\TypeAdd.js" />
+    <Content Include="Scripts\Page\AngelManage\TypeList.js" />
+    <Content Include="Scripts\Page\FestivalManage\Add.js" />
+    <Content Include="Scripts\Page\FestivalManage\List.js" />
     <Content Include="Scripts\Page\MemberManage\Add.js" />
     <Content Include="Scripts\Page\MemberManage\PractitionerAdd.js" />
     <Content Include="Scripts\Page\MemberManage\PractitionerList.js" />
@@ -1075,6 +1077,9 @@
     <Content Include="Views\MemberManage\Add.cshtml" />
     <Content Include="Views\MemberManage\PractitionerList.cshtml" />
     <Content Include="Views\MemberManage\PractitionerAdd.cshtml" />
+    <Content Include="Views\FestivalManage\Add.cshtml" />
+    <Content Include="Views\MakeManage\List.cshtml" />
+    <Content Include="Views\MakeManage\Add.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

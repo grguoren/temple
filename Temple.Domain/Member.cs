@@ -102,7 +102,7 @@ namespace Temple.Domain
 		public int ? Shopcode { get; set; }
 		
 		/// <summary>
-        /// 備注
+        /// 備註
         /// </summary>
 		public string  Remark { get; set; }
 		

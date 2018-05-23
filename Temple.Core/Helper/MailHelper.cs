@@ -172,7 +172,7 @@ namespace Temple.Core.Helper
         }
 
         /// <summary>
-        /// 注册成功发送邮件
+        /// 註册成功发送邮件
         /// </summary>
         /// <param name="username">用户名</param>
         /// <param name="pwd">密码</param>
@@ -181,14 +181,14 @@ namespace Temple.Core.Helper
         {
             StringBuilder strText = new StringBuilder();
             strText.Append(getpublichead(username, pwd))
-                    .AppendFormat("<div class=\"mail-m\"><h2>尊敬的{0}：</h2><div class=\"mail-m1\"><p>您好，恭喜您成功注册了無極證道免费会员。", username)
+                    .AppendFormat("<div class=\"mail-m\"><h2>尊敬的{0}：</h2><div class=\"mail-m1\"><p>您好，恭喜您成功註册了無極證道免费会员。", username)
                     .AppendFormat("（您的<em class=\"red\">用户名：{0}</em>&nbsp;&nbsp;&nbsp;<em class=\"red\">密码：{1}</em>）</p>", username, pwd)
                     .Append("<div class=\"height\">&nbsp;</div><p>温馨提醒您，您的网站还不能显示联系资料，并只能预览网站功能。</p>")
                     .Append("<p>如果需要显示联系资料和获得更多服务，请成为我们的正式会员。<a href=\"http://www.bx58.com/aboutlist.aspx?cid=5\">最新收费标准和优惠政策！</a></p>")
                     .Append("<p>服务热线：0731- 84122129&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：800024819</p></div></div><div class=\"mail-b\"><p>無極證道&mdash;無極證道科技（湖南）股份有限公司</p>")
                     .Append("<em>此为系统邮件请勿回复</em></div><div class=\"mail-f clear\"><ul class=\"list\"><li><span><img src=\"http://img.zx58.cn/mail/pic2.jpg\" /></span>")
-                    .Append("<div><p>官方公众平台</p><em>关注微信<br />随时随地做芳华云</em></div></li><li><span><img src=\"http://img.zx58.cn/mail/pic3.jpg\" /></span>")
-                    .Append("<div><p>芳华云讯息订阅</p><em>关注微信<br />更多商机等着您</em></div></li></ul>")
+                    .Append("<div><p>官方公众平台</p><em>关註微信<br />随时随地做芳华云</em></div></li><li><span><img src=\"http://img.zx58.cn/mail/pic3.jpg\" /></span>")
+                    .Append("<div><p>芳华云讯息订阅</p><em>关註微信<br />更多商机等着您</em></div></li></ul>")
                     .Append("<span class=\"txt\">Copyright&copy;2012 無極證道版权所有</span></div></div></body>");
             return strText.ToString();
         }
@@ -222,8 +222,8 @@ namespace Temple.Core.Helper
              .Append(" </div>")
              .Append(" <div class=\"mail-f clear\">")
              .Append("<ul class=\"list\">")
-             .Append(" <li><span><img src=\"http://www.bx58.com/email-api/pic2.jpg\" /></span><div><p>官方公众平台</p><em>关注微信<br />随时随地做芳华云</em></div></li>")
-             .Append("<li><span><img src=\"http://www.bx58.com/email-api/pic3.jpg\" /></span><div><p>芳华云讯息订阅</p><em>关注微信<br />更多商机等着您</em></div></li>")
+             .Append(" <li><span><img src=\"http://www.bx58.com/email-api/pic2.jpg\" /></span><div><p>官方公众平台</p><em>关註微信<br />随时随地做芳华云</em></div></li>")
+             .Append("<li><span><img src=\"http://www.bx58.com/email-api/pic3.jpg\" /></span><div><p>芳华云讯息订阅</p><em>关註微信<br />更多商机等着您</em></div></li>")
              .Append("</ul>")
              .Append(" <span class=\"txet_up\">Copyright©2012 無極證道版权所有</span></div></div></body>");
             return strText.ToString();

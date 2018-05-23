@@ -24,7 +24,7 @@ namespace Temple.Domain
 		/// <summary>
         /// 叩問日期
         /// </summary>
-		public string  Ask_Date { get; set; }
+		public DateTime  Ask_Date { get; set; }
 		
 		/// <summary>
         /// 叩問事項
@@ -54,7 +54,7 @@ namespace Temple.Domain
 		/// <summary>
         /// 聖示日期
         /// </summary>
-		public string  Confirmation { get; set; }
+        public DateTime? Confirmation_date { get; set; }
 		
 				
 	}

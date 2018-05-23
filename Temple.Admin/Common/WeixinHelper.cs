@@ -29,7 +29,7 @@ namespace Temple.Admin.Common
             jsApiParam.SetValue("mch_billno", strMch_billno);//商户订单号,商户订单号（每个订单号必须唯一）组成：mch_id+yyyymmdd+10位一天内不能重复的数字。 接口根据商户订单号支持重入，如出现超时可再调用。
             jsApiParam.SetValue("mch_id", WxPayConfig.MCHID);//商户号,微信支付分配的商户号
             jsApiParam.SetValue("nonce_str", WxPayApi.GenerateNonceStr());//随机字符串，不长于32位
-            jsApiParam.SetValue("remark", "备注信息，活动真实有效");//备注信息
+            jsApiParam.SetValue("remark", "备註信息，活动真实有效");//备註信息
             jsApiParam.SetValue("re_openid", openid);//接收者的openid
             jsApiParam.SetValue("send_name", pname);//商户名称,红包发送者名称
             jsApiParam.SetValue("total_amount", money);//红包金额，单位分

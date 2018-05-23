@@ -678,7 +678,7 @@ define(["avalon", "text!./avalon.scrollbar.html", "../DraggableHelper/avalon.dra
         scrollLeft: 0, //@config 水平方向滚动初始值，负数会被当成0处理，极大值等价于拖动头置于right
         show: "always", //@config never一直不可见，scrolling滚动和hover时候可见，always一直可见
         showBarHeader: true,//@config 是否显示滚动条两端的上下箭头
-        draggerHTML: "", //@config 滚动条拖动头里，注入的html碎片
+        draggerHTML: "", //@config 滚动条拖动头里，註入的html碎片
         breakOutCallback: false, //@config breakOutCallback(["h", "up"], vmodel) 滚动到极限位置的回调，用来实现无线下拉等效果 breakOutCallback(["h", "up"], vmodel) 第一个参数是一个数组，分别是滚动条方向【h水平，v竖直】和超出极限的方向【up是向上或者向左，down是向右或者向下】，第三个参数是一个对象，包含滚动条的元素，宽高等信息
         //@config onInit(vmodel, options, vmodels) 完成初始化之后的回调,call as element's method
         onInit: avalon.noop,

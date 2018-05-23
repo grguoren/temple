@@ -32,7 +32,7 @@ namespace Temple.Domain
 		public bool  Status { get; set; }
 		
 		/// <summary>
-        /// 備注
+        /// 備註
         /// </summary>
 		public string  Remark { get; set; }
 		

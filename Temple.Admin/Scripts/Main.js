@@ -139,6 +139,40 @@ require(['bootbox', 'publicCommon'], function () {
                     });
                 }
 
+                else if (urlStr.indexOf("/FestivalManage/List") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/FestivalManage/List.js?' + Math.random()], function () {
+                        avalon.log("法會管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/FestivalManage/Add") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/FestivalManage/Add.js?' + Math.random()], function () {
+                        avalon.log("法會管理編輯模塊加載成功...");
+                    });
+                }
+
+
+                else if (urlStr.indexOf("/AngelManage/List") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/AngelManage/List.js?' + Math.random()], function () {
+                        avalon.log("聖示護法管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/AngelManage/Add") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/AngelManage/Add.js?' + Math.random()], function () {
+                        avalon.log("聖示護法管理編輯模塊加載成功...");
+                    });
+                }
+
+                else if (urlStr.indexOf("/MakeManage/List") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/MakeManage/List.js?' + Math.random()], function () {
+                        avalon.log("彎友叩問管理列表模塊加載成功...");
+                    });
+                }
+                else if (urlStr.indexOf("/MakeManage/Add") > -1) {
+                    require([Config.WebUrl + 'Scripts/Page/MakeManage/Add.js?' + Math.random()], function () {
+                        avalon.log("彎友叩問管理編輯模塊加載成功...");
+                    });
+                }
+
                 else if (urlStr.indexOf("/MemberManage/PractitionerList") > -1) {
                     require([Config.WebUrl + 'Scripts/Page/MemberManage/PractitionerList.js?' + Math.random()], function () {
                         avalon.log("被保舉人管理列表模塊加載成功...");
@@ -346,7 +380,7 @@ require(['bootbox', 'publicCommon'], function () {
                     , Config.WebUrl + 'Scripts/CommonHelper/KindeditorHelper/avalon.kindeditor.js',
                     Config.WebUrl + 'Scripts/Lib/ajaxfileupload/ajaxfileupload.js'], function () {
                         require([Config.WebUrl + 'Scripts/Page/Register/Agreement.js?' + Math.random()]);
-                        avalon.log("合同管理模块--注册协议加载成功...");
+                        avalon.log("合同管理模块--註册协议加载成功...");
                     });
                 }
                     //广告管理模块--添加或修改广告基本信息
@@ -519,6 +553,6 @@ require(['bootbox', 'publicCommon'], function () {
                 /*************************************************系统功能管理模块***************************************************************************/
             });
 
-        //avalon.scan(document.getElementById('Doc_contentAll'));//注释掉DomReady模块之后需要手动扫描
+        //avalon.scan(document.getElementById('Doc_contentAll'));//註释掉DomReady模块之后需要手动扫描
     });
 });

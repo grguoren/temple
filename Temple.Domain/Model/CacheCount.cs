@@ -19,7 +19,7 @@ namespace Temple.Domain.Model
         public int OpenCount { get; set; }
 
         /// <summary>
-        /// 今日注册人数
+        /// 今日註册人数
         /// </summary>
         public int RegCount { get; set; }
 
@@ -89,7 +89,7 @@ namespace Temple.Domain.Model
         public int OpenCountYesterDay { get; set; }
 
         /// <summary>
-        /// 昨日注册人数
+        /// 昨日註册人数
         /// </summary>
         public int RegCountYesterDay { get; set; }
     }

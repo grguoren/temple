@@ -68,7 +68,7 @@ namespace Temple.Admin.Controllers
             return false;
         }
         ///<summary>  
-        /// 传入域名返回对应的IP 转载请注明来自 http://www.shang11.com  
+        /// 传入域名返回对应的IP 转载请註明来自 http://www.shang11.com  
         ///</summary>  
         ///<param name="domain">域名</param>  
         ///<returns></returns>  

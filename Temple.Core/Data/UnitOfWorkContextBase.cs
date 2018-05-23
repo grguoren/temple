@@ -92,10 +92,10 @@ namespace Temple.Core.Data
         }
 
         /// <summary>
-        ///     注册一个新的对象到仓储上下文中
+        ///     註册一个新的对象到仓储上下文中
         /// </summary>
-        /// <typeparam name="TEntity"> 要注册的类型 </typeparam>
-        /// <param name="entity"> 要注册的对象 </param>
+        /// <typeparam name="TEntity"> 要註册的类型 </typeparam>
+        /// <param name="entity"> 要註册的对象 </param>
         public void RegisterNew<TEntity>(TEntity entity) where TEntity : EntityBase
         {
             EntityState state = Context.Entry(entity).State;
@@ -107,10 +107,10 @@ namespace Temple.Core.Data
         }
 
         /// <summary>
-        ///     批量注册多个新的对象到仓储上下文中
+        ///     批量註册多个新的对象到仓储上下文中
         /// </summary>
-        /// <typeparam name="TEntity"> 要注册的类型 </typeparam>
-        /// <param name="entities"> 要注册的对象集合 </param>
+        /// <typeparam name="TEntity"> 要註册的类型 </typeparam>
+        /// <param name="entities"> 要註册的对象集合 </param>
         public void RegisterNew<TEntity>(IEnumerable<TEntity> entities) where TEntity : EntityBase
         {
             try
@@ -128,10 +128,10 @@ namespace Temple.Core.Data
         }
 
         /// <summary>
-        ///     注册一个更改的对象到仓储上下文中
+        ///     註册一个更改的对象到仓储上下文中
         /// </summary>
-        /// <typeparam name="TEntity"> 要注册的类型 </typeparam>
-        /// <param name="entity"> 要注册的对象 </param>
+        /// <typeparam name="TEntity"> 要註册的类型 </typeparam>
+        /// <param name="entity"> 要註册的对象 </param>
         public void RegisterModified<TEntity>(TEntity entity) where TEntity : EntityBase
         {
             if (Context.Entry(entity).State == EntityState.Detached)
@@ -143,10 +143,10 @@ namespace Temple.Core.Data
         }
 
         /// <summary>
-        ///   注册一个删除的对象到仓储上下文中
+        ///   註册一个删除的对象到仓储上下文中
         /// </summary>
-        /// <typeparam name="TEntity"> 要注册的类型 </typeparam>
-        /// <param name="entity"> 要注册的对象 </param>
+        /// <typeparam name="TEntity"> 要註册的类型 </typeparam>
+        /// <param name="entity"> 要註册的对象 </param>
         public void RegisterDeleted<TEntity>(TEntity entity) where TEntity : EntityBase
         {
             Context.Entry(entity).State = EntityState.Deleted;
@@ -154,10 +154,10 @@ namespace Temple.Core.Data
         }
 
         /// <summary>
-        ///   批量注册多个删除的对象到仓储上下文中
+        ///   批量註册多个删除的对象到仓储上下文中
         /// </summary>
-        /// <typeparam name="TEntity"> 要注册的类型 </typeparam>
-        /// <param name="entities"> 要注册的对象集合 </param>
+        /// <typeparam name="TEntity"> 要註册的类型 </typeparam>
+        /// <param name="entities"> 要註册的对象集合 </param>
         public void RegisterDeleted<TEntity>(IEnumerable<TEntity> entities) where TEntity : EntityBase
         {
             try

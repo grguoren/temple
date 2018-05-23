@@ -28,10 +28,10 @@ namespace Temple.Admin
 
             //Autofac初始化过程
             var builder = new ContainerBuilder();
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());//注册所有的Controller
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());//註册所有的Controller
             builder.RegisterType<EntityContext>().As<IDbContext>().InstancePerLifetimeScope();
             builder.RegisterType<UnitOfWorkContextBase>().As<IUnitOfWork>().InstancePerLifetimeScope();
-            //做好一个service需在这里注册下
+            //做好一个service需在这里註册下
             builder.RegisterType<UserInfoService>().As<IUserInfoService>();
             builder.RegisterType<MenuInfoService>().As<IMenuInfoService>();
             builder.RegisterType<RoleInfoService>().As<IRoleInfoService>();

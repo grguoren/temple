@@ -447,7 +447,7 @@ namespace Temple.Core.Tools
             }
         }
         /// <summary>
-        /// TripleDESC-部分密匙 字符混淆 如果要修改下面的字符 请注意修改上面的正则
+        /// TripleDESC-部分密匙 字符混淆 如果要修改下面的字符 请註意修改上面的正则
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -461,7 +461,7 @@ namespace Temple.Core.Tools
             return value;
         }
         /// <summary>
-        /// TripleDESC-部分密匙 字符反混淆 如果要修改下面的字符 请注意修改上面的正则
+        /// TripleDESC-部分密匙 字符反混淆 如果要修改下面的字符 请註意修改上面的正则
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

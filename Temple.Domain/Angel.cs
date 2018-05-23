@@ -34,12 +34,12 @@ namespace Temple.Domain
 		/// <summary>
         /// 隨護起始日期
         /// </summary>
-		public string  Start_date { get; set; }
+		public DateTime?  Start_date { get; set; }
 		
 		/// <summary>
         /// 建立日期
         /// </summary>
-		public string  Add_Date { get; set; }
+        public DateTime? Add_Date { get; set; }
 		
 		/// <summary>
         /// 是否結案 Y/N
@@ -47,7 +47,7 @@ namespace Temple.Domain
 		public string  Finish_YN { get; set; }
 		
 		/// <summary>
-        /// 備注
+        /// 備註
         /// </summary>
 		public string  Remark { get; set; }
 		

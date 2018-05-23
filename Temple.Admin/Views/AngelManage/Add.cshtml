@@ -1,130 +1,71 @@
 ﻿@{
-    ViewBag.Title = "無極證道-管理系统-帮助中心管理-" + ViewBag.PageTitle;
+    ViewBag.Title = "無極證道-管理系统-基本資料管理系統-" + ViewBag.PageTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="page-header position-relative">
     <h1>
-        帮助中心管理
+        聖示護法維護作業
         <small>
             <i class="icon-double-angle-right"></i>
             @Html.Raw(ViewBag.PageTitle)
         </small>
     </h1>
 </div>
-<div class="row" ms-controller="aboutAddOrUpdate">
-    <input type="hidden" id="aboutId_pageDom" value="@ViewBag.aboutId" />
+<div class="row" ms-controller="DataAddOrUpdate">
+    <input type="hidden" id="Id_pageDom" value="@ViewBag.NewDataId" />
     <div class="col-xs-12">
         <form class="form-horizontal" role="form">
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> <span class="red">*</span>所属分类 </label>
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>護法神聖號</label>
+
                 <div class="col-sm-9">
-                    <select ms-duplex-number="aboutModel.TypeId"><option value="0">请选择...</option><option ms-repeat="abouttypeList" ms-attr-value="el.Id">{{el.Name}}</option></select>
-                    <span class="middle red" ms-visible="aboutModel.TypeId === 0">{{errorMsg.TypeId}}</span>
+                    <input type="text" ms-duplex="NewModel.Name" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Name) === ''">{{errorMsg.Name}}</span>
                 </div>
             </div>
-
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> <span class="red">*</span>标题 </label>
+                <label class="col-sm-3 control-label no-padding-right"> <span class="red">*</span>隨護年限</label>
 
                 <div class="col-sm-9">
-                    <input type="text" ms-duplex="aboutModel.Title" class="col-xs-9 col-sm-4" />
-                    <span class="middle red" ms-visible="$.trim(aboutModel.Title) === ''">{{errorMsg.Title}}</span>
+                    <input type="text" ms-duplex="NewModel.Years" maxlength="20" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Years) === ''">{{errorMsg.Years}}</span>
                 </div>
             </div>
              <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> 副标题 </label>
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>隨護起始日期</label>
 
                 <div class="col-sm-9">
-                    <input type="text" ms-duplex="aboutModel.SubTitle" class="col-xs-9 col-sm-4" />
-                    <span class="middle red" ms-visible="$.trim(aboutModel.SubTitle) === ''">{{errorMsg.SubTitle}}</span>
+                    <input type="text" ms-duplex="NewModel.Start_date" onclick="WdatePicker({ dateFmt: 'yyy/MM/dd', lang: 'zh-tw' })" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Start_date) === ''">{{errorMsg.Start_date}}</span>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>建立日期</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Add_Date" onclick="WdatePicker({ dateFmt: 'yyy/MM/dd', lang: 'zh-tw' })" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Add_Date) === ''">{{errorMsg.Add_Date}}</span>
                 </div>
             </div>
             
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right">配图 </label>
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span> 是否結案 </label>
                 <div class="col-sm-9">
-                    <input type="file" class="input-sm" id="file" name="file" />
-                    <div ms-widget="preview" id="preview_img_page"></div>
-                </div>
-            </div>
-            <div class="form-group" ms-visible="imgTip != ''">
-                <label class="col-sm-3 control-label no-padding-right">配图地址 </label>
-                <div class="col-sm-9">
-                    <span class="middle red">{{imgTip}}</span>
-                    <button type="button" class="btn btn-xs" ms-click="uploadAjaxInfomationImg" ms-visible="viewImgButton">确认上传</button>
+                    <span><input type="radio" ms-duplex-number="NewModel.Finish_YN" value="Y" />是</span>
+                    <span><input type="radio" ms-duplex-number="NewModel.Finish_YN" value="N" />否</span>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> 排序 </label>
+                <label class="col-sm-3 control-label no-padding-right"> 備註 </label>
 
                 <div class="col-sm-9">
-                    <input type="text" ms-duplex="aboutModel.Sort" class="input-mini" />
-                    <span class="middle red" ms-visible="isNaN(aboutModel.Sort) || aboutModel.Sort === ''">{{errorMsg.Sort}}</span>
-                </div>
-            </div> 
-            
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> 点击次数 </label>
-
-                <div class="col-sm-9">
-                    <input type="text" ms-duplex="aboutModel.ClickCount" class="input-mini" />
-                    <span class="middle red" ms-visible="isNaN(aboutModel.ClickCount) || aboutModel.ClickCount === ''">{{errorMsg.ClickCount}}</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> 发表时间 </label>
-
-                <div class="col-sm-9">
-                    <input type="text" ms-widget="datepicker" data-datepicker-timer="true" ms-duplex="aboutModel.AddTime" />
-                </div>
-            </div>
-
-             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right">来源 </label>
-
-                <div class="col-sm-9">
-                    <input type="text" ms-duplex="aboutModel.Source" class="col-xs-9 col-sm-4" />
-                    <span class="middle red" ms-visible="$.trim(aboutModel.Source) === ''"></span>
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> 审核状态 </label>
-                <div class="col-sm-9">
-                    <span><input type="radio" ms-duplex-number="aboutModel.IsVerify" value="1" />已审核</span>
-                    <span><input type="radio" ms-duplex-number="aboutModel.IsVerify" value="0" />未审核</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> 推荐 </label>
-                <div class="col-sm-9">
-                    <span><input type="radio" ms-duplex-number="aboutModel.IsRecommend" value="1" />推荐</span>
-                    <span><input type="radio" ms-duplex-number="aboutModel.IsRecommend" value="0" />不推荐</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> 置顶 </label>
-                <div class="col-sm-9">
-                    <span><input type="radio" ms-duplex-number="aboutModel.IsTop" value="1" />置顶</span>
-                    <span><input type="radio" ms-duplex-number="aboutModel.IsTop" value="0" />不置顶</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> 内容 </label>
-
-                <div class="col-sm-9">
-                    <textarea id="infoTypeContent_page" name="content" ms-widget="kindeditor" ms-duplex="aboutModel.Content"></textarea>
+                    <input type="text" ms-duplex="NewModel.Remark" class="col-xs-9 col-sm-4" />
                 </div>
             </div>
 
             <div class="clearfix form-actions">
                 <div class="col-md-offset-4 col-md-6">
-                    <button class="btn btn-info" type="button" ms-click="addAboutFun">
+                    <button class="btn btn-info" type="button" ms-click="addDataFun">
                         <i class="icon-ok bigger-110"></i>
                         {{buttonType}}
                     </button>
@@ -140,3 +81,5 @@
         </form>
     </div>
 </div>
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Scripts/Lib/jquery/jquery.min.js"></script>

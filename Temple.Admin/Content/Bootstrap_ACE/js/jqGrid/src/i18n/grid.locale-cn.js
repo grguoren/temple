@@ -70,7 +70,7 @@ $.extend($.jgrid,{
         searchtitle: "查找",
         refreshtext: "",
         refreshtitle: "刷新表格",
-        alertcap: "注意",
+        alertcap: "註意",
         alerttext: "请选择记录",
         viewtext: "",
         viewtitle: "查看所选记录"

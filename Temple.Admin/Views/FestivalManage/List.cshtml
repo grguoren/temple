@@ -1,56 +1,27 @@
 ﻿@{
-    ViewBag.Title = "芳华去课堂-管理系统-反馈管理-反馈列表";
+    ViewBag.Title = "無極證道-管理系统-基本資料管理系統-法會基本資料維護作業";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="page-header position-relative">
     <h1>
-        反馈管理
+        基本資料管理系統
         <small>
             <i class="icon-double-angle-right"></i>
-            反馈列表
+            法會基本資料維護作業
         </small>
     </h1>
 </div>
-<div class="row-fluid" ms-controller="feedbackList">
+<div class="row-fluid" ms-controller="FestivalList">
     <div class="span12">
         <div class="table-responsive">
             <div class="well well-lg">
                 <div class="span12">
-                    <button type="button" class="btn btn-info btn-sm" ms-click="VerifyFeedbackAllFun(1)"><i class="icon-eye-open"></i>批量审核</button>
-                    <button type="button" class="btn btn-warning btn-sm" ms-click="VerifyFeedbackAllFun(0)"><i class="icon-eye-close"></i>取消审核</button>
-                    <button type="button" class="btn btn-danger btn-sm" ms-click="DeleteFeedbackAllFun"><i class="icon-trash"></i>批量删除</button>
-                </div>
-                <div class="hr"></div>
-                <div class="span12">
-                    
-                    <span>状态:</span>
                     <span>
-                        <select class="input-sm" ms-duplex="Search_StatusId">
-                            <option value="-1">全部</option>
-                            <option value="1">已审核</option>
-                            <option value="0">未审核</option>
-                        </select>
+                        <button type="button" class="btn btn-sm btn-success" data-target="#addUser_Modal" data-toggle="modal" ms-click="HrefSelf(Config.WebUrl + 'FestivalManage/Add','')">
+                            <i class="icon-plus-sign"></i>
+                            新增資料
+                        </button>
                     </span>
-                    <span>|</span>
-                    <span>
-                        <select class="input-sm" ms-duplex="Search_Key">
-                            <option value="1">姓名</option>
-                            <option value="2">QQ</option>
-                            <option value="3">电话</option>
-                             <option value="4">内容</option>
-                        </select>
-                    </span>
-                    <span>
-                        <input type="text" class="input-xs" ms-duplex="Search_KeyWord" />
-                    </span>
-                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
-                        <i class="icon-search"></i>
-                        查询
-                    </button>
-                    <button type="button" class="btn btn-xs btn-danger" ms-click="Search_Clear">
-                        <i class="icon-repeat"></i>
-                        清空
-                    </button>
                 </div>
             </div>
 
@@ -58,31 +29,29 @@
             <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
                 <thead>
                     <tr>
-                        <th width="70px;"><input type="checkbox" ms-duplex-checked="changeAll" /></th>
-                        <th>ID</th>
-                        <th width="80px;">会员称呼</th>
-             @*           <th width="80px;">会员类型</th>*@
-                        <th>日期</th>
-                        <th>反馈信息</th>
-                        <th width="60px;">状态</th>
-                        <th width="80px;">操作</th>
+                        <th width="30px;"><input type="checkbox" ms-duplex-checked="changeAll" /></th>
+                        <th>法會日期</th>
+                        <th>法會名稱</th>
+                        <th>法會地點</th>
+                        <th>法會內容</th>
+                        <th>備註說明</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr ms-if="!ListLoading"><td colspan="14" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
-                    <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">對不起,沒有數據!</td></tr>
+                    <tr ms-if="!ListLoading"><td colspan="15" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">對不起，沒有數據!</td></tr>
                     <tr ms-repeat="array" ms-visible="ListLoading">
                         <td><input type="checkbox" ms-attr-value="el.Id" ms-duplex-number="changeList" /></td>
-                        <td>{{el.Id}}</td>
-                        <td><a ms-if="el.User!=null" ms-attr-href="'http://www.zx58.cn/user/' + el.User.Name" target="_blank">{{el.User.RealName}}</a></td>
-@*                        <td>{{el.User != null ? ReStrGradeName(el.User.GardeId) : ""}}</td>*@
-                        <td>{{el.AddTime| date("yyyy/MM/dd HH:mm")}}</td>
-                        <td>{{el.fContent}}</td>
-                        <td><span ms-class-red="el.IsVerify == 1">{{el.IsVerify == 1 ? "已审核" : "未审核"}}</span></td>
+                        <td>{{getTWDate(el.Date)}}</td>
+                        <td>{{el.Name}}</td>
+                        <td>{{el.Location}}</td>
+                         <td>{{el.Info}}</td>
+                        <td>{{el.Remark}}</td>
                         <td>
-                           @* <button title="回复" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#FeedbackModal_FAnswer" ms-click="OpenFAnswerFun(el);"><i class="icon-cog"></i></button>*@
-                            <button title="删除" class="btn btn-xs btn-danger" ms-click="DeleteFeedbackFun(el.Id)"><i class="icon-trash"></i></button>
+                            <button title="編輯" class="btn btn-xs btn-primary" ms-click="HrefFun('@Url.Content("~/FestivalManage/Add/")',el.Id)"><i class="icon-cog"></i></button>
+                            <button title="刪除" class="btn btn-xs btn-danger" ms-click="DeleteFestivalFun(el.Id)"><i class="icon-trash"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -90,36 +59,4 @@
             <div ms-widget="pager,pp"></div>
         </div>
     </div>
-
-    <div class="modal fade" id="FeedbackModal_FAnswer" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top:150px;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><b>{{Modal_Name}}的反馈</b></h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-2"><b>反馈内容:</b></div>
-                        <div class="col-lg-8"><textarea ms-duplex="Modal_FContent" style="width:360px;height:120px;"></textarea></div>
-                    </div>
-                    <div class="hr"></div>
-                    <div class="row">
-                        <div class="col-lg-2"><b>回复时间:</b></div>
-                        <div class="col-lg-4"><input type="text" ms-duplex="Modal_AddTime" /></div>
-                        <div class="col-lg-4"><button ms-click="SetDateTimeNow" class="btn btn-xs btn-primary">当前时间</button></div>
-                    </div>
-                    <div class="hr"></div>
-                    <div class="row">
-                        <div class="col-lg-2"><b>回复内容:</b></div>
-                        <div class="col-lg-8"><textarea ms-duplex="Modal_Content" style="width:360px;height:220px;"></textarea></div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-sm btn-primary" ms-click="AddFAnswer()">保存</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 </div>

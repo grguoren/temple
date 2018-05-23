@@ -22,7 +22,7 @@
                     <span>
                          <select class="input-sm" id="Search_Type" ms-duplex="Search_Type">
                             <option value="-1" selected>全部</option>
-                            <option value="0">会员注册</option>
+                            <option value="0">会员註册</option>
                             <option value="1">顾客需求</option>
                             <option value="2">顾客留言</option>
                             <option value="3">提交订单</option>
@@ -70,7 +70,7 @@
                     <tr ms-if="!ListLoading"><td colspan="15" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
                     <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">對不起,沒有數據!</td></tr>
                     <tr ms-repeat="array" ms-visible="ListLoading">
-                        <td>{{el.Type == 0 ? "会员注册" :(el.Type == 1 ? "顾客需求" :(el.Type == 2 ? "顾客留言" : (el.Type ==3 ? "提交订单" : (el.Type == 4 ? "名片设计" : (el.Type == 5 ? "会员升级" : (el.Type == 6 ? "会员开通" : (el.Type == 7 ? "招商加盟" : (el.Type == 8 ? "网站到期" :(el.Type == 9 ? "密码重置" : "其他")))))))))}}</td>
+                        <td>{{el.Type == 0 ? "会员註册" :(el.Type == 1 ? "顾客需求" :(el.Type == 2 ? "顾客留言" : (el.Type ==3 ? "提交订单" : (el.Type == 4 ? "名片设计" : (el.Type == 5 ? "会员升级" : (el.Type == 6 ? "会员开通" : (el.Type == 7 ? "招商加盟" : (el.Type == 8 ? "网站到期" :(el.Type == 9 ? "密码重置" : "其他")))))))))}}</td>
                         <td>{{el.SentTime| date("yyyy/MM/dd HH:mm")}}</td>
                         <td>{{el.Content}}</td>
                         <td><a ms-attr-href="http://www.bx58.com/user/{{el.UserName}}" target="_blank">{{el.UserName}}</a></td>

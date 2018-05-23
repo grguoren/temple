@@ -194,10 +194,10 @@ namespace Temple.Core.Helper
                     temp = string.Format("尊敬的{0}：您好，您的会员即将到期，请及时续费。您的無極證道会员有效期至{1}【無極證道】", model.name, model.date);
                     break;
                 case 453:
-                    temp = string.Format("恭喜您成功注册了無極證道免费会员（您的用户名：{0} 密码：{1}）,请妥善保管。【無極證道】", model.name, model.password);
+                    temp = string.Format("恭喜您成功註册了無極證道免费会员（您的用户名：{0} 密码：{1}）,请妥善保管。【無極證道】", model.name, model.password);
                     break;
                 case 452:
-                    temp = string.Format("验证码：{0}，您正在通过手机号注册無極證道会员账号。30分钟内有效，请勿泄露。【無極證道】", model.code);
+                    temp = string.Format("验证码：{0}，您正在通过手机号註册無極證道会员账号。30分钟内有效，请勿泄露。【無極證道】", model.code);
                     break;
                 default:
                     break;
@@ -223,9 +223,9 @@ namespace Temple.Core.Helper
         Demand = 457,
         //到期提醒通知 tp=尊敬的%name%：您好，您的会员即将到期，请及时续费。您的無極證道会员有效期至%date%
         UserExpired = 456,
-        //会员注册成功通知 tp=恭喜您成功注册了無極證道免费会员（您的用户名：%name%   密码：%password%）,请妥善保管。
+        //会员註册成功通知 tp=恭喜您成功註册了無極證道免费会员（您的用户名：%name%   密码：%password%）,请妥善保管。
         RegisterSuccess = 453,
-        //手机号注册验证码  tp=验证码：%code%，您正在通过手机号注册無極證道会员账号。30分钟内有效，请勿泄露。
+        //手机号註册验证码  tp=验证码：%code%，您正在通过手机号註册無極證道会员账号。30分钟内有效，请勿泄露。
         Code = 452
     }
     public class ParaModel

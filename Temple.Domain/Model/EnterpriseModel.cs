@@ -119,7 +119,7 @@ namespace Temple.Domain.Model
         public int? eClick { get; set; }
 
         /// <summary>
-        /// 企业会员注册日期
+        /// 企业会员註册日期
         /// </summary>
         public DateTime? eRegDate { get; set; }
 

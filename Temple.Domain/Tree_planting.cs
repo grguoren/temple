@@ -57,7 +57,7 @@ namespace Temple.Domain
 		public string  Finish_YN { get; set; }
 		
 		/// <summary>
-        /// 備注
+        /// 備註
         /// </summary>
 		public string  Remark { get; set; }
 		

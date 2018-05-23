@@ -115,7 +115,7 @@ var MyUserList = avalon.define('MyUserList', function (vm) {
             dataType: 'text'
         });
     }
-    //查看历史备注
+    //查看历史备註
     vm.ShowRemark = function (uid) {
         var remark = "";
         $.ajax({

@@ -77,7 +77,7 @@ namespace Temple.Admin.Controllers.Ajax
             info.Type = model.Type;
             info.Status = model.Status;
 
-            res = basicse.UpdatePicture(model);
+            res = basicse.UpdatePicture(info);
             return res.ToString();
         }
         [HttpPost]

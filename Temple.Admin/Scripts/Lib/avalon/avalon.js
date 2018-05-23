@@ -2276,7 +2276,7 @@ function scanNode(node, nodeType, vmodels) {
     } else if (nodeType === 3 && rexpr.test(node.data)){
         scanText(node, vmodels) //扫描文本节点
     } else if (kernel.commentInterpolate && nodeType === 8 && !rexpr.test(node.nodeValue)) {
-        scanText(node, vmodels) //扫描注释节点
+        scanText(node, vmodels) //扫描註释节点
     }
 }
 function scanTag(elem, vmodels, node) {
@@ -3963,7 +3963,7 @@ bindingExecutors["if"] = function(val, elem, data) {
             scanAttr(elem, data.vmodels)
         }
         data.rollback = null
-    } else { //移出DOM树，并用注释节点占据原位置
+    } else { //移出DOM树，并用註释节点占据原位置
         if (elem.nodeType === 1) {
             var node = data.element = DOC.createComment("ms-if")
             elem.parentNode.replaceChild(node, elem)

@@ -49,7 +49,7 @@ define(["avalon", "./kindeditor.4.1.0.js?v3.0"], function(avalon, K) {
                             }
                         }
 
-                        //在$instance中通过注入afterChange实现对editor内容改变的监听
+                        //在$instance中通过註入afterChange实现对editor内容改变的监听
                         $instance.options.afterChange = function() {
                             if(avalon.type( afterChange ) === "function") {
                                 afterChange.call($instance)

@@ -43,11 +43,11 @@ keywords="百度地图,百度地图API，百度地图自定义工具，百度地
 		setMapEvent();//设置地图事件
 		addMapControl();//向地图添加控件
 
-		// 创建标注
+		// 创建标註
 		var markersArr = markersParam.split(',');
 		var point = new BMap.Point(markersArr[0], markersArr[1]);
 		var marker = new BMap.Marker(point);
-		map.addOverlay(marker); // 将标注添加到地图中
+		map.addOverlay(marker); // 将标註添加到地图中
 	}
 
 	//创建地图函数：
