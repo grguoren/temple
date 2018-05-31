@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-基本資料管理系統-" + ViewBag.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        法會基本資料管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            @Html.Raw(ViewBag.PageTitle)
+        </small>
+    </h1>
+</div>
+<div class="row" ms-controller="DataAddOrUpdate">
+    <input type="hidden" id="Id_pageDom" value="@ViewBag.NewDataId" />
+    <div class="col-xs-12">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> <span class="red">*</span>法會代號</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Code" maxlength="20" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Code) === ''">{{errorMsg.Account}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>法會名稱</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Name" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Name) === ''">{{errorMsg.Name}}</span>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>法會日期</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Date" onclick="WdatePicker({ dateFmt: 'yyy/MM/dd', lang: 'zh-tw' })" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Date) === ''">{{errorMsg.OnBoardDate}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>法會地點</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Location" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Location) === ''">{{errorMsg.Location}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>法會內容</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Info" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Info) === ''">{{errorMsg.Info}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>年度</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Year" class="col-xs-9 col-sm-4" />
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> 備註 </label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Remark" class="col-xs-9 col-sm-4" />
+                </div>
+            </div>
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-4 col-md-6">
+                    <button class="btn btn-info" type="button" ms-click="addDataFun">
+                        <i class="icon-ok bigger-110"></i>
+                        {{buttonType}}
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn" type="reset">
+                        <i class="icon-undo bigger-110"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Scripts/Lib/jquery/jquery.min.js"></script>

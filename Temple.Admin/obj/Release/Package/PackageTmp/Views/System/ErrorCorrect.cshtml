@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-系统设置-有奖纠错管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        有奖纠错管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            列表
+        </small>
+    </h1>
+</div>
+<div class="row-fluid" ms-controller="errorList">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <div class="span12">
+                    <button type="button" class="btn btn-info btn-sm" ms-click="VerifyErrorsAllFun(1)"><i class="icon-eye-open"></i>批量审核</button>
+                    <button type="button" class="btn btn-warning btn-sm" ms-click="VerifyErrorsAllFun(0)"><i class="icon-eye-close"></i>取消审核</button>  
+                    <button type="button" class="btn btn-danger btn-sm" ms-click="DeleteErrorsAllFun"><i class="icon-trash"></i>批量删除</button>
+                </div>
+                <div class="hr"></div>
+                <div class="span12">
+                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                        <i class="icon-search"></i>
+                        查询
+                    </button>
+                    <button type="button" class="btn btn-xs btn-danger" ms-click="Search_Clear">
+                        <i class="icon-repeat"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th width="20px;"><input type="checkbox" ms-duplex-checked="changeAll" /></th>
+                        <th>编号</th>
+                        <th>疑问内容</th>
+                        <th>建议内容</th>
+                        <th>上传图片</th>
+                        <th>日期</th>
+                        <th>状态</th>
+                        <th width="80px;">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="14" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">對不起,沒有數據!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td><input type="checkbox" ms-attr-value="el.eId" ms-duplex-number="changeList" /></td>
+                        <td>{{el.eId}}</td>
+                        <td>{{el.eContent}}</td>
+                        <td>{{el.eSuggest}}</td>
+                        <td><a ms-attr-href="ReturnImgPath(el.eImgPath)" target="_blank" title="查看图片" class='highslide' onclick="return hs.expand(this)">
+                               <img ms-attr-src="ReturnImgPath(el.eImgPath)" style="width: 150px; height: 50px;"/>
+                            </a>
+                        </td>
+                        <td>{{el.AddTime| date("yyyy/MM/dd")}}</td>
+                        <td><span ms-class-red="el.eState==1">{{el.eState==1?"已审核":"未审核"}}</span></td>
+                        <td>
+                            <button title="删除" class="btn btn-xs btn-danger" ms-click="DeleteErrorsFun(el.eId)"><i class="icon-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+        </div>
+    </div>
+</div>

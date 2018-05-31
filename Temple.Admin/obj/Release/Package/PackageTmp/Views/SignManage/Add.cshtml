@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "直销同城网-管理系统-课程管理-" + ViewBag.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        课程管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            @Html.Raw(ViewBag.PageTitle)
+        </small>
+    </h1>
+</div>
+<div class="row" ms-controller="courseAddOrUpdate">
+    <input type="hidden" id="courseId_pageDom" value="@ViewBag.CourseId" />
+    <div class="col-xs-12">
+        <form class="form-horizontal" role="form">
+               <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"> 姓名 </label>
+                    <div class="col-sm-9">
+                         <input type="text" ms-duplex="CourseModel.Name" class="col-xs-9 col-sm-4" />
+                        <span class="middle red" ms-visible="$.trim(CourseModel.Name) === ''">{{errorMsg.Name}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"> 手机号码 </label>
+                    <div class="col-sm-9">
+                         <input type="text" ms-duplex="CourseModel.Phone" class="col-xs-9 col-sm-4" />
+                        <span class="middle red" ms-visible="$.trim(CourseModel.Phone) === ''">{{errorMsg.Phone}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"> 门票类型 </label>
+                    <div class="col-sm-9">
+                        <span><input type="radio" ms-duplex-number="CourseModel.Type" value="3" />嘉宾席</span>
+                        <span><input type="radio" ms-duplex-number="CourseModel.Type" value="2" />贵宾席</span>
+                        <span><input type="radio" ms-duplex-number="CourseModel.Type" value="1" />至尊席</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"> 座次 </label>
+                    <div class="col-sm-9">
+                         <input type="text" ms-duplex="CourseModel.Seat" class="col-xs-9 col-sm-4" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"> 赠送门票 </label>
+                    <div class="col-sm-9">
+                         <input type="text" ms-duplex="CourseModel.Present" class="col-xs-9 col-sm-4" />
+                    </div>
+                </div>
+           
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-4 col-md-6">
+                    <button class="btn btn-info" type="button" ms-click="addCourseFun">
+                        <i class="icon-ok bigger-110"></i>
+                        {{buttonType}}
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn" type="reset">
+                        <i class="icon-undo bigger-110"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

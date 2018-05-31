@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-基本資料管理系統-" + ViewBag.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        彎友叩問基本資料管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            @Html.Raw(ViewBag.PageTitle)
+        </small>
+    </h1>
+</div>
+<div class="row" ms-controller="DataAddOrUpdate">
+    <input type="hidden" id="Id_pageDom" value="@ViewBag.NewDataId" />
+    <div class="col-xs-12">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> <span class="red">*</span>叩問代號</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Code" maxlength="20" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Code) === ''">{{errorMsg.Account}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>叩問名稱</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Name" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Name) === ''">{{errorMsg.Name}}</span>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>叩問日期</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Ask_Date" onclick="WdatePicker({ dateFmt: 'yyy/MM/dd', lang: 'zh-tw' })" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Ask_Date) === ''">{{errorMsg.Ask_Date}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>叩問事項</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Ask_Info" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Ask_Info) === ''">{{errorMsg.Ask_Info}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>聖示</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Instructions" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Instructions) === ''">{{errorMsg.Instructions}}</span>
+                </div>
+            </div>
+           <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>聖示日期</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Confirmation_date" onclick="WdatePicker({ dateFmt: 'yyy/MM/dd', lang: 'zh-tw' })" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Confirmation_date) === ''">{{errorMsg.Confirmation_date}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span> 是否已回覆 </label>
+                <div class="col-sm-9">
+                    <span><input type="radio" ms-duplex-number="NewModel.Reply_YN" value="Y" />是</span>
+                    <span><input type="radio" ms-duplex-number="NewModel.Reply_YN" value="N" />否</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span> 是否刊登 </label>
+                <div class="col-sm-9">
+                    <span><input type="radio" ms-duplex-number="NewModel.Publish_YN" value="Y" />是</span>
+                    <span><input type="radio" ms-duplex-number="NewModel.Publish_YN" value="N" />否</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> 備註 </label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Remark" class="col-xs-9 col-sm-4" />
+                </div>
+            </div>
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-4 col-md-6">
+                    <button class="btn btn-info" type="button" ms-click="addDataFun">
+                        <i class="icon-ok bigger-110"></i>
+                        {{buttonType}}
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn" type="reset">
+                        <i class="icon-undo bigger-110"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Scripts/Lib/jquery/jquery.min.js"></script>

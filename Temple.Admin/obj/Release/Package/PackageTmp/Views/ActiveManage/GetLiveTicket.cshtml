@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "电子网络门票";
+    Layout = null; 
+}
+@using Temple.Domain;
+@model WatchTicket
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Lib/jquery/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/domtoimage.js")"></script>
+    <style type="text/css">
+        html,body{height:100%; width:100%; overflow:hidden; margin:0;padding:0;}
+        .mmm {position:relative; width:480px;}
+        .ewm{ position:absolute; bottom:105px;left:50%; margin-left:-90px;  border:1px solid #fff; width:180px;height:180px;}
+       
+        .ewm  .pic{ display:block; width:160px; height:160px; overflow:hidden; border:5px solid #fff; margin:0 auto; margin-top:5px;}
+    </style>
+    <title>门票消息</title>
+</head>
+<body>
+    <div class="bgmp mmm" style=" background: url(/images/livebgg.jpg) no-repeat;height: 100%; max-width: 480px; background-size: 100% 100%;box-sizing: border-box;">
+        <div class="ewm">      
+           <img src="/makeqrcode/index?data=@Model.Url" class="pic" alt="网络直播门票" />        
+        </div>
+        </div>
+ 
+    <img  src="" alt="" style="display:none;"  id="img"/>
+    <script type="text/javascript">
+        var node = document.querySelector('.bgmp');
+        domtoimage.toPng(node)
+            .then(function (dataUrl) {
+                var src = dataUrl;
+                $("#img").attr("src", src);
+                var id = "@(Model != null ? Model.Id : 0)";
+                $.ajax({
+                    url: "/ActiveManage/SaveLivePic",
+                    type: "post",
+                    dataType: "text",
+                    async: false,
+                    data: { basebyte: src, id: id },
+                    error: function (XmlHttpRequest, textStatus, errorThrown) { },
+                    success: function (d) {
+                        var arr = d.split('|');
+                        if (arr[0] == "1") {
+                            //alert("门票生成成功");
+                            //window.location.href = arr[1];
+                        }
+                        setTimeout(function () {
+                            window.opener.OpenWindowFunGetList();//刷新父页面
+                            window.open('', '_parent', '');
+                            window.location.href = arr[1];
+                        }, 500);
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
+

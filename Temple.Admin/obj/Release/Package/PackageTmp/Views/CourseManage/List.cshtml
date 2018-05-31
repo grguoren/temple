@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-课程管理-课程咨询列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header position-relative">
+    <h1>课程管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            咨询列表
+        </small>
+    </h1>
+</div>
+<div class="row-fluid" ms-controller="messageList">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <div class="span12">
+                    <span>
+                        <button type="button" class="btn btn-info btn-sm" ms-click="VerifyMessageAllFun(1)"><i class="icon-eye-open"></i>批量审核</button>
+                        <button type="button" class="btn btn-warning btn-sm" ms-click="VerifyMessageAllFun(0)"><i class="icon-eye-close"></i>取消审核</button>
+                        <button type="button" class="btn btn-danger btn-sm" ms-click="DeleteMessageAllFun()"><i class="icon-trash"></i>批量删除</button>
+                    </span>
+
+                </div>
+                <div class="hr"></div>
+                <div class="span12">
+
+                    <span>审核状态:</span>
+                    <span>
+                        <select class="input-sm" ms-duplex="Search_Verify" ms-change="getList(1)">
+                            <option value="2">全部</option>
+                            <option value="0">未审核</option>
+                            <option value="1">已审核</option>
+                        </select>
+                    </span>
+
+                    <span>类别:</span>
+                    <span>
+                        <select class="input-sm" ms-duplex="Search_Type" @* ms-change="getList(1)"*@>
+                            <option value="0">商家</option>
+                            <option value="6">用户名</option>
+                            <option value="1">内容</option>
+                            <option value="2">姓名</option>
+                            <option value="3">QQ</option>
+                            <option value="4">微信</option>
+                            <option value="5">电话</option>
+   
+                        </select>
+                    </span>
+
+                    <span>
+                        <input type="text" class="input-xs" ms-duplex="Search_Keyword" />
+                    </span>
+                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                        <i class="icon-search"></i>
+                        查询
+                    </button>
+                    <button type="button" class="btn btn-xs btn-danger" ms-click="Search_Clear()">
+                        <i class="icon-repeat"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" ms-duplex-checked="changeAll" /></th>
+                        <th>编号</th>
+                        <th>咨询人</th>
+                        <th>课程标题</th>
+                        <th>咨询人电话</th>
+                        <th>咨询内容</th>
+                        <th>咨询时间</th>
+                        <th>审核状态</th>
+                        <th width="90px;">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading">
+                        <td colspan="15" style="text-align: center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td>
+                    </tr>
+                    <tr ms-if="!ListNoData">
+                        <td colspan="14" style="text-align: center;">對不起,沒有數據!</td>
+                    </tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td>
+                            <input type="checkbox" ms-attr-value="el.Id" ms-duplex-number="changeList" /></td>
+                        <td>{{el.Id}}</td>
+                        <td><span ms-if="el.User==null" >暂无</span>
+                             <span ms-if="el.User!=null" >
+                                 <span> {{el.User.NickName}}</span>
+                             </span>
+
+                        </td>
+                        <td>{{el.Qq=="" ? "无":el.Qq}}</td>
+                        <td><span ms-if="el.User==null" ></span>
+                             <span ms-if="el.User!=null" >
+                                 <span> {{el.User.Loginphone}}</span>
+                             </span>
+                          </td>
+                         <td><span ms-attr-title="el.Content">{{el.Content|truncate(20,"...")}}</span></td>
+                        <td>{{el.AddTime| date("yyyy/MM/dd HH:mm")}}</td>
+                        <td>
+                            <span ms-visible="el.IsVerify != null" ms-class-red="el.IsVerify == 1">{{el.IsVerify == 1 ? "已审核" : "未审核"}}</span>
+                            <button ms-if="el.IsVerify==1" title="取消审核" class="btn btn-warning btn-xs btn-primary" ms-click="VerifyMessageFun(el.Id,0)"><i class="icon-eye-close"></i></button>
+                            <button ms-if="el.IsVerify==0" title="审核" class="btn btn-xs btn-primary" ms-click="VerifyMessageFun(el.Id,1)"><i class="icon-eye-open"></i></button>
+                        </td>
+                        <td>
+                            
+                            <button title="删除" class="btn btn-xs btn-danger" ms-click="DeleteMessageFun(el.Id)"><i class="icon-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+        </div>
+    </div>
+    
+</div>
+

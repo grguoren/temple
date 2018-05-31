@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "直销同城网-管理系统-活动管理-线上直播门票管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        活动管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            线上直播门票管理
+        </small>
+    </h1>
+</div>
+<div class="row-fluid" ms-controller="ticketList">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <div class="span12">
+                    <span>
+                        <button type="button" class="btn btn-info btn-sm" ms-click="PayTicketAllFun(1)"><i class="icon-eye-open"></i>批量送票</button>
+                        <button type="button" class="btn btn-warning btn-sm" ms-click="PayTicketAllFun(0)"><i class="icon-eye-close"></i>取消送票</button>
+                        
+                    </span>
+                </div>
+                <div class="hr"></div>
+                <div class="span12">
+            @*        <span>门票类型:</span>
+                    <span>
+                        <select class="input-sm" ms-duplex="Search_Status" >
+                            <option value="1">现场门票</option>
+                            <option value="0">网络直播</option>
+                        </select>
+                    </span>*@
+                    <span>是否已送票:</span>
+                    <span>
+                        <select class="input-sm" ms-duplex="Search_State" >
+                            <option value="-1">全部</option>
+                            <option value="1">已送票</option>
+                            <option value="0">未送票</option>
+                        </select>
+                    </span>
+                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                        <i class="icon-search"></i>
+                        查询
+                    </button>
+                    <button type="button" class="btn btn-xs btn-danger" ms-click="Search_Clear()">
+                        <i class="icon-repeat"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" ms-duplex-checked="changeAll" /></th>
+                        <th>ID</th>
+                        <th>门票地址</th>
+                        <th>OPENID</th>
+                        <th>微信妮称</th>
+                        <th>微信头像</th>
+                        <th>购票来源</th>
+                        <th>门票类型</th>
+                        <th>是否已领票</th>
+                        <th>领票时间</th>
+                        <th width="80px;">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="15" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">對不起,沒有數據!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td><input type="checkbox" ms-attr-value="el.Id" ms-duplex-number="changeList" /></td>
+                        <td>{{el.Id}}</td>
+                        <td>{{el.Url}}</td>
+                        <td><span>{{el.OpenId}}</span></td>
+                        <td><span>{{el.NickName}}</span></td>
+                         <td style="line-height:90px;">
+                            <span ms-if="el.ImgUrl != null && el.ImgUrl != ''">
+                                <a ms-attr-href="ReturnBigImgPath(el.ImgUrl)" data-rel="colorbox" target="_blank" title="查看微信图像" class='highslide' onclick="return hs.expand(this)">
+                                    <img ms-attr-src="ReturnImgPath(el.ImgUrl)" width="130px" height="90px" />
+                                </a>
+                            </span>
+                        </td>
+                        <td><span>{{el.Socure}}</span></td>
+                        <td>网络直播</td>
+                         <td><span  ms-class-red="el.HasSend ==1">{{el.HasSend == 1 ? "已领" : "未领"}}</span></td>
+                        <td>{{el.SendTime| date("yyyy/MM/dd HH:mm:ss")}}</td>
+                        <td>
+                            <span ms-if="el.HasSend ==0 && (el.Remark == null || el.Remark == '')">
+                                <a title="获取网络门票"  ms-attr-href="/ActiveManage/GetLiveTicket?id={{el.Id}}" target="_blank"  >获取网络门票</a>
+                            </span>
+                            <span ms-if="el.HasSend ==1 && (el.Remark != null && el.Remark != '')">
+                                <a title="查看网络门票"  ms-attr-href="{{el.Remark}}" target="_blank"  >查看网络门票</a>
+                            </span>
+                             <button title="还原" class="btn btn-xs btn-danger" ms-click="ClearTicketFun(el.Id)"><i class="icon-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+        </div>
+    </div>
+</div>
+
+

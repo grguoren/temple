@@ -1,0 +1,245 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-统计管理-统计首页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header position-relative">
+    <h1>
+        统计管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            统计首页
+        </small>
+    </h1>
+</div>
+
+<div class="row-fluid" ms-controller="indexList">
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span7 infobox-container">
+
+                
+                <div class="infobox infobox-blue2  ">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <span class="infobox-text">当前登录帐号</span>
+
+                        <div class="infobox-content">
+                            @Html.Raw(ViewBag.LoginName)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infobox infobox-blue2  ">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                           
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <span class="infobox-text">当前帐号所属人</span>
+
+                        <div class="infobox-content">
+                            @Html.Raw(ViewBag.LoginNickName)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infobox infobox-blue2  ">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                           @* {{CountModel.CusDeMandCount}}*@
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <span class="infobox-text">当前登录IP</span>
+
+                        <div class="infobox-content">
+                           @Temple.Core.Helper.IPHelp.ClientIP
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-6"></div>
+
+                <div class="infobox infobox-green  ">
+                    <div class="infobox-icon">
+                        <i class="icon-group"></i>
+                    </div>
+
+                    <div class="infobox-data">
+                        <span class="infobox-data-number">{{CountModel.UserCount}}</span>
+                        <div class="infobox-content">会员总数</div>
+                    </div>
+                    <div ms-attr-class="(CountModel.UserCount-CountModel.UserCountYesterDay)>=0?'stat stat-success':'stat stat-important' ">{{CountModel.UserCount-CountModel.UserCountYesterDay}}</div>
+                </div>
+
+                <div class="infobox infobox-blue  ">
+                    <div class="infobox-icon">
+                        <i class="icon-user"></i>
+                    </div>
+
+                    <div class="infobox-data">
+                        <span class="infobox-data-number">{{CountModel.OpenCount}}</span>
+                        <div class="infobox-content">开通人数</div>
+                    </div>
+                    <div ms-attr-class="(CountModel.OpenCount-CountModel.OpenCountYesterDay)>=0?'stat stat-success':'stat stat-important' ">{{CountModel.OpenCount-CountModel.OpenCountYesterDay}}</div>
+                </div>
+
+                <div class="infobox infobox-pink  ">
+                    <div class="infobox-icon">
+                        <i class="icon-plus-sign"></i>
+                    </div>
+
+                    <div class="infobox-data">
+                        <span class="infobox-data-number">{{CountModel.RegCount}}</span>
+                        <div class="infobox-content">今日註册人数</div>
+                    </div>
+                    <div ms-attr-class="(CountModel.RegCount-CountModel.RegCountYesterDay)>=0?'stat stat-success':'stat stat-important' ">{{CountModel.RegCount-CountModel.RegCountYesterDay}}</div>
+                </div>
+
+                <div class="space-6"></div>
+
+                <div class="infobox infobox-green infobox-small infobox-dark">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            {{CountModel.UserInfomationCount_Day}}
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <div class="infobox-content">会员资讯</div>
+                        <div class="infobox-content">今日上传</div>
+                    </div>
+                </div>
+
+                <div class="infobox infobox-blue infobox-small infobox-dark">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            {{CountModel.WebSiteInfomationCount_Day}}
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <div class="infobox-content">总站资讯</div>
+                        <div class="infobox-content">今日上传</div>
+                    </div>
+                </div>
+
+                <div class="infobox infobox-grey infobox-small infobox-dark">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            {{CountModel.BBSCount_Day}}
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <div class="infobox-content">论坛发帖</div>
+                        <div class="infobox-content">今日发帖</div>
+                    </div>
+                </div>
+                <div class="infobox infobox-grey infobox-small infobox-dark">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            {{CountModel.BBSReplyCount_Day}}
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <div class="infobox-content">论坛回帖</div>
+                        <div class="infobox-content">今日回帖</div>
+                    </div>
+                </div>
+
+                <div class="space-6"></div>
+
+                <div class="infobox infobox-green infobox-small infobox-dark">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            {{CountModel.UserInfomationCount_Mon}}
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <div class="infobox-content">会员资讯</div>
+                        <div class="infobox-content">当月上传</div>
+                    </div>
+                </div>
+
+                <div class="infobox infobox-blue infobox-small infobox-dark">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            {{CountModel.WebSiteInfomationCount_Mon}}
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <div class="infobox-content">总站资讯</div>
+                        <div class="infobox-content">当月上传</div>
+                    </div>
+                </div>
+
+                <div class="infobox infobox-grey infobox-small infobox-dark">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            {{CountModel.BBSCount_Mon}}
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <div class="infobox-content">论坛发帖</div>
+                        <div class="infobox-content">当月发帖</div>
+                    </div>
+                </div>
+                <div class="infobox infobox-grey infobox-small infobox-dark">
+                    <div class="infobox-progress">
+                        <div class="percentage">
+                            {{CountModel.BBSReplyCount_Mon}}
+                        </div>
+                    </div>
+
+                    <div class="infobox-data">
+                        <div class="infobox-content">论坛回帖</div>
+                        <div class="infobox-content">当月回帖</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-sm" ms-click="refreshFun"><i class="icon-refresh"></i>刷新数据</button>
+            <button class="btn btn-sm" ms-click="refreshIndexFun"><i class="icon-refresh"></i>更新首页</button>
+        </div><!--/row-->
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="table-responsive">
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th>芳华云品牌</th>
+                        <th>已开通人数</th>
+                        <th>註册人数</th>
+                        <th>成功率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="4" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="4" style="text-align:center;">對不起,沒有數據!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td>{{el.BrandName}}</td>
+                        <td>{{el.OpenCount}}</td>
+                        <td>{{el.RegCount}}</td>
+                        <td>{{el.Success}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

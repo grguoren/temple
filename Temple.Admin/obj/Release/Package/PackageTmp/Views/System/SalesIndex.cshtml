@@ -1,0 +1,242 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-会员管理-备註统计管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        会员管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            备註统计管理
+        </small>
+    </h1>
+</div>
+
+<div class="row-fluid" ms-controller="userList">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                 @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        { 
+                <button type="button" class="btn btn-xs btn-success" data-target="#addUser_Modal" data-toggle="modal" ms-click="add()">
+                    <i class="icon-plus-sign"></i>
+                    新增用户
+                </button>
+                 }
+                <span>备註姓名：</span>
+                <span>
+                    <input type="text" class="input-xs" id="Search_NickName" />
+                </span>
+                <span>|</span>
+                      <input id="date1" name="date1" type="text" onclick="WdatePicker()" runat="server"  style="width:80px;" readonly="readonly" />—
+                      <input id="date2" name="date2" type="text" onclick="WdatePicker()" runat="server"  style="width:80px;" readonly="readonly" />
+
+                <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                    <i class="icon-search"></i>
+                    查询
+                </button>
+                <button type="button" class="btn btn-xs btn-danger" ms-click="Search_Clear()">
+                    <i class="icon-repeat"></i>
+                    清空
+                </button>
+                 <button type="button" class="btn  btn-xs btn-danger" ms-click="UpdateUserCacheFun"><i class="icon-trash"></i>更新缓存</button>
+                <button type="button" class="btn btn-xs btn-danger" ms-click="UpdateRemark()">
+                    <i class="icon-repeat"></i>
+                    更新备註用户
+                </button>
+            </div>
+
+            <div class="span12 avalonloading"><i class="icon-spinner icon-spin orange bigger-125"></i></div>
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        <table id="sample-table-1" style="width:100%;" class="table table-bordered table-hover no-margin-bottom">
+                            <thead>
+                                <tr>
+                                    @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        { 
+                                    <th width="60px">操作</th>}
+                                    <th width="100px">备註姓名</th>
+                                     <th width="60px">备註总人数</th>
+                                    <th width="60px">再次跟进数</th>
+                                    <th width="60px">新人跟进数</th>
+                                    <th width="60px">註册数</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr ms-if="!ListLoading">
+                                    <td colspan="19" style="text-align: center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td>
+                                </tr>
+                                <tr ms-if="!ListNoData">
+                                    <td colspan="18" style="text-align: center;">對不起,沒有數據!</td>
+                                </tr>
+                                <tr ms-repeat="array" ms-visible="ListLoading"> @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        { 
+                                    <td>
+                                       
+                                            <span>
+                                                <button title="编辑" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button>
+                                            </span> 
+                                            <button title="删除" class="btn btn-xs btn-danger" ms-click="removeUser(el.sId)"><i class="icon-trash"></i></button>
+                                       
+                                       
+                                       
+                                    </td> }
+                                    <td>
+                                      
+                                         @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        {  
+                                             <input type="text" ms-duplex="el.sRealname" style="width: 70px;" />
+                                            <a title="修改资料" href="javascript:;" ms-click="EditData(el.sId,el.sRealname,el.sName,'')">修改</a>  
+                                        }
+                                    else
+                                    {
+                                             <span>{{el.sRealname}}</span>
+                                         }</td>
+                                    <td style="text-align:center;color:red">{{el.RUserCount}}</td>
+                                    <td style="text-align:center">{{el.NextUserCount}}</td>
+                                    <td style="text-align:center">{{el.FirstUserCount}}</td>
+                                    <td style="text-align:center">{{el.RemarkCount}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                   <td style="vertical-align:top;">
+                        <table id="sample-table-2" style="width:100%;"  class="table table-bordered table-hover no-margin-bottom">
+                            <thead>
+                                <tr>@if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        { 
+                                    <th width="60px">操作</th>}
+                                    <th width="60px">备註姓名</th>
+                                    <th width="60px">备註总人数</th>
+                                      <th width="60px">再次跟进数</th>
+                                    <th width="60px">新人跟进数</th>
+                                     <th width="60px">註册数</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr ms-if="!ListLoading">
+                                    <td colspan="19" style="text-align: center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td>
+                                </tr>
+                                <tr ms-if="!ListNoData">
+                                    <td colspan="18" style="text-align: center;">對不起,沒有數據!</td>
+                                </tr>
+                                <tr ms-repeat="array2" ms-visible="ListLoading"> @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        { 
+                                    <td>
+                                       
+                                            <span>
+                                                <button title="编辑" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button>
+                                            </span>
+                                             <button title="删除" class="btn btn-xs btn-danger" ms-click="removeUser(el.sId)"><i class="icon-trash"></i></button>
+                           
+                                      
+                                       
+                                    </td> }
+                                    <td>
+                                          @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        {  
+                                             <input type="text" ms-duplex="el.sRealname" style="width: 70px;" />
+                                            <a title="修改资料" href="javascript:;" ms-click="EditData(el.sId,el.sRealname,el.sName,'')">修改</a>  
+                                        }
+                                    else
+                                    {
+                                             <span>{{el.sRealname}}</span>
+                                         }
+
+                                    </td>
+                                    <td style="text-align:center;color:red">{{el.RUserCount}}</td>
+                                    <td style="text-align:center">{{el.NextUserCount}}</td>
+                                    <td style="text-align:center">{{el.FirstUserCount}}</td>
+                                    <td style="text-align:center">{{el.RemarkCount}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td> @*
+                    <td style="vertical-align:top;">
+                        <table id="sample-table-3"  class="table table-bordered table-hover no-margin-bottom">
+                            <thead>
+                                <tr>@if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        { 
+                                    <th width="60px">操作</th>}
+                                    <th width="60px">备註姓名</th>
+                                    <th width="60px">备註总人数</th>
+                                     <th width="60px">再次跟进数</th>
+                                    <th width="60px">新人跟进数</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr ms-if="!ListLoading">
+                                    <td colspan="19" style="text-align: center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td>
+                                </tr>
+                                <tr ms-if="!ListNoData">
+                                    <td colspan="18" style="text-align: center;">對不起,沒有數據!</td>
+                                </tr>
+                                <tr ms-repeat="array3" ms-visible="ListLoading"> @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        { 
+                                    <td>
+                                       
+                                            <span>
+                                                <button title="编辑" class="btn btn-xs btn-primary" ms-click="edit(el)" data-target="#addUser_Modal" data-toggle="modal"><i class="icon-edit"></i></button>
+                                            </span> <button title="删除" class="btn btn-xs btn-danger" ms-click="removeUser(el.sId)"><i class="icon-trash"></i></button>
+                           
+                                      
+                                       
+                                    </td> }
+                                    <td>
+                                        @if (ViewBag.ReplyName == "zhihupz" || ViewBag.ReplyName == "adminzh")
+                                        {  
+                                             <input type="text" ms-duplex="el.sRealname" style="width: 70px;" />
+                                            <a title="修改资料" href="javascript:;" ms-click="EditData(el.sId,el.sRealname,el.sName,'')">修改</a>  
+                                        }
+                                    else
+                                    {
+                                             <span>{{el.sRealname}}</span>
+                                         } </td>
+                                    <td style="text-align:center;color:red">{{el.RUserCount}}</td>
+                                    <td style="text-align:center">{{el.NextUserCount}}</td>
+                                    <td style="text-align:center">{{el.FirstUserCount}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>*@
+                </tr>
+            </table>
+          @*  <div ms-widget="pager,pp"></div>*@
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addUser_Modal" tabindex="-1" role="dialog" style="margin-top:170px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:230px;">
+                <div class="modal-header no-padding">
+                    <div class="table-header" style="line-height:32px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        {{type}}用户
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label" for="form-field-nickname">用户名称</label>
+                        <div class="controls">
+                            <input type="text" id="form-field-nickname" placeholder="用户名称" ms-duplex="NickName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
+         
+                        <button type="button" class="btn btn-primary btn-sm" ms-click="update()">{{type}}</button>
+                          
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+@section scripts{
+@*<script src="@Url.Content("~/Scripts/Page/SystemManage/UserIndex.js")"></script>*@
+}

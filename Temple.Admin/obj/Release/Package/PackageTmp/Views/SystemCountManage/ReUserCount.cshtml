@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-统计管理-註册会员总数";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header position-relative">
+    <h1>
+        统计管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            註册会员总数
+        </small>
+    </h1>
+</div>
+<div class="row-fluid" ms-controller="MyUserCount" style="min-width: 1280px;">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <div class="span12" style="width:98%;">
+                    <span>
+                        <select class="input-sm" id="Search_TypeId" @*ms-duplex="Search_TypeId"*@>
+                            <option value="0" @(ViewBag.cId == 0?"selected":"")>已註册</option>
+                            <option value="1" @(ViewBag.cId == 1?"selected":"")>已开通</option>
+                        </select>
+                    </span>
+        
+                    <span>查询日期：</span>
+                    <span>
+                        <input id="date1" name="date1" type="text" onclick="WdatePicker()" runat="server"  style="width:80px;" readonly="readonly" />—
+                        <input id="date2" name="date2" type="text" onclick="WdatePicker()" runat="server"  style="width:80px;" readonly="readonly" />
+                    </span>
+                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                        <i class="icon-search"></i>
+                        查询
+                    </button>
+                    <span  id="sMonthCount"> 
+                        <span id="countid"></span>
+                   </span>
+
+                    </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>

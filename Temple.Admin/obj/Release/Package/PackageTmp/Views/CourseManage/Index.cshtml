@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-课程管理-课程列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header position-relative">
+    <h1>
+        课程管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            课程列表
+        </small>
+    </h1>
+</div>
+<div class="row-fluid" ms-controller="courseList">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <div class="span12">
+                    <span>
+                        <button type="button" class="btn btn-sm btn-success" data-target="#addUser_Modal" data-toggle="modal" ms-click="HrefSelf(Config.WebUrl + 'CourseManage/CourseAdd','')">
+                            <i class="icon-plus-sign"></i>
+                            添加课程
+                        </button>
+                        <button type="button" class="btn btn-info btn-sm" ms-click="VerifyCourseAllFun(1)"><i class="icon-eye-open"></i>批量审核</button>
+                        <button type="button" class="btn btn-warning btn-sm" ms-click="VerifyCourseAllFun(2)"><i class="icon-eye-close"></i>未通过审核</button>
+                        <button type="button" class="btn btn-warning btn-sm" ms-click="VerifyCourseAllFun(0)"><i class="icon-eye-close"></i>取消审核</button>
+                        <button type="button" class="btn btn-info btn-sm" ms-click="HotCourseAllFun(1)"><i class="icon-heart"></i>批量热门</button>
+                        <button type="button" class="btn btn-warning btn-sm" ms-click="HotCourseAllFun(0)"><i class="icon-heart-empty"></i>取消热门</button>
+                        <button type="button" class="btn btn-info btn-sm" ms-click="DisplayCourseAllFun(1)"><i class="icon-heart"></i>批量显示</button>
+                        <button type="button" class="btn btn-warning btn-sm" ms-click="DisplayCourseAllFun(0)"><i class="icon-heart-empty"></i>取消显示</button>
+                        <button type="button" class="btn btn-danger btn-sm" ms-click="DeleteCourseAllFun"><i class="icon-trash"></i>批量删除</button>
+                    </span>
+                </div>
+                <div class="hr"></div>
+                <div class="span12">
+                    <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                        <i class="icon-search"></i>
+                        查询
+                    </button>
+                    <button type="button" class="btn btn-xs btn-danger" ms-click="Search_Clear">
+                        <i class="icon-repeat"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th width="20px;"><input type="checkbox" ms-duplex-checked="changeAll" /></th>
+                        <th width="80px;">ID</th>
+                        <th width="100px;">课程分类</th>
+                        <th width="200px;">课程名称</th>
+                        <th width="70px;">分享奖励</th>
+                        <th width="60px;">是否显示</th>
+                        <th width="60px;">是否热门</th>
+                        <th width="70px;">授课讲师</th>
+                        <th width="150px;">发布时间</th>
+                        <th width="80px;">审核状态</th>
+                       @* <th width="80px;">备註</th>*@
+                        <th width="70px;">课节数</th>
+                        <th width="50px;">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="14" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="14" style="text-align:center;">對不起,沒有數據!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        <td><input type="checkbox" ms-attr-value="el.Id" ms-duplex-number="changeList" /></td>
+                        <td>{{el.Id}}</td>
+                        <td><span ms-class-red="el.cType==1002" ms-class-green="el.cType==1001" >{{el.cType==1002?"大师课":(el.cType==1001?"订阅专栏":(el.cType==1003?"精品课":"免费专区"))}}</span></td>
+                        <td>{{el.cTitle}}</td>
+                        <td>{{el.cReward}}</td>
+                        <td><span ms-class-red="el.IsDisplay==1">{{el.IsDisplay==1?"显示":"隐藏"}}</span></td> 
+                         <td><span ms-class-red="el.IsHot==1">{{el.IsHot==1?"是":"否"}}</span></td> 
+                        <td><span ms-if="el.User==null" >暂无</span>
+                             <span ms-if="el.User!=null" >
+                                 <span> {{el.User.tName}}</span>
+                             </span>
+                        </td>
+                        <td>{{el.AddTime| date("yyyy/MM/dd HH:mm")}}</td>
+                        <td><span ms-class-red="el.IsVerify==1">{{el.IsVerify==1?"已审核":(el.IsVerify==2?"已关闭":"未审核")}}</span></td>
+                      @*  <td>{{el.Remark}}</td>*@
+                        <td>{{el.UpdatedCount}}</td>
+                        <td> 
+                            <button title="编辑" class="btn btn-xs btn-primary" ms-click="HrefFun('@Url.Content("~/CourseManage/CourseAdd/")',el.Id)"><i class="icon-cog"></i></button>
+                            <button title="删除" class="btn btn-xs btn-danger" ms-click="DeleteCourseFun(el.Id)"><i class="icon-trash"></i></button>
+  
+                             <span ms-visible="el.cType==1002 || el.cType==1001"><a class="btn btn-xs btn-primary" target="_blank" ms-attr-href="'@Url.Content("~/CourseManage/WareAdd?cid=")'+el.Id" role="button" title="编辑">添加课节</a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+        </div>
+    </div>
+</div>

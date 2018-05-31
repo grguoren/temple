@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系统-基本資料管理系統-" + ViewBag.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        服務項目資料維護作業
+        <small>
+            <i class="icon-double-angle-right"></i>
+            @Html.Raw(ViewBag.PageTitle)
+        </small>
+    </h1>
+</div>
+<div class="row" ms-controller="DataAddOrUpdate">
+    <input type="hidden" id="Id_pageDom" value="@ViewBag.NewDataId" />
+    <div class="col-xs-12">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> <span class="red">*</span>服務代號</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Code" maxlength="2" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Code) === ''">{{errorMsg.Code}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span>服務項目名稱</label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Name" class="col-xs-9 col-sm-4" />
+                    <span class="middle red" ms-visible="$.trim(NewModel.Name) === ''">{{errorMsg.Name}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span> 狀態 </label>
+                <div class="col-sm-9">
+                    <span><input type="radio" ms-duplex-number="NewModel.Status" value="1" />開啟</span>
+                    <span><input type="radio" ms-duplex-number="NewModel.Status" value="0" />關閉</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"><span class="red">*</span> 型態 </label>
+                <div class="col-sm-9">
+                    <span><input type="radio" ms-duplex-number="NewModel.Type" value="1" />一般服務</span>
+                    <span><input type="radio" ms-duplex-number="NewModel.Type" value="2" />法會服務</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> 備註 </label>
+
+                <div class="col-sm-9">
+                    <input type="text" ms-duplex="NewModel.Remark" class="col-xs-9 col-sm-4" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> <span class="red">*</span>入帳單位 </label>
+                <div class="col-sm-9">
+                    <select ms-duplex-number="NewModel.Accounting_unit_id"><option value="0">请选择...</option><option ms-repeat="accountList" ms-attr-value="el.Id">{{el.Name}}</option></select>
+                    <span class="middle red" ms-visible="aboutModel.Accounting_unit_id === 0">{{errorMsg.TypeId}}</span>
+                </div>
+            </div>
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-4 col-md-6">
+                    <button class="btn btn-info" type="button" ms-click="addDataFun">
+                        <i class="icon-ok bigger-110"></i>
+                        {{buttonType}}
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn" type="reset">
+                        <i class="icon-undo bigger-110"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

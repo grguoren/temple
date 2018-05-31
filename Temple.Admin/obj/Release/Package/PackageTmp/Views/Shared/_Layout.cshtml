@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="無極證道" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- basic styles -->
+    <link href="@Url.Content("~/Content/Bootstrap_ACE/css/bootstrap.min-3.3.2.css?v201506042")" rel="stylesheet" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Bootstrap_ACE/css/font-awesome.min.css")" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Bootstrap_ACE/css/ace.min.css?v201506042")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Bootstrap_ACE/css/ace-rtl.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Bootstrap_ACE/css/ace-skins.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/admin_style.css")" />
+@*    <link rel="stylesheet" href="@Url.Content("~/Content/main.css")" />*@
+    <script src="@Url.Content("~/Scripts/Lib/jquery/jquery.min.js")"></script>
+@*    <script src="@Url.Content("~/Scripts/Lib/jquery/notify.js")"></script>*@
+    <script src="@Url.Content("~/Scripts/Lib/jquery/socket.io.js")"></script>
+    <style>
+        .ms-controller, .ms-important, [ms-controller], [ms-important] {
+            visibility: hidden;
+        }
+        .avalonloading {
+            visibility: hidden;
+            vertical-align: middle;
+        }
+        .ms-controller .avalonloading {
+                visibility: visible;
+        }
+ 
+    </style>
+    @RenderSection("styles", required: false)
+    <script src="@Url.Content("~/Scripts/Lib/requireJS/require.min.js")" data-main="@Url.Content("~/Scripts/main.js?v20150618")"></script>
+</head>
+<body>
+    <div class="navbar navbar-default" id="navbar">
+
+        <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="@Url.Content("~/SystemCountManage/Index")" class="navbar-brand">
+                    <small style="font-family: Microsoft YaHei;">
+                   
+                        無極證道 管理系统
+                    </small>
+                </a><!-- /.brand -->
+            </div><!-- /.navbar-header -->
+
+            <div class="navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-blue" style="height:50px;">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="@Url.Content("~/Images/toux1.jpg")" alt="Jason's Photo">
+                            <span class="user-info">
+                                <small>歡迎您,</small>@Html.Raw(ViewBag.LoginName)
+                            </span>
+                            <i class="icon-caret-down"></i>
+                        </a>
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            @*<li>
+                                <a href="#" onclick="alert('休想!');return false;">
+                                    <i class="icon-cog"></i>
+                                    修改密碼
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" onclick="alert('沒有!');return false;">
+                                    <i class="icon-user"></i>
+                                    用戶信息
+                                </a>
+                            </li>*@
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="@Url.Content("~/Login/LoginOut")">
+                                    <i class="icon-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- /.ace-nav -->
+            </div><!-- /.navbar-header -->
+        </div><!-- /.container -->
+    </div>
+
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="main-container-inner">
+            <a class="menu-toggler" id="menu-toggler" href="#">
+                <span class="menu-text"></span>
+            </a>
+
+            <div class="sidebar" id="sidebar">
+                @*<script type="text/javascript">
+                        try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+                    </script>*@
+
+                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                        @*<button class="btn btn-success">
+                            <i class="icon-signal"></i>
+                        </button>
+
+                        <button class="btn btn-info">
+                            <i class="icon-pencil"></i>
+                        </button>
+
+                        <button class="btn btn-warning">
+                            <i class="icon-group"></i>
+                        </button>*@
+                    </div>
+
+                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                        <span class="btn btn-success"></span>
+
+                        <span class="btn btn-info"></span>
+
+                        <span class="btn btn-warning"></span>
+
+                        <span class="btn btn-danger"></span>
+                    </div>
+                </div><!-- #sidebar-shortcuts -->
+                <!--菜单位置-->
+                @{Html.RenderAction("_MenuLeft", "Home");}
+                <!-- /.nav-list -->
+
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                </div>
+
+                @*<script type="text/javascript">
+                        try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+                    </script>*@
+            </div>
+
+            <div class="main-content">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    @*<script type="text/javascript">
+                            try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+                        </script>*@
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            @*<a href="@Url.Content("~/Home/Index")">首页</a>*@
+                            無極證道-管理系统
+                            &nbsp;今天是:民国@(DateTime.Now.Year -1911)年 @Html.Raw(DateTime.Now.ToString("MM月dd日") + " " + System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek))
+                        </li>
+                    </ul>
+                    <span class="pull-right"><a href="@Url.Content("~/Home/Index")">系統首頁</a></span>
+                    <!-- .breadcrumb -->
+                    @*<div class="nav-search" id="nav-search">
+                            <form class="form-search">
+                                <span class="input-icon">
+                                    <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                    <i class="icon-search nav-search-icon"></i>
+                                </span>
+                            </form>
+                        </div>*@<!-- #nav-search -->
+                </div>
+
+                <div class="page-content" id="Doc_contentAll">
+                    <!-- /.page-内容部分的头部 -->
+                    <!-- PAGE CONTENT BEGINS -->
+                    @RenderBody()
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
+
+@*            <div class="ace-settings-container" id="ace-settings-container">
+                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                    <i class="icon-cog bigger-150"></i>
+                </div>
+
+                <div class="ace-settings-box" id="ace-settings-box">
+                    <div>
+                        <div class="pull-left">
+                            <select id="skin-colorpicker" class="hide">
+                                <option data-skin="default" value="#438EB9">#438EB9</option>
+                                <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                            </select>
+                        </div>
+                        <span>&nbsp; 主題</span>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                        <label class="lbl" for="ace-settings-add-container"> 窄版</label>
+                    </div>
+                </div>
+            </div>*@
+            <!-- /#右边设置按钮 -->
+        </div><!-- /.main-container-inner -->
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="icon-double-angle-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+@*    
+<div id="notifydiv" class="notification sticky hide">
+    <p id="content"> </p>
+    <a class="close" href="javascript:"> <img src="~/Images/icon-close.png" /></a>
+</div>*@
+
+
+    <script src="@Url.Content("~/Content/Bootstrap_ACE/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/Bootstrap_ACE/js/ace-extra.min.js")"></script>
+    <script src="@Url.Content("~/Content/Bootstrap_ACE/js/ace-elements.min.js")"></script>
+    <script src="@Url.Content("~/Content/Bootstrap_ACE/js/ace.min.js")"></script>
+    @RenderSection("scripts", required: false)
+@*    <script>
+        $(document).ready(function () {
+            var uid = '@ViewBag.LoginId';
+            //var uid = Date.parse(new Date());
+            // 连接服务端
+            var socket = io('http://120.26.209.121:2122');
+            // 连接后登录
+            //console.log("kkk");
+            socket.on('connect', function () {
+                socket.emit('login', uid);
+            });
+            // 后端推送来消息时
+            socket.on('new_msg', function (msg) {
+                //$('#content').html('收到消息：' + msg);
+                alert(msg);
+                //$('#notifydiv').notify();
+            });
+        });
+</script>*@
+   
+</body>
+</html>

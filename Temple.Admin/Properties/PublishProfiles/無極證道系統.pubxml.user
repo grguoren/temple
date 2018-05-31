@@ -11,7 +11,7 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="AgreementHTML.htm">
-      <publishTime>04/11/2018 19:34:23</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="bin/aliyun-net-sdk-core.dll">
       <publishTime>12/12/2017 11:40:18</publishTime>
@@ -41,7 +41,7 @@
       <publishTime>04/23/2015 20:25:28</publishTime>
     </File>
     <File Include="bin/ExcelOperate.dll">
-      <publishTime>05/22/2018 09:34:43</publishTime>
+      <publishTime>05/30/2018 19:05:36</publishTime>
     </File>
     <File Include="bin/LitJSON.dll">
       <publishTime>07/19/2016 17:23:16</publishTime>
@@ -101,22 +101,22 @@
       <publishTime>07/19/2016 17:23:05</publishTime>
     </File>
     <File Include="bin/Temple.Admin.dll">
-      <publishTime>05/22/2018 09:45:57</publishTime>
+      <publishTime>05/30/2018 19:05:38</publishTime>
     </File>
     <File Include="bin/Temple.Core.dll">
-      <publishTime>05/22/2018 09:45:55</publishTime>
+      <publishTime>05/30/2018 19:05:36</publishTime>
     </File>
     <File Include="bin/Temple.Domain.dll">
-      <publishTime>05/22/2018 09:45:55</publishTime>
+      <publishTime>05/30/2018 19:05:36</publishTime>
     </File>
     <File Include="bin/Temple.IService.dll">
-      <publishTime>05/22/2018 09:45:55</publishTime>
+      <publishTime>05/30/2018 19:05:36</publishTime>
     </File>
     <File Include="bin/Temple.Mapping.dll">
-      <publishTime>05/22/2018 09:45:56</publishTime>
+      <publishTime>05/30/2018 19:05:37</publishTime>
     </File>
     <File Include="bin/Temple.Service.dll">
-      <publishTime>05/22/2018 09:45:56</publishTime>
+      <publishTime>05/30/2018 19:05:37</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
       <publishTime>07/19/2016 17:23:07</publishTime>
@@ -389,7 +389,7 @@
       <publishTime>07/19/2016 17:23:13</publishTime>
     </File>
     <File Include="Content/Bootstrap_ACE/js/jqGrid/js/i18n/grid.locale-cn.js">
-      <publishTime>07/19/2016 17:23:13</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Content/Bootstrap_ACE/js/jqGrid/js/i18n/grid.locale-cs.js">
       <publishTime>07/19/2016 17:23:13</publishTime>
@@ -608,7 +608,7 @@
       <publishTime>07/19/2016 17:23:13</publishTime>
     </File>
     <File Include="Content/Bootstrap_ACE/js/jqGrid/src/i18n/grid.locale-cn.js">
-      <publishTime>07/19/2016 17:23:13</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Content/Bootstrap_ACE/js/jqGrid/src/i18n/grid.locale-cs.js">
       <publishTime>07/19/2016 17:23:13</publishTime>
@@ -1169,7 +1169,7 @@
       <publishTime>07/19/2016 17:23:14</publishTime>
     </File>
     <File Include="Scripts/CommonHelper/DropdownHelper/avalon.dropdown.js">
-      <publishTime>07/19/2016 17:23:14</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Scripts/CommonHelper/KindeditorHelper/ajaxfileupload.js">
       <publishTime>07/19/2016 17:23:16</publishTime>
@@ -1247,7 +1247,7 @@
       <publishTime>07/19/2016 17:23:14</publishTime>
     </File>
     <File Include="Scripts/CommonHelper/KindeditorHelper/avalon.kindeditor.js">
-      <publishTime>07/19/2016 17:23:16</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Scripts/CommonHelper/KindeditorHelper/bin/LitJSON.dll">
       <publishTime>07/19/2016 17:23:16</publishTime>
@@ -1310,7 +1310,7 @@
       <publishTime>07/19/2016 17:23:16</publishTime>
     </File>
     <File Include="Scripts/CommonHelper/KindeditorHelper/plugins/baidumap/index.html">
-      <publishTime>07/19/2016 17:23:16</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Scripts/CommonHelper/KindeditorHelper/plugins/baidumap/map.html">
       <publishTime>07/19/2016 17:23:16</publishTime>
@@ -1889,7 +1889,7 @@
       <publishTime>07/19/2016 17:23:13</publishTime>
     </File>
     <File Include="Scripts/CommonHelper/ScrollbarHelper/avalon.scrollbar.js">
-      <publishTime>07/19/2016 17:23:13</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Scripts/CommonHelper/SliderHelper/avalon.slider.css">
       <publishTime>07/19/2016 17:23:13</publishTime>
@@ -1913,7 +1913,7 @@
       <publishTime>07/19/2016 17:23:17</publishTime>
     </File>
     <File Include="Scripts/Lib/avalon/avalon.js">
-      <publishTime>03/24/2017 13:15:25</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Scripts/Lib/avalon/css.js">
       <publishTime>07/19/2016 17:23:16</publishTime>
@@ -2114,7 +2114,7 @@
       <publishTime>07/19/2016 17:23:17</publishTime>
     </File>
     <File Include="Scripts/Main.js">
-      <publishTime>05/21/2018 21:07:24</publishTime>
+      <publishTime>05/23/2018 21:01:16</publishTime>
     </File>
     <File Include="Scripts/My97DatePicker/calendar.js">
       <publishTime>07/19/2016 17:23:16</publishTime>
@@ -2173,6 +2173,18 @@
     <File Include="Scripts/Page/ActiveManage/LiveTicket.js">
       <publishTime>04/07/2018 11:12:45</publishTime>
     </File>
+    <File Include="Scripts/Page/AngelManage/Add.js">
+      <publishTime>05/23/2018 17:45:10</publishTime>
+    </File>
+    <File Include="Scripts/Page/AngelManage/List.js">
+      <publishTime>05/23/2018 17:50:54</publishTime>
+    </File>
+    <File Include="Scripts/Page/AngelManage/TypeAdd.js">
+      <publishTime>05/18/2018 17:30:35</publishTime>
+    </File>
+    <File Include="Scripts/Page/AngelManage/TypeList.js">
+      <publishTime>03/29/2018 11:14:14</publishTime>
+    </File>
     <File Include="Scripts/Page/BasicManage/AddTitle.js">
       <publishTime>05/18/2018 17:33:16</publishTime>
     </File>
@@ -2204,7 +2216,7 @@
       <publishTime>05/18/2018 17:30:35</publishTime>
     </File>
     <File Include="Scripts/Page/EnterManage/CompanyList.js">
-      <publishTime>04/06/2018 11:48:14</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Scripts/Page/EnterManage/CTeacherList.js">
       <publishTime>04/07/2018 08:47:56</publishTime>
@@ -2229,6 +2241,30 @@
     </File>
     <File Include="Scripts/Page/FeedbackManage/List.js">
       <publishTime>04/02/2018 10:59:58</publishTime>
+    </File>
+    <File Include="Scripts/Page/FestivalManage/Add.js">
+      <publishTime>05/23/2018 11:40:27</publishTime>
+    </File>
+    <File Include="Scripts/Page/FestivalManage/List.js">
+      <publishTime>05/23/2018 11:46:18</publishTime>
+    </File>
+    <File Include="Scripts/Page/MakeManage/Add.js">
+      <publishTime>05/23/2018 20:59:19</publishTime>
+    </File>
+    <File Include="Scripts/Page/MakeManage/List.js">
+      <publishTime>05/23/2018 20:48:10</publishTime>
+    </File>
+    <File Include="Scripts/Page/MemberManage/Add.js">
+      <publishTime>05/22/2018 20:48:19</publishTime>
+    </File>
+    <File Include="Scripts/Page/MemberManage/Index.js">
+      <publishTime>05/22/2018 21:36:03</publishTime>
+    </File>
+    <File Include="Scripts/Page/MemberManage/PractitionerAdd.js">
+      <publishTime>05/22/2018 20:48:19</publishTime>
+    </File>
+    <File Include="Scripts/Page/MemberManage/PractitionerList.js">
+      <publishTime>05/22/2018 21:34:22</publishTime>
     </File>
     <File Include="Scripts/Page/Menu/LeftMenu.html">
       <publishTime>07/19/2016 17:23:16</publishTime>
@@ -2276,7 +2312,7 @@
       <publishTime>05/15/2018 10:16:04</publishTime>
     </File>
     <File Include="Scripts/Page/System/SalesIndex.js">
-      <publishTime>11/30/2017 10:10:20</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Scripts/Page/System/SmSLogList.js">
       <publishTime>07/19/2016 17:23:16</publishTime>
@@ -2294,13 +2330,13 @@
       <publishTime>04/10/2018 09:00:17</publishTime>
     </File>
     <File Include="Views/AccountManage/AccountAdd.cshtml">
-      <publishTime>05/15/2018 22:31:49</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Views/AccountManage/AccountList.cshtml">
       <publishTime>05/18/2018 16:56:28</publishTime>
     </File>
     <File Include="Views/AccountManage/ServiceAdd.cshtml">
-      <publishTime>05/18/2018 17:28:48</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Views/AccountManage/ServiceList.cshtml">
       <publishTime>05/18/2018 17:42:33</publishTime>
@@ -2314,11 +2350,26 @@
     <File Include="Views/ActiveManage/LiveTicket.cshtml">
       <publishTime>05/10/2018 10:00:19</publishTime>
     </File>
+    <File Include="Views/AngelManage/Add.cshtml">
+      <publishTime>05/23/2018 17:57:38</publishTime>
+    </File>
+    <File Include="Views/AngelManage/Index.cshtml">
+      <publishTime>04/11/2018 19:25:57</publishTime>
+    </File>
+    <File Include="Views/AngelManage/List.cshtml">
+      <publishTime>05/23/2018 17:56:12</publishTime>
+    </File>
+    <File Include="Views/AngelManage/TypeAdd.cshtml">
+      <publishTime>04/11/2018 19:25:57</publishTime>
+    </File>
+    <File Include="Views/AngelManage/TypeList.cshtml">
+      <publishTime>05/10/2018 10:00:19</publishTime>
+    </File>
     <File Include="Views/BasicManage/Add.cshtml">
-      <publishTime>05/15/2018 18:20:20</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Views/BasicManage/AddTitle.cshtml">
-      <publishTime>05/15/2018 21:24:55</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Views/BasicManage/Payment.cshtml">
       <publishTime>05/15/2018 18:15:52</publishTime>
@@ -2329,6 +2380,9 @@
     <File Include="Views/CityManage/List.cshtml">
       <publishTime>05/10/2018 10:00:19</publishTime>
     </File>
+    <File Include="Views/CourseManage/Add.cshtml">
+      <publishTime>04/07/2018 09:57:56</publishTime>
+    </File>
     <File Include="Views/CourseManage/AdviceList.cshtml">
       <publishTime>05/10/2018 10:00:19</publishTime>
     </File>
@@ -2336,6 +2390,9 @@
       <publishTime>04/07/2018 09:57:56</publishTime>
     </File>
     <File Include="Views/CourseManage/Index.cshtml">
+      <publishTime>05/23/2018 10:56:17</publishTime>
+    </File>
+    <File Include="Views/CourseManage/List.cshtml">
       <publishTime>05/10/2018 10:00:19</publishTime>
     </File>
     <File Include="Views/CourseManage/TopicList.cshtml">
@@ -2345,13 +2402,13 @@
       <publishTime>04/09/2018 09:03:47</publishTime>
     </File>
     <File Include="Views/EnterManage/CompanyList.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Views/EnterManage/CTeacherList.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Views/EnterManage/Index.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Views/EnterManage/TeacherAdd.cshtml">
       <publishTime>04/09/2018 13:30:22</publishTime>
@@ -2374,6 +2431,12 @@
     <File Include="Views/FeedbackManage/List.cshtml">
       <publishTime>05/10/2018 10:00:19</publishTime>
     </File>
+    <File Include="Views/FestivalManage/Add.cshtml">
+      <publishTime>05/23/2018 11:38:46</publishTime>
+    </File>
+    <File Include="Views/FestivalManage/List.cshtml">
+      <publishTime>05/23/2018 11:43:53</publishTime>
+    </File>
     <File Include="Views/Home/Error.cshtml">
       <publishTime>07/19/2016 17:23:17</publishTime>
     </File>
@@ -2395,8 +2458,26 @@
     <File Include="Views/Login/QrLogin.cshtml">
       <publishTime>03/28/2018 20:18:48</publishTime>
     </File>
+    <File Include="Views/MakeManage/Add.cshtml">
+      <publishTime>05/23/2018 20:45:39</publishTime>
+    </File>
+    <File Include="Views/MakeManage/List.cshtml">
+      <publishTime>05/23/2018 20:48:10</publishTime>
+    </File>
     <File Include="Views/MakeQRCode/Index.cshtml">
       <publishTime>04/06/2018 17:23:14</publishTime>
+    </File>
+    <File Include="Views/MemberManage/Add.cshtml">
+      <publishTime>05/22/2018 21:05:55</publishTime>
+    </File>
+    <File Include="Views/MemberManage/Index.cshtml">
+      <publishTime>05/22/2018 21:33:31</publishTime>
+    </File>
+    <File Include="Views/MemberManage/PractitionerAdd.cshtml">
+      <publishTime>05/22/2018 21:29:24</publishTime>
+    </File>
+    <File Include="Views/MemberManage/PractitionerList.cshtml">
+      <publishTime>05/22/2018 21:36:03</publishTime>
     </File>
     <File Include="Views/MoneyManage/Consume.cshtml">
       <publishTime>05/10/2018 10:00:19</publishTime>
@@ -2405,13 +2486,13 @@
       <publishTime>04/11/2018 19:25:57</publishTime>
     </File>
     <File Include="Views/ServiceManage/Add.cshtml">
-      <publishTime>05/18/2018 17:09:53</publishTime>
+      <publishTime>05/23/2018 10:56:17</publishTime>
     </File>
     <File Include="Views/ServiceManage/List.cshtml">
       <publishTime>05/18/2018 17:46:18</publishTime>
     </File>
     <File Include="Views/ServiceManage/PictureAdd.cshtml">
-      <publishTime>05/21/2018 20:38:11</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/ServiceManage/PictureList.cshtml">
       <publishTime>05/21/2018 21:05:46</publishTime>
@@ -2420,7 +2501,7 @@
       <publishTime>07/19/2016 17:23:17</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/03/2018 17:12:03</publishTime>
+      <publishTime>05/22/2018 09:50:10</publishTime>
     </File>
     <File Include="Views/SignManage/Add.cshtml">
       <publishTime>04/10/2018 11:19:49</publishTime>
@@ -2441,7 +2522,7 @@
       <publishTime>05/10/2018 10:01:35</publishTime>
     </File>
     <File Include="Views/System/MailLogList.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/System/MailView.cshtml">
       <publishTime>04/11/2018 19:25:57</publishTime>
@@ -2450,16 +2531,16 @@
       <publishTime>05/15/2018 10:52:17</publishTime>
     </File>
     <File Include="Views/System/Role.cshtml">
-      <publishTime>05/15/2018 10:22:19</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/System/SalesIndex.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/System/SmSLogList.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/System/UserAdd.cshtml">
-      <publishTime>05/19/2018 16:46:51</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/System/UserIndex.cshtml">
       <publishTime>05/19/2018 16:39:56</publishTime>
@@ -2471,19 +2552,19 @@
       <publishTime>05/10/2018 10:00:19</publishTime>
     </File>
     <File Include="Views/SystemCountManage/Index.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/SystemCountManage/NewsCount.cshtml">
       <publishTime>04/11/2018 19:25:57</publishTime>
     </File>
     <File Include="Views/SystemCountManage/RegSucssList.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/SystemCountManage/ReUserCount.cshtml">
-      <publishTime>04/11/2018 19:25:57</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/SystemCountManage/ReUserList.cshtml">
-      <publishTime>05/10/2018 10:00:19</publishTime>
+      <publishTime>05/23/2018 10:56:18</publishTime>
     </File>
     <File Include="Views/SystemCountManage/UserInfomationList.cshtml">
       <publishTime>05/10/2018 10:00:19</publishTime>
@@ -2495,7 +2576,7 @@
       <publishTime>07/19/2016 17:23:17</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/22/2018 09:45:58</publishTime>
+      <publishTime>05/30/2018 19:05:39</publishTime>
     </File>
   </ItemGroup>
 </Project>

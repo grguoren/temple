@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "無極證道-管理系統-使用者基本資料管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header position-relative">
+    <h1>
+        系統管理
+        <small>
+            <i class="icon-double-angle-right"></i>
+            使用者基本資料管理
+        </small>
+    </h1>
+</div>
+
+<div class="row-fluid" ms-controller="userList">
+    <div class="span12">
+        <div class="table-responsive">
+            <div class="well well-lg">
+                <button type="button" class="btn btn-xs btn-success" data-target="#addUser_Modal" data-toggle="modal" ms-click="HrefSelf(Config.WebUrl + 'System/UserAdd','')">
+                    <i class="icon-plus-sign"></i>
+                    新增資料
+                </button>
+@*                <span>使用者姓名：</span>
+                <span>
+                    <input type="text" class="input-xs" id="Search_NickName" />
+                </span>
+                <span>用户名：</span>
+                <span>
+                    <input type="text" class="input-xs" id="Search_UserName" />
+                </span>
+                <button type="button" class="btn btn-xs btn-success" ms-click="getList(1)">
+                    <i class="icon-search"></i>
+                    查询
+                </button>
+                <button type="button" class="btn btn-xs btn-danger" ms-click="Search_Clear()">
+                    <i class="icon-repeat"></i>
+                    清空
+                </button>*@
+            </div>
+
+            <div class="span12 avalonloading"><i class="icon-spinner icon-spin orange bigger-125"></i></div>
+
+            <table id="sample-table-1" class="table table-bordered table-hover no-margin-bottom">
+                <thead>
+                    <tr>
+                        <th style="width:120px;">使用者帳號</th>
+                        <th style="width:120px;">使用者名稱</th>
+                        <th style="width:120px;">行動電話</th>
+                        <th style="width:120px;">狀態</th> 
+                        <th width="120px">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ms-if="!ListLoading"><td colspan="19" style="text-align:center;"><i class="icon-spinner icon-spin orange bigger-125"></i></td></tr>
+                    <tr ms-if="!ListNoData"><td colspan="18" style="text-align:center;">對不起,沒有數據!</td></tr>
+                    <tr ms-repeat="array" ms-visible="ListLoading">
+                        
+                        <td>{{el.Account}} </td> 
+                        <td>{{el.Name}}</td>
+                        <td>{{el.Mobile}}</td> 
+                        <td><span ms-class-red="el.Status == true">{{el.Status == true ? "啟用" : "停用"}}</span></td>
+                        <td>
+                            <button title="設置角色" class="btn btn-xs" ms-click="getRoleList(el)" data-target="#setRole_Modal_UserIndex" data-toggle="modal"><i class="icon-sitemap"></i></button> 
+                            <span><button title="編輯" class="btn btn-xs btn-primary" ms-click="HrefFun('@Url.Content("~/System/UserAdd/")',el.Id)"  ><i class="icon-edit"></i></button></span>
+                            <button title="刪除" class="btn btn-xs btn-danger" ms-click="removeUser(el.Id)"><i class="icon-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ms-widget="pager,pp"></div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <div class="modal fade" id="setRole_Modal_UserIndex" tabindex="-1" role="dialog" style="margin-top:100px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:500px;">
+                <div class="modal-header no-padding">
+                    <div class="table-header" style="line-height:32px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        設置角色
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label bolder blue">請給用戶[{{RoleDom.userName}}]選擇角色</label>
+
+                        <div class="checkbox" ms-repeat="RoleDom.roleList">
+                            <label>
+                                <input name="form-field-checkbox" type="checkbox" class="ace" ms-duplex-string="RoleDom.selectList" ms-attr-value="el.Id" />
+                                <span class="lbl"> {{el.Name}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-sm btn-primary" ms-click="updateRoleUser()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+@*<script src="@Url.Content("~/Scripts/Page/SystemManage/UserIndex.js")"></script>*@
+}
